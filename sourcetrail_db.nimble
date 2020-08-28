@@ -11,3 +11,4 @@ backend       = "cpp"
 # Dependencies
 
 requires "nim >= 1.2.6"
+requires "hcparse", "hmisc", "hpprint", "hnimast"
