@@ -58,7 +58,20 @@ var
   files: seq[string]
 
 parseConf.globalFlags = getBuiltinHeaders().toIncludes() & @[
-  "-xc++", "-std=c++11"]
+    "-xc++", "-std=c++11",
+  ]
+
+# Some std library files that actually define interface cannot be
+# parsed independently and require manual tuning. Right now I will
+# just hardcode paths & versions, but this one should be detectable
+# automatically.
+parseConf.fileFlags["/usr/include/c++/10.2.0/bits/stl_vector.h"] = @[
+    "--include-with-prefix=/usr/include/c++/10.2.0/bits/",
+    "--include=stl_algobase.h",
+    "--include=allocator.h",
+    "--include=stl_construct.h",
+    "--include=stl_uninitialized.h",
+]
 
 for command in dbase.getAllCompileCommands():
   let file = $command.getFilename
@@ -68,67 +81,26 @@ for command in dbase.getAllCompileCommands():
     parseConf.fileFlags[file] = command.getFlags()
     files.add file
 
+let wrapDir = "wrapped"
+
 try:
   let wrapped = wrapAll(files, parseConf, wrapConf)
   for wrapres in wrapped:
-    let file = "/tmp" / wrapres.importName.join("/") & ".nim"
-    # info "Writing to file", file
+    let file = wrapDir / wrapres.importName.join("/") & ".nim"
+    info "Writing to file", file
     mkDir file.parentDir()
     file.writeFile($wrapres.wrapped)
 
-  info "done"
+  info "Wrapper generation"
 except:
   pprintErr()
   echo "error"
 
-
-# var depGraph = newGraph[string, void]()
-
-# let unit = parseTranslationUnit(index, command, @["-xc++"])
-
-# if unit.isNil:
-#   err "failed to parse TU"
-#   quit 1
-
-
-# # let deps = file.buildDepsTree(
-# #   command.getArgs()[1..^1].filterPrefix(@["-D", "-I"]) & @[
-# #     # HACK need to find a way to generate actual list of all include
-# #     # paths for a project
-# #     "-S/usr/include/c++/10.2.0",
-# #     "-S/usr/include/c++/10.2.0/x86_64-pc-linux-gnu",
-# #     "-S/usr/lib/clang/10.0.1/include",
-# #     "-S/usr/include/c++/10.2.0/parallel",
-# #     "-S/usr/include/c++/10.2.0/tr1",
-# #     "-S/usr/lib/clang/10.0.1/include",
-# #     "-S/usr/include"
-# #   ]
-# # )
-
-# info "deps done"
-# debug "Immediate dependencies for file"
-# debug "File:", file
-# pprint deps.immediateDeps(), ident = getIdent() * 2
-
-
-# # let api = unit.splitDeclarations()
-
-# # # for decl in .decls:
-# # #   case decl.kind:
-# # #     of cdkClass:
-# # #       identLog()
-# # #       let (obj, procs) = decl.wrapObject(conf)
-
-# # #       outwrap &= makeCommentSection("Type definition", 1) & "\n"
-# # #       outwrap &= $obj.toNNode(true) & "\n"
-# # #       outwrap &= makeCommentSection("Methods", 1) & "\n"
-# # #       outwrap &= procs.mapIt($it.toNNode()).joinl()
-# # #       outwrap &= "\n\n"
-# # #       dedentLog()
-# # #     else:
-# # #       discard
-
-# # "/tmp/wrapped.nim".writeFile($api.wrapApiUnit(conf))
-
-# # info "done"
-# # echo outwrap
+try:
+  discard runShell(&"nim c --path:{wrapDir} wrap_user.nim")
+  info "Done compilation"
+  let (stdout, stderr, code) = runShell(&"./wrap_user")
+  echo stdout
+  info "Done program execution"
+except ShellError:
+  printShellError()
