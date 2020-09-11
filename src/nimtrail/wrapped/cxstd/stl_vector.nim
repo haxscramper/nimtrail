@@ -1,12 +1,6 @@
 
 const
-  cxheader = ""
-import
-  cxstd / cppconfig
-
-import
-  cxstd / cppconfig
-
+  cxheader = "/usr/include/c++/10.2.0/bits/stl_vector.h"
 import
   cxstd / initializer_list
 
@@ -14,127 +8,153 @@ import
   cxstd / initializer_list
 
 type
-  _Vector_base*[_Tp; _Alloc] {.importcpp: r"std::_Vector_base<'0, '1>",
-                             header: cxheader.} = object
-    _M_impl*: std::_Vector_base::_Vector_impl
-
-proc _M_get_Tp_allocator*[_Tp; _Alloc](self: var _Vector_base[_Tp, _Alloc]): std::_Vector_base::_Tp_alloc_type {.
-    importcpp: "#._M_get_Tp_allocator(@)", header: cxheader.}
-proc _M_get_Tp_allocator*[_Tp; _Alloc](self: _Vector_base[_Tp, _Alloc]): std::_Vector_base::_Tp_alloc_type {.
-    importcpp: "#._M_get_Tp_allocator(@)", header: cxheader.}
-proc get_allocator*[_Tp; _Alloc](self: _Vector_base[_Tp, _Alloc]): std::_Vector_base::allocator_type {.
-    importcpp: "#.get_allocator(@)", header: cxheader.}
-proc _M_allocate*[_Tp; _Alloc](self: var _Vector_base[_Tp, _Alloc]; __n: std::size_t): std::_Vector_base::pointer {.
-    importcpp: "#._M_allocate(@)", header: cxheader.}
-proc _M_deallocate*[_Tp; _Alloc](self: var _Vector_base[_Tp, _Alloc];
-                               __p: std::_Vector_base::pointer; __n: std::size_t): void {.
-    importcpp: "#._M_deallocate(@)", header: cxheader.}
-type
-  vector*[_Tp; _Alloc] {.importcpp: r"std::vector<'0, '1>", header: cxheader.} = object
+  Vector*[Tp; Alloc] {.importcpp: r"std::vector<'0, '1>", header: cxheader.} = object
   
-proc `setFrom`*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]; __x: UNEXPOSED): UNEXPOSED {.
+type
+  StdVectorValueType* {.importcpp: r"std::vector<'0, '1>::value_type",
+                       header: cxheader.} = object
+  
+type
+  StdVectorPointer* {.importcpp: r"std::vector<'0, '1>::pointer", header: cxheader.} = object
+  
+type
+  StdVectorConstPointer* {.importcpp: r"std::vector<'0, '1>::const_pointer",
+                          header: cxheader.} = object
+  
+type
+  StdVectorReference* {.importcpp: r"std::vector<'0, '1>::reference",
+                       header: cxheader.} = object
+  
+type
+  StdVectorConstReference* {.importcpp: r"std::vector<'0, '1>::const_reference",
+                            header: cxheader.} = object
+  
+type
+  StdVectorIterator* {.importcpp: r"std::vector<'0, '1>::iterator",
+                      header: cxheader.} = object
+  
+type
+  StdVectorConstIterator* {.importcpp: r"std::vector<'0, '1>::const_iterator",
+                           header: cxheader.} = object
+  
+type
+  StdVectorConstReverseIterator* {.importcpp: r"std::vector<'0, '1>::const_reverse_iterator",
+                                  header: cxheader.} = object
+  
+type
+  StdVectorReverseIterator* {.importcpp: r"std::vector<'0, '1>::reverse_iterator",
+                             header: cxheader.} = object
+  
+type
+  StdVectorSizeType* {.importcpp: r"std::vector<'0, '1>::size_type",
+                      header: cxheader.} = object
+  
+type
+  StdVectorDifferenceType* {.importcpp: r"std::vector<'0, '1>::difference_type",
+                            header: cxheader.} = object
+  
+type
+  StdVectorAllocatorType* {.importcpp: r"std::vector<'0, '1>::allocator_type",
+                           header: cxheader.} = object
+  
+type
+  StdVectorGetAllocator* {.importcpp: r"std::vector<'0, '1>::get_allocator",
+                          header: cxheader.} = object
+  
+proc setFrom*[Tp; Alloc](self: var Vector[Tp, Alloc]; x: UNEXPOSED): UNEXPOSED {.
     importcpp: "# = #", header: cxheader.}
-proc `setFrom`*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]; __x: UNEXPOSED): UNEXPOSED {.
+proc setFrom*[Tp; Alloc](self: var Vector[Tp, Alloc]; x: UNEXPOSED): UNEXPOSED {.
     importcpp: "# = #", header: cxheader.}
-proc `setFrom`*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]; __l: UNEXPOSED): UNEXPOSED {.
+proc setFrom*[Tp; Alloc](self: var Vector[Tp, Alloc]; l: UNEXPOSED): UNEXPOSED {.
     importcpp: "# = #", header: cxheader.}
-proc assign*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]; __n: std::vector::size_type;
-                        __val: std::vector::value_type): void {.
-    importcpp: "#.assign(@)", header: cxheader.}
-proc assign*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]; __l: UNEXPOSED): void {.
-    importcpp: "#.assign(@)", header: cxheader.}
-proc begin*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]): std::vector::iterator {.
-    importcpp: "#.begin(@)", header: cxheader.}
-proc begin*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::const_iterator {.
-    importcpp: "#.begin(@)", header: cxheader.}
-proc end*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]): std::vector::iterator {.
-    importcpp: "#.end(@)", header: cxheader.}
-proc end*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::const_iterator {.
-    importcpp: "#.end(@)", header: cxheader.}
-proc rbegin*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]): std::vector::reverse_iterator {.
-    importcpp: "#.rbegin(@)", header: cxheader.}
-proc rbegin*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::const_reverse_iterator {.
-    importcpp: "#.rbegin(@)", header: cxheader.}
-proc rend*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]): std::vector::reverse_iterator {.
-    importcpp: "#.rend(@)", header: cxheader.}
-proc rend*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::const_reverse_iterator {.
-    importcpp: "#.rend(@)", header: cxheader.}
-proc cbegin*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::const_iterator {.
-    importcpp: "#.cbegin(@)", header: cxheader.}
-proc cend*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::const_iterator {.
-    importcpp: "#.cend(@)", header: cxheader.}
-proc crbegin*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::const_reverse_iterator {.
-    importcpp: "#.crbegin(@)", header: cxheader.}
-proc crend*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::const_reverse_iterator {.
-    importcpp: "#.crend(@)", header: cxheader.}
-proc size*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::size_type {.
-    importcpp: "#.size(@)", header: cxheader.}
-proc max_size*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::size_type {.
-    importcpp: "#.max_size(@)", header: cxheader.}
-proc resize*[_Tp; _Alloc](self: var vector[_Tp, _Alloc];
-                        __new_size: std::vector::size_type): void {.
-    importcpp: "#.resize(@)", header: cxheader.}
-proc resize*[_Tp; _Alloc](self: var vector[_Tp, _Alloc];
-                        __new_size: std::vector::size_type;
-                        __x: std::vector::value_type): void {.
-    importcpp: "#.resize(@)", header: cxheader.}
-proc shrink_to_fit*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]): void {.
-    importcpp: "#.shrink_to_fit(@)", header: cxheader.}
-proc capacity*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::size_type {.
-    importcpp: "#.capacity(@)", header: cxheader.}
-proc empty*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): bool {.importcpp: "#.empty(@)",
+proc assign*[Tp; Alloc](self: var Vector[Tp, Alloc]; n: StdVectorSizeType;
+                      val: StdVectorValueType): void {.importcpp: "#.assign(@)",
     header: cxheader.}
-proc reserve*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]; __n: std::vector::size_type): void {.
+proc assign*[Tp; Alloc](self: var Vector[Tp, Alloc]; l: UNEXPOSED): void {.
+    importcpp: "#.assign(@)", header: cxheader.}
+proc cxbegin*[Tp; Alloc](self: var Vector[Tp, Alloc]): StdVectorIterator {.
+    importcpp: "#.begin(@)", header: cxheader.}
+proc cxbegin*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorConstIterator {.
+    importcpp: "#.begin(@)", header: cxheader.}
+proc cxend*[Tp; Alloc](self: var Vector[Tp, Alloc]): StdVectorIterator {.
+    importcpp: "#.end(@)", header: cxheader.}
+proc cxend*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorConstIterator {.
+    importcpp: "#.end(@)", header: cxheader.}
+proc rbegin*[Tp; Alloc](self: var Vector[Tp, Alloc]): StdVectorReverseIterator {.
+    importcpp: "#.rbegin(@)", header: cxheader.}
+proc rbegin*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorConstReverseIterator {.
+    importcpp: "#.rbegin(@)", header: cxheader.}
+proc rend*[Tp; Alloc](self: var Vector[Tp, Alloc]): StdVectorReverseIterator {.
+    importcpp: "#.rend(@)", header: cxheader.}
+proc rend*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorConstReverseIterator {.
+    importcpp: "#.rend(@)", header: cxheader.}
+proc cbegin*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorConstIterator {.
+    importcpp: "#.cbegin(@)", header: cxheader.}
+proc cend*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorConstIterator {.
+    importcpp: "#.cend(@)", header: cxheader.}
+proc crbegin*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorConstReverseIterator {.
+    importcpp: "#.crbegin(@)", header: cxheader.}
+proc crend*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorConstReverseIterator {.
+    importcpp: "#.crend(@)", header: cxheader.}
+proc size*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorSizeType {.
+    importcpp: "#.size(@)", header: cxheader.}
+proc maxSize*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorSizeType {.
+    importcpp: "#.max_size(@)", header: cxheader.}
+proc resize*[Tp; Alloc](self: var Vector[Tp, Alloc]; newSize: StdVectorSizeType): void {.
+    importcpp: "#.resize(@)", header: cxheader.}
+proc resize*[Tp; Alloc](self: var Vector[Tp, Alloc]; newSize: StdVectorSizeType;
+                      x: StdVectorValueType): void {.importcpp: "#.resize(@)",
+    header: cxheader.}
+proc shrinkToFit*[Tp; Alloc](self: var Vector[Tp, Alloc]): void {.
+    importcpp: "#.shrink_to_fit(@)", header: cxheader.}
+proc capacity*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorSizeType {.
+    importcpp: "#.capacity(@)", header: cxheader.}
+proc empty*[Tp; Alloc](self: Vector[Tp, Alloc]): bool {.importcpp: "#.empty(@)",
+    header: cxheader.}
+proc reserve*[Tp; Alloc](self: var Vector[Tp, Alloc]; n: StdVectorSizeType): void {.
     importcpp: "#.reserve(@)", header: cxheader.}
-proc `[]`*[_Tp; _Alloc](__n: std::vector::size_type): std::vector::reference
-proc `[]`*[_Tp; _Alloc](__n: std::vector::size_type): std::vector::const_reference
-proc at*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]; __n: std::vector::size_type): std::vector::reference {.
+proc `[]`*[Tp; Alloc](n: StdVectorSizeType): StdVectorReference
+proc `[]`*[Tp; Alloc](n: StdVectorSizeType): StdVectorConstReference
+proc at*[Tp; Alloc](self: var Vector[Tp, Alloc]; n: StdVectorSizeType): StdVectorReference {.
     importcpp: "#.at(@)", header: cxheader.}
-proc at*[_Tp; _Alloc](self: vector[_Tp, _Alloc]; __n: std::vector::size_type): std::vector::const_reference {.
+proc at*[Tp; Alloc](self: Vector[Tp, Alloc]; n: StdVectorSizeType): StdVectorConstReference {.
     importcpp: "#.at(@)", header: cxheader.}
-proc front*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]): std::vector::reference {.
+proc front*[Tp; Alloc](self: var Vector[Tp, Alloc]): StdVectorReference {.
     importcpp: "#.front(@)", header: cxheader.}
-proc front*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::const_reference {.
+proc front*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorConstReference {.
     importcpp: "#.front(@)", header: cxheader.}
-proc back*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]): std::vector::reference {.
+proc back*[Tp; Alloc](self: var Vector[Tp, Alloc]): StdVectorReference {.
     importcpp: "#.back(@)", header: cxheader.}
-proc back*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): std::vector::const_reference {.
+proc back*[Tp; Alloc](self: Vector[Tp, Alloc]): StdVectorConstReference {.
     importcpp: "#.back(@)", header: cxheader.}
-proc data*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]): ptr[UNEXPOSED] {.
+proc data*[Tp; Alloc](self: var Vector[Tp, Alloc]): ptr[UNEXPOSED] {.
     importcpp: "#.data(@)", header: cxheader.}
-proc data*[_Tp; _Alloc](self: vector[_Tp, _Alloc]): ptr[UNEXPOSED] {.
+proc data*[Tp; Alloc](self: Vector[Tp, Alloc]): ptr[UNEXPOSED] {.
     importcpp: "#.data(@)", header: cxheader.}
-proc push_back*[_Tp; _Alloc](self: var vector[_Tp, _Alloc];
-                           __x: std::vector::value_type): void {.
+proc pushBack*[Tp; Alloc](self: var Vector[Tp, Alloc]; x: StdVectorValueType): void {.
     importcpp: "#.push_back(@)", header: cxheader.}
-proc push_back*[_Tp; _Alloc](self: var vector[_Tp, _Alloc];
-                           __x: std::vector::value_type): void {.
+proc pushBack*[Tp; Alloc](self: var Vector[Tp, Alloc]; x: StdVectorValueType): void {.
     importcpp: "#.push_back(@)", header: cxheader.}
-proc pop_back*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]): void {.
+proc popBack*[Tp; Alloc](self: var Vector[Tp, Alloc]): void {.
     importcpp: "#.pop_back(@)", header: cxheader.}
-proc insert*[_Tp; _Alloc](self: var vector[_Tp, _Alloc];
-                        __position: std::vector::const_iterator;
-                        __x: std::vector::value_type): std::vector::iterator {.
+proc insert*[Tp; Alloc](self: var Vector[Tp, Alloc]; position: StdVectorConstIterator;
+                      x: StdVectorValueType): StdVectorIterator {.
     importcpp: "#.insert(@)", header: cxheader.}
-proc insert*[_Tp; _Alloc](self: var vector[_Tp, _Alloc];
-                        __position: std::vector::const_iterator;
-                        __x: std::vector::value_type): std::vector::iterator {.
+proc insert*[Tp; Alloc](self: var Vector[Tp, Alloc]; position: StdVectorConstIterator;
+                      x: StdVectorValueType): StdVectorIterator {.
     importcpp: "#.insert(@)", header: cxheader.}
-proc insert*[_Tp; _Alloc](self: var vector[_Tp, _Alloc];
-                        __position: std::vector::const_iterator; __l: UNEXPOSED): std::vector::iterator {.
+proc insert*[Tp; Alloc](self: var Vector[Tp, Alloc]; position: StdVectorConstIterator;
+                      l: UNEXPOSED): StdVectorIterator {.importcpp: "#.insert(@)",
+    header: cxheader.}
+proc insert*[Tp; Alloc](self: var Vector[Tp, Alloc]; position: StdVectorConstIterator;
+                      n: StdVectorSizeType; x: StdVectorValueType): StdVectorIterator {.
     importcpp: "#.insert(@)", header: cxheader.}
-proc insert*[_Tp; _Alloc](self: var vector[_Tp, _Alloc];
-                        __position: std::vector::const_iterator;
-                        __n: std::vector::size_type; __x: std::vector::value_type): std::vector::iterator {.
-    importcpp: "#.insert(@)", header: cxheader.}
-proc erase*[_Tp; _Alloc](self: var vector[_Tp, _Alloc];
-                       __position: std::vector::const_iterator): std::vector::iterator {.
+proc erase*[Tp; Alloc](self: var Vector[Tp, Alloc]; position: StdVectorConstIterator): StdVectorIterator {.
     importcpp: "#.erase(@)", header: cxheader.}
-proc erase*[_Tp; _Alloc](self: var vector[_Tp, _Alloc];
-                       __first: std::vector::const_iterator;
-                       __last: std::vector::const_iterator): std::vector::iterator {.
+proc erase*[Tp; Alloc](self: var Vector[Tp, Alloc]; first: StdVectorConstIterator;
+                     last: StdVectorConstIterator): StdVectorIterator {.
     importcpp: "#.erase(@)", header: cxheader.}
-proc swap*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]; __x: UNEXPOSED): void {.
+proc swap*[Tp; Alloc](self: var Vector[Tp, Alloc]; x: UNEXPOSED): void {.
     importcpp: "#.swap(@)", header: cxheader.}
-proc clear*[_Tp; _Alloc](self: var vector[_Tp, _Alloc]): void {.
-    importcpp: "#.clear(@)", header: cxheader.}
+proc clear*[Tp; Alloc](self: var Vector[Tp, Alloc]): void {.importcpp: "#.clear(@)",
+    header: cxheader.}

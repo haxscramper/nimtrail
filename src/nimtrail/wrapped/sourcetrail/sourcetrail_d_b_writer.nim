@@ -1,6 +1,6 @@
 
 const
-  cxheader = ""
+  cxheader = "/mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h"
 import
   cxstd / stringfwd
 
@@ -60,40 +60,40 @@ proc rollbackTransaction*(self: var SourcetrailDBWriter): bool {.
 proc optimizeDatabaseMemory*(self: var SourcetrailDBWriter): bool {.
     importcpp: "#.optimizeDatabaseMemory(@)", header: cxheader.}
 proc recordSymbol*(self: var SourcetrailDBWriter;
-                  nameHierarchy: sourcetrail::NameHierarchy): cint {.
+                  nameHierarchy: SourcetrailNameHierarchy): cint {.
     importcpp: "#.recordSymbol(@)", header: cxheader.}
 proc recordSymbolDefinitionKind*(self: var SourcetrailDBWriter; symbolId: cint;
-                                definitionKind: sourcetrail::DefinitionKind): bool {.
+                                definitionKind: SourcetrailDefinitionKind): bool {.
     importcpp: "#.recordSymbolDefinitionKind(@)", header: cxheader.}
 proc recordSymbolKind*(self: var SourcetrailDBWriter; symbolId: cint;
-                      symbolKind: sourcetrail::SymbolKind): bool {.
+                      symbolKind: SourcetrailSymbolKind): bool {.
     importcpp: "#.recordSymbolKind(@)", header: cxheader.}
 proc recordSymbolLocation*(self: var SourcetrailDBWriter; symbolId: cint;
-                          location: sourcetrail::SourceRange): bool {.
+                          location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordSymbolLocation(@)", header: cxheader.}
 proc recordSymbolScopeLocation*(self: var SourcetrailDBWriter; symbolId: cint;
-                               location: sourcetrail::SourceRange): bool {.
+                               location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordSymbolScopeLocation(@)", header: cxheader.}
 proc recordSymbolSignatureLocation*(self: var SourcetrailDBWriter; symbolId: cint;
-                                   location: sourcetrail::SourceRange): bool {.
+                                   location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordSymbolSignatureLocation(@)", header: cxheader.}
 proc recordReference*(self: var SourcetrailDBWriter; contextSymbolId: cint;
                      referencedSymbolId: cint;
-                     referenceKind: sourcetrail::ReferenceKind): cint {.
+                     referenceKind: SourcetrailReferenceKind): cint {.
     importcpp: "#.recordReference(@)", header: cxheader.}
 proc recordReferenceLocation*(self: var SourcetrailDBWriter; referenceId: cint;
-                             location: sourcetrail::SourceRange): bool {.
+                             location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordReferenceLocation(@)", header: cxheader.}
 proc recordReferenceIsAmbiuous*(self: var SourcetrailDBWriter; referenceId: cint): bool {.
     importcpp: "#.recordReferenceIsAmbiuous(@)", header: cxheader.}
 proc recordReferenceToUnsolvedSymhol*(self: var SourcetrailDBWriter;
                                      contextSymbolId: cint;
-                                     referenceKind: sourcetrail::ReferenceKind;
-                                     location: sourcetrail::SourceRange): cint {.
+                                     referenceKind: SourcetrailReferenceKind;
+                                     location: SourcetrailSourceRange): cint {.
     importcpp: "#.recordReferenceToUnsolvedSymhol(@)", header: cxheader.}
 proc recordQualifierLocation*(self: var SourcetrailDBWriter;
                              referencedSymbolId: cint;
-                             location: sourcetrail::SourceRange): bool {.
+                             location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordQualifierLocation(@)", header: cxheader.}
 proc recordFile*(self: var SourcetrailDBWriter; filePath: StdString): cint {.
     importcpp: "#.recordFile(@)", header: cxheader.}
@@ -103,11 +103,11 @@ proc recordFileLanguage*(self: var SourcetrailDBWriter; fileId: cint;
 proc recordLocalSymbol*(self: var SourcetrailDBWriter; name: StdString): cint {.
     importcpp: "#.recordLocalSymbol(@)", header: cxheader.}
 proc recordLocalSymbolLocation*(self: var SourcetrailDBWriter; localSymbolId: cint;
-                               location: sourcetrail::SourceRange): bool {.
+                               location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordLocalSymbolLocation(@)", header: cxheader.}
 proc recordAtomicSourceRange*(self: var SourcetrailDBWriter;
-                             sourceRange: sourcetrail::SourceRange): bool {.
+                             sourceRange: SourcetrailSourceRange): bool {.
     importcpp: "#.recordAtomicSourceRange(@)", header: cxheader.}
 proc recordError*(self: var SourcetrailDBWriter; message: StdString; fatal: bool;
-                 location: sourcetrail::SourceRange): bool {.
+                 location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordError(@)", header: cxheader.}

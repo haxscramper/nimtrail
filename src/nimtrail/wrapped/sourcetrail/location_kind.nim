@@ -1,3 +1,3 @@
 
 const
-  cxheader = ""
+  cxheader = "/mnt/workspace/github/nimtrail/SourcetrailDB/core/include/LocationKind.h"

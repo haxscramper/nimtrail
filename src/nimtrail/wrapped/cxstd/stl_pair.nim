@@ -1,18 +1,12 @@
 
 const
-  cxheader = ""
+  cxheader = "/usr/include/c++/10.2.0/bits/stl_pair.h"
 type
-  tuple*[] {.importcpp: r"std::tuple<'0>", header: cxheader.} = object
+  PiecewiseConstructT* {.importcpp: r"std::piecewise_construct_t", header: cxheader.} = object
   
 type
-  _Index_tuple* {.importcpp: r"std::_Index_tuple", header: cxheader.} = object
+  Tuple*[] {.importcpp: r"std::tuple<'0>", header: cxheader.} = object
   
 type
-  _PCC*[_T1; _T2] {.importcpp: r"std::_PCC<'0, '1>", header: cxheader.} = object
-  
-type
-  _PCC*[_T1; _T2] {.importcpp: r"std::_PCC<'0, '1>", header: cxheader.} = object
-  
-type
-  pair*[_T1; _T2] {.importcpp: r"std::pair<'0, '1>", header: cxheader.} = object
+  Pair*[T1; T2] {.importcpp: r"std::pair<'0, '1>", header: cxheader.} = object
   

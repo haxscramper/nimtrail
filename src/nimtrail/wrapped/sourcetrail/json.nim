@@ -1,6 +1,6 @@
 
 const
-  cxheader = ""
+  cxheader = "/mnt/workspace/github/nimtrail/SourcetrailDB/external/json/include/json.hpp"
 import
   cxstd / stringfwd
 
@@ -23,621 +23,751 @@ import
   cxstd / cppconfig
 
 type
-  adl_serializer*[T; SFINAE] {.importcpp: r"nlohmann::adl_serializer<'0, '1>",
+  AdlSerializer*[T; SFINAE] {.importcpp: r"nlohmann::adl_serializer<'0, '1>",
+                            header: cxheader.} = object
+  
+type
+  BasicJson*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>",
+      header: cxheader.} = object
+  
+type
+  JsonPointer*[BasicJsonType] {.importcpp: r"nlohmann::json_pointer<'0>",
+                               header: cxheader.} = object
+  
+type
+  JsonSax*[BasicJsonType] {.importcpp: r"nlohmann::json_sax<'0>", header: cxheader.} = object
+  
+type
+  JsonPointer*[BasicJsonType] {.importcpp: r"nlohmann::json_pointer<'0>",
+                               header: cxheader.} = object
+  
+proc toString*[BasicJsonType](self: JsonPointer[BasicJsonType]): StdString {.
+    importcpp: "#.to_string(@)", header: cxheader.}
+proc arrayIndex*[BasicJsonType](self: var JsonPointer[BasicJsonType]; s: StdString): cint {.
+    importcpp: "#.array_index(@)", header: cxheader.}
+type
+  AdlSerializer*[] {.importcpp: r"nlohmann::adl_serializer<'0, '1>",
+                    header: cxheader.} = object
+  
+type
+  BasicJson*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>",
+      header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonValueT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::value_t",
+                            header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonJsonPointer* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::json_pointer",
+                                 header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonJsonSerializer* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::json_serializer",
+                                    header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonInitializerListT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::initializer_list_t",
+                                      header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonInputFormatT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::input_format_t",
+                                  header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonJsonSaxT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::json_sax_t",
+                              header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonException* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::exception",
+                               header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonParseError* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::parse_error",
+                                header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonInvalidIterator* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::invalid_iterator",
+                                     header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonTypeError* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::type_error",
+                               header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonOutOfRange* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::out_of_range",
+                                header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonOtherError* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::other_error",
+                                header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonValueType* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::value_type",
+                               header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonReference* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::reference",
+                               header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonConstReference* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::const_reference",
+                                    header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonDifferenceType* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::difference_type",
+                                    header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonSizeType* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::size_type",
+                              header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonAllocatorType* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::allocator_type",
+                                   header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonPointer* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::pointer",
                              header: cxheader.} = object
   
 type
-  basic_json*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer] {.
-      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>",
+  NlohmannBasicJsonConstPointer* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::const_pointer",
+                                  header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonIterator* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::iterator",
+                              header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonConstIterator* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::const_iterator",
+                                   header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonReverseIterator* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::reverse_iterator",
+                                     header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonConstReverseIterator* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::const_reverse_iterator",
       header: cxheader.} = object
   
 type
-  json_pointer*[BasicJsonType] {.importcpp: r"nlohmann::json_pointer<'0>",
-                                header: cxheader.} = object
+  NlohmannBasicJsonObjectComparatorT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::object_comparator_t",
+                                       header: cxheader.} = object
   
 type
-  json_sax*[BasicJsonType] {.importcpp: r"nlohmann::json_sax<'0>", header: cxheader.} = object
+  NlohmannBasicJsonObjectT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::object_t",
+                             header: cxheader.} = object
   
 type
-  json_pointer*[BasicJsonType] {.importcpp: r"nlohmann::json_pointer<'0>",
-                                header: cxheader.} = object
-  
-proc to_string*[BasicJsonType](self: json_pointer[BasicJsonType]): StdString {.
-    importcpp: "#.to_string(@)", header: cxheader.}
-proc array_index*[BasicJsonType](self: var json_pointer[BasicJsonType]; s: StdString): cint {.
-    importcpp: "#.array_index(@)", header: cxheader.}
-type
-  adl_serializer*[] {.importcpp: r"nlohmann::adl_serializer<'0, '1>",
-                     header: cxheader.} = object
+  NlohmannBasicJsonArrayT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::array_t",
+                            header: cxheader.} = object
   
 type
-  basic_json*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer] {.
-      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>",
-      header: cxheader.} = object
+  NlohmannBasicJsonStringT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::string_t",
+                             header: cxheader.} = object
   
-proc get_allocator*[ObjectType; ArrayType; StringType; BooleanType;
-                   NumberIntegerType; NumberUnsignedType; NumberFloatType;
-                   AllocatorType; JSONSerializer](self: var basic_json[ObjectType,
-    ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType,
-    NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::allocator_type {.
+type
+  NlohmannBasicJsonBooleanT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::boolean_t",
+                              header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonNumberIntegerT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::number_integer_t",
+                                    header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonNumberUnsignedT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::number_unsigned_t",
+                                     header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonNumberFloatT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::number_float_t",
+                                  header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonParseEventT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::parse_event_t",
+                                 header: cxheader.} = object
+  
+type
+  NlohmannBasicJsonParserCallbackT* {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4, '5, '6, '7, '8>::parser_callback_t",
+                                     header: cxheader.} = object
+  
+proc getAllocator*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+                  NumberUnsignedType; NumberFloatType; AllocatorType;
+                  JSONSerializer](self: var BasicJson[ObjectType, ArrayType,
+    StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType,
+    AllocatorType, JSONSerializer]): NlohmannBasicJsonAllocatorType {.
     importcpp: "#.get_allocator(@)", header: cxheader.}
 proc meta*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): UNEXPOSED {.
     importcpp: "#.meta(@)", header: cxheader.}
 proc array*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    init: nlohmann::basic_json::initializer_list_t): UNEXPOSED {.
-    importcpp: "#.array(@)", header: cxheader.}
+    init: NlohmannBasicJsonInitializerListT): UNEXPOSED {.importcpp: "#.array(@)",
+    header: cxheader.}
 proc object*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer];
-    init: nlohmann::basic_json::initializer_list_t): UNEXPOSED {.
-    importcpp: "#.object(@)", header: cxheader.}
-proc `setFrom`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; other: UNEXPOSED): nlohmann::basic_json::value_type {.
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer];
+    init: NlohmannBasicJsonInitializerListT): UNEXPOSED {.importcpp: "#.object(@)",
+    header: cxheader.}
+proc setFrom*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; other: UNEXPOSED): NlohmannBasicJsonValueType {.
     importcpp: "# = #", header: cxheader.}
 proc dump*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    indent: cint; indent_char: cchar; ensure_ascii: bool): nlohmann::basic_json::string_t {.
+    indent: cint; indentChar: Cchar; ensureAscii: bool): NlohmannBasicJsonStringT {.
     importcpp: "#.dump(@)", header: cxheader.}
-proc type*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
-    ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::value_t {.
+proc cxtype*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+            NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): NlohmannBasicJsonValueT {.
     importcpp: "#.type(@)", header: cxheader.}
-proc is_primitive*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+proc isPrimitive*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+                 NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): bool {.
+    importcpp: "#.is_primitive(@)", header: cxheader.}
+proc isStructured*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
                   NumberUnsignedType; NumberFloatType; AllocatorType;
-                  JSONSerializer](self: basic_json[ObjectType, ArrayType,
+                  JSONSerializer](self: BasicJson[ObjectType, ArrayType,
     StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType,
-    AllocatorType, JSONSerializer]): bool {.importcpp: "#.is_primitive(@)",
+    AllocatorType, JSONSerializer]): bool {.importcpp: "#.is_structured(@)",
     header: cxheader.}
-proc is_structured*[ObjectType; ArrayType; StringType; BooleanType;
-                   NumberIntegerType; NumberUnsignedType; NumberFloatType;
-                   AllocatorType; JSONSerializer](self: basic_json[ObjectType,
-    ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType,
-    NumberFloatType, AllocatorType, JSONSerializer]): bool {.
-    importcpp: "#.is_structured(@)", header: cxheader.}
-proc is_null*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): bool {.
+proc isNull*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+            NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): bool {.
     importcpp: "#.is_null(@)", header: cxheader.}
-proc is_boolean*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-                NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): bool {.
-    importcpp: "#.is_boolean(@)", header: cxheader.}
-proc is_number*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+proc isBoolean*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
                NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): bool {.
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): bool {.
+    importcpp: "#.is_boolean(@)", header: cxheader.}
+proc isNumber*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): bool {.
     importcpp: "#.is_number(@)", header: cxheader.}
-proc is_number_integer*[ObjectType; ArrayType; StringType; BooleanType;
-                       NumberIntegerType; NumberUnsignedType; NumberFloatType;
-                       AllocatorType; JSONSerializer](self: basic_json[ObjectType,
+proc isNumberInteger*[ObjectType; ArrayType; StringType; BooleanType;
+                     NumberIntegerType; NumberUnsignedType; NumberFloatType;
+                     AllocatorType; JSONSerializer](self: BasicJson[ObjectType,
     ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType,
     NumberFloatType, AllocatorType, JSONSerializer]): bool {.
     importcpp: "#.is_number_integer(@)", header: cxheader.}
-proc is_number_unsigned*[ObjectType; ArrayType; StringType; BooleanType;
-                        NumberIntegerType; NumberUnsignedType; NumberFloatType;
-                        AllocatorType; JSONSerializer](self: basic_json[
-    ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): bool {.
+proc isNumberUnsigned*[ObjectType; ArrayType; StringType; BooleanType;
+                      NumberIntegerType; NumberUnsignedType; NumberFloatType;
+                      AllocatorType; JSONSerializer](self: BasicJson[ObjectType,
+    ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType,
+    NumberFloatType, AllocatorType, JSONSerializer]): bool {.
     importcpp: "#.is_number_unsigned(@)", header: cxheader.}
-proc is_number_float*[ObjectType; ArrayType; StringType; BooleanType;
-                     NumberIntegerType; NumberUnsignedType; NumberFloatType;
-                     AllocatorType; JSONSerializer](self: basic_json[ObjectType,
+proc isNumberFloat*[ObjectType; ArrayType; StringType; BooleanType;
+                   NumberIntegerType; NumberUnsignedType; NumberFloatType;
+                   AllocatorType; JSONSerializer](self: BasicJson[ObjectType,
     ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType,
     NumberFloatType, AllocatorType, JSONSerializer]): bool {.
     importcpp: "#.is_number_float(@)", header: cxheader.}
-proc is_object*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): bool {.
-    importcpp: "#.is_object(@)", header: cxheader.}
-proc is_array*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+proc isObject*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): bool {.
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): bool {.
+    importcpp: "#.is_object(@)", header: cxheader.}
+proc isArray*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): bool {.
     importcpp: "#.is_array(@)", header: cxheader.}
-proc is_string*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): bool {.
+proc isString*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): bool {.
     importcpp: "#.is_string(@)", header: cxheader.}
-proc is_discarded*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-                  NumberUnsignedType; NumberFloatType; AllocatorType;
-                  JSONSerializer](self: basic_json[ObjectType, ArrayType,
-    StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType,
-    AllocatorType, JSONSerializer]): bool {.importcpp: "#.is_discarded(@)",
-    header: cxheader.}
+proc isDiscarded*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+                 NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): bool {.
+    importcpp: "#.is_discarded(@)", header: cxheader.}
 proc at*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    idx: nlohmann::basic_json::size_type): nlohmann::basic_json::reference {.
+    idx: NlohmannBasicJsonSizeType): NlohmannBasicJsonReference {.
     importcpp: "#.at(@)", header: cxheader.}
 proc at*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    idx: nlohmann::basic_json::size_type): nlohmann::basic_json::const_reference {.
+    idx: NlohmannBasicJsonSizeType): NlohmannBasicJsonConstReference {.
     importcpp: "#.at(@)", header: cxheader.}
 proc at*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    key: UNEXPOSED): nlohmann::basic_json::reference {.importcpp: "#.at(@)",
+    key: UNEXPOSED): NlohmannBasicJsonReference {.importcpp: "#.at(@)",
     header: cxheader.}
 proc at*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    key: UNEXPOSED): nlohmann::basic_json::const_reference {.importcpp: "#.at(@)",
+    key: UNEXPOSED): NlohmannBasicJsonConstReference {.importcpp: "#.at(@)",
     header: cxheader.}
 proc `[]`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    idx: nlohmann::basic_json::size_type): nlohmann::basic_json::reference
+    idx: NlohmannBasicJsonSizeType): NlohmannBasicJsonReference
 proc `[]`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    idx: nlohmann::basic_json::size_type): nlohmann::basic_json::const_reference
+    idx: NlohmannBasicJsonSizeType): NlohmannBasicJsonConstReference
 proc `[]`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    key: UNEXPOSED): nlohmann::basic_json::reference
+    key: UNEXPOSED): NlohmannBasicJsonReference
 proc `[]`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    key: UNEXPOSED): nlohmann::basic_json::const_reference
+    key: UNEXPOSED): NlohmannBasicJsonConstReference
 proc value*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    key: UNEXPOSED; default_value: cstring): nlohmann::basic_json::string_t {.
+    key: UNEXPOSED; defaultValue: cstring): NlohmannBasicJsonStringT {.
     importcpp: "#.value(@)", header: cxheader.}
 proc value*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    ptr: nlohmann::basic_json::json_pointer; default_value: cstring): nlohmann::basic_json::string_t {.
+    ptr: NlohmannBasicJsonJsonPointer; defaultValue: cstring): NlohmannBasicJsonStringT {.
     importcpp: "#.value(@)", header: cxheader.}
 proc front*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::reference {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonReference {.
     importcpp: "#.front(@)", header: cxheader.}
 proc front*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::const_reference {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonConstReference {.
     importcpp: "#.front(@)", header: cxheader.}
 proc back*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::reference {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonReference {.
     importcpp: "#.back(@)", header: cxheader.}
 proc back*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::const_reference {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonConstReference {.
     importcpp: "#.back(@)", header: cxheader.}
 proc erase*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    key: UNEXPOSED): nlohmann::basic_json::size_type {.importcpp: "#.erase(@)",
+    key: UNEXPOSED): NlohmannBasicJsonSizeType {.importcpp: "#.erase(@)",
     header: cxheader.}
 proc erase*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    idx: nlohmann::basic_json::size_type): void {.importcpp: "#.erase(@)",
-    header: cxheader.}
-proc begin*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
-    ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::iterator {.
+    idx: NlohmannBasicJsonSizeType): void {.importcpp: "#.erase(@)", header: cxheader.}
+proc cxbegin*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]): NlohmannBasicJsonIterator {.
     importcpp: "#.begin(@)", header: cxheader.}
-proc begin*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
-    ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::const_iterator {.
+proc cxbegin*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): NlohmannBasicJsonConstIterator {.
     importcpp: "#.begin(@)", header: cxheader.}
 proc cbegin*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): nlohmann::basic_json::const_iterator {.
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): NlohmannBasicJsonConstIterator {.
     importcpp: "#.cbegin(@)", header: cxheader.}
-proc end*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-         NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+proc cxend*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::iterator {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonIterator {.
     importcpp: "#.end(@)", header: cxheader.}
-proc end*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-         NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+proc cxend*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::const_iterator {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonConstIterator {.
     importcpp: "#.end(@)", header: cxheader.}
 proc cend*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::const_iterator {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonConstIterator {.
     importcpp: "#.cend(@)", header: cxheader.}
 proc rbegin*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]): nlohmann::basic_json::reverse_iterator {.
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]): NlohmannBasicJsonReverseIterator {.
     importcpp: "#.rbegin(@)", header: cxheader.}
 proc rbegin*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): nlohmann::basic_json::const_reverse_iterator {.
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): NlohmannBasicJsonConstReverseIterator {.
     importcpp: "#.rbegin(@)", header: cxheader.}
 proc rend*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::reverse_iterator {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonReverseIterator {.
     importcpp: "#.rend(@)", header: cxheader.}
 proc rend*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::const_reverse_iterator {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonConstReverseIterator {.
     importcpp: "#.rend(@)", header: cxheader.}
 proc crbegin*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): nlohmann::basic_json::const_reverse_iterator {.
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): NlohmannBasicJsonConstReverseIterator {.
     importcpp: "#.crbegin(@)", header: cxheader.}
 proc crend*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::const_reverse_iterator {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonConstReverseIterator {.
     importcpp: "#.crend(@)", header: cxheader.}
-proc iterator_wrapper*[ObjectType; ArrayType; StringType; BooleanType;
-                      NumberIntegerType; NumberUnsignedType; NumberFloatType;
-                      AllocatorType; JSONSerializer](self: var basic_json[
-    ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    ref: nlohmann::basic_json::reference): UNEXPOSED {.
+proc iteratorWrapper*[ObjectType; ArrayType; StringType; BooleanType;
+                     NumberIntegerType; NumberUnsignedType; NumberFloatType;
+                     AllocatorType; JSONSerializer](self: var BasicJson[ObjectType,
+    ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType,
+    NumberFloatType, AllocatorType, JSONSerializer];
+    ref: NlohmannBasicJsonReference): UNEXPOSED {.
     importcpp: "#.iterator_wrapper(@)", header: cxheader.}
-proc iterator_wrapper*[ObjectType; ArrayType; StringType; BooleanType;
-                      NumberIntegerType; NumberUnsignedType; NumberFloatType;
-                      AllocatorType; JSONSerializer](self: var basic_json[
-    ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    ref: nlohmann::basic_json::const_reference): UNEXPOSED {.
+proc iteratorWrapper*[ObjectType; ArrayType; StringType; BooleanType;
+                     NumberIntegerType; NumberUnsignedType; NumberFloatType;
+                     AllocatorType; JSONSerializer](self: var BasicJson[ObjectType,
+    ArrayType, StringType, BooleanType, NumberIntegerType, NumberUnsignedType,
+    NumberFloatType, AllocatorType, JSONSerializer];
+    ref: NlohmannBasicJsonConstReference): UNEXPOSED {.
     importcpp: "#.iterator_wrapper(@)", header: cxheader.}
 proc items*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): UNEXPOSED {.
     importcpp: "#.items(@)", header: cxheader.}
 proc items*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): UNEXPOSED {.
     importcpp: "#.items(@)", header: cxheader.}
 proc empty*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): bool {.
     importcpp: "#.empty(@)", header: cxheader.}
 proc size*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
-    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): nlohmann::basic_json::size_type {.
+    NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): NlohmannBasicJsonSizeType {.
     importcpp: "#.size(@)", header: cxheader.}
-proc max_size*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): nlohmann::basic_json::size_type {.
+proc maxSize*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): NlohmannBasicJsonSizeType {.
     importcpp: "#.max_size(@)", header: cxheader.}
 proc clear*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer]): void {.
     importcpp: "#.clear(@)", header: cxheader.}
-proc push_back*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; val: UNEXPOSED): void {.
+proc pushBack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; val: UNEXPOSED): void {.
     importcpp: "#.push_back(@)", header: cxheader.}
 proc `+=`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    val: UNEXPOSED): nlohmann::basic_json::reference {.importcpp: "# += #",
+    val: UNEXPOSED): NlohmannBasicJsonReference {.importcpp: "# += #",
     header: cxheader.}
-proc push_back*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; val: UNEXPOSED): void {.
+proc pushBack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; val: UNEXPOSED): void {.
     importcpp: "#.push_back(@)", header: cxheader.}
 proc `+=`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    val: UNEXPOSED): nlohmann::basic_json::reference {.importcpp: "# += #",
+    val: UNEXPOSED): NlohmannBasicJsonReference {.importcpp: "# += #",
     header: cxheader.}
-proc push_back*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; val: UNEXPOSED): void {.
+proc pushBack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; val: UNEXPOSED): void {.
     importcpp: "#.push_back(@)", header: cxheader.}
 proc `+=`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    val: UNEXPOSED): nlohmann::basic_json::reference {.importcpp: "# += #",
+    val: UNEXPOSED): NlohmannBasicJsonReference {.importcpp: "# += #",
     header: cxheader.}
-proc push_back*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer];
-    init: nlohmann::basic_json::initializer_list_t): void {.
-    importcpp: "#.push_back(@)", header: cxheader.}
+proc pushBack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer];
+    init: NlohmannBasicJsonInitializerListT): void {.importcpp: "#.push_back(@)",
+    header: cxheader.}
 proc `+=`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    init: nlohmann::basic_json::initializer_list_t): nlohmann::basic_json::reference {.
+    init: NlohmannBasicJsonInitializerListT): NlohmannBasicJsonReference {.
     importcpp: "# += #", header: cxheader.}
 proc insert*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer];
-    pos: nlohmann::basic_json::const_iterator; val: UNEXPOSED): nlohmann::basic_json::iterator {.
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer];
+    pos: NlohmannBasicJsonConstIterator; val: UNEXPOSED): NlohmannBasicJsonIterator {.
     importcpp: "#.insert(@)", header: cxheader.}
 proc insert*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer];
-    pos: nlohmann::basic_json::const_iterator; val: UNEXPOSED): nlohmann::basic_json::iterator {.
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer];
+    pos: NlohmannBasicJsonConstIterator; val: UNEXPOSED): NlohmannBasicJsonIterator {.
     importcpp: "#.insert(@)", header: cxheader.}
 proc insert*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer];
-    pos: nlohmann::basic_json::const_iterator;
-    cnt: nlohmann::basic_json::size_type; val: UNEXPOSED): nlohmann::basic_json::iterator {.
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer];
+    pos: NlohmannBasicJsonConstIterator; cnt: NlohmannBasicJsonSizeType;
+    val: UNEXPOSED): NlohmannBasicJsonIterator {.importcpp: "#.insert(@)",
+    header: cxheader.}
+proc insert*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+            NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer];
+    pos: NlohmannBasicJsonConstIterator; first: NlohmannBasicJsonConstIterator;
+    last: NlohmannBasicJsonConstIterator): NlohmannBasicJsonIterator {.
     importcpp: "#.insert(@)", header: cxheader.}
 proc insert*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer];
-    pos: nlohmann::basic_json::const_iterator;
-    first: nlohmann::basic_json::const_iterator;
-    last: nlohmann::basic_json::const_iterator): nlohmann::basic_json::iterator {.
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer];
+    pos: NlohmannBasicJsonConstIterator; ilist: NlohmannBasicJsonInitializerListT): NlohmannBasicJsonIterator {.
     importcpp: "#.insert(@)", header: cxheader.}
 proc insert*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer];
-    pos: nlohmann::basic_json::const_iterator;
-    ilist: nlohmann::basic_json::initializer_list_t): nlohmann::basic_json::iterator {.
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer];
+    first: NlohmannBasicJsonConstIterator; last: NlohmannBasicJsonConstIterator): void {.
     importcpp: "#.insert(@)", header: cxheader.}
-proc insert*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+proc update*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer];
-    first: nlohmann::basic_json::const_iterator;
-    last: nlohmann::basic_json::const_iterator): void {.importcpp: "#.insert(@)",
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer];
+    j: NlohmannBasicJsonConstReference): void {.importcpp: "#.update(@)",
     header: cxheader.}
 proc update*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer];
-    j: nlohmann::basic_json::const_reference): void {.importcpp: "#.update(@)",
-    header: cxheader.}
-proc update*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-            NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer];
-    first: nlohmann::basic_json::const_iterator;
-    last: nlohmann::basic_json::const_iterator): void {.importcpp: "#.update(@)",
-    header: cxheader.}
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer];
+    first: NlohmannBasicJsonConstIterator; last: NlohmannBasicJsonConstIterator): void {.
+    importcpp: "#.update(@)", header: cxheader.}
 proc swap*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    other: nlohmann::basic_json::reference): void {.importcpp: "#.swap(@)",
+    other: NlohmannBasicJsonReference): void {.importcpp: "#.swap(@)",
     header: cxheader.}
 proc swap*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    other: nlohmann::basic_json::array_t): void {.importcpp: "#.swap(@)",
-    header: cxheader.}
+    other: NlohmannBasicJsonArrayT): void {.importcpp: "#.swap(@)", header: cxheader.}
 proc swap*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    other: nlohmann::basic_json::object_t): void {.importcpp: "#.swap(@)",
-    header: cxheader.}
+    other: NlohmannBasicJsonObjectT): void {.importcpp: "#.swap(@)", header: cxheader.}
 proc swap*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    other: nlohmann::basic_json::string_t): void {.importcpp: "#.swap(@)",
-    header: cxheader.}
+    other: NlohmannBasicJsonStringT): void {.importcpp: "#.swap(@)", header: cxheader.}
 proc parse*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    i: detail::input_adapter; cb: nlohmann::basic_json::parser_callback_t;
-    allow_exceptions: bool): UNEXPOSED {.importcpp: "#.parse(@)", header: cxheader.}
+    i: DetailInputAdapter; cb: NlohmannBasicJsonParserCallbackT;
+    allowExceptions: bool): UNEXPOSED {.importcpp: "#.parse(@)", header: cxheader.}
 proc accept*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; i: detail::input_adapter): bool {.
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; i: DetailInputAdapter): bool {.
     importcpp: "#.accept(@)", header: cxheader.}
-proc type_name*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): cstring {.
+proc typeName*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): cstring {.
     importcpp: "#.type_name(@)", header: cxheader.}
-proc to_cbor*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; j: UNEXPOSED): StdVector[
-    uint8_t] {.importcpp: "#.to_cbor(@)", header: cxheader.}
-proc to_cbor*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; j: UNEXPOSED;
-    o: nlohmann::detail::output_adapter[uint8_t]): void {.
-    importcpp: "#.to_cbor(@)", header: cxheader.}
-proc to_cbor*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-             NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; j: UNEXPOSED;
-    o: nlohmann::detail::output_adapter[cchar]): void {.importcpp: "#.to_cbor(@)",
+proc toCbor*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+            NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; j: UNEXPOSED): StdVector[
+    Uint8T] {.importcpp: "#.to_cbor(@)", header: cxheader.}
+proc toCbor*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+            NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; j: UNEXPOSED;
+    o: NlohmannDetailOutputAdapter[Uint8T]): void {.importcpp: "#.to_cbor(@)",
     header: cxheader.}
-proc to_msgpack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-                NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; j: UNEXPOSED): StdVector[
-    uint8_t] {.importcpp: "#.to_msgpack(@)", header: cxheader.}
-proc to_msgpack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-                NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; j: UNEXPOSED;
-    o: nlohmann::detail::output_adapter[uint8_t]): void {.
-    importcpp: "#.to_msgpack(@)", header: cxheader.}
-proc to_msgpack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-                NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; j: UNEXPOSED;
-    o: nlohmann::detail::output_adapter[cchar]): void {.
-    importcpp: "#.to_msgpack(@)", header: cxheader.}
-proc to_ubjson*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; j: UNEXPOSED; use_size: bool;
-    use_type: bool): StdVector[uint8_t] {.importcpp: "#.to_ubjson(@)",
-                                       header: cxheader.}
-proc to_ubjson*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; j: UNEXPOSED;
-    o: nlohmann::detail::output_adapter[uint8_t]; use_size: bool; use_type: bool): void {.
-    importcpp: "#.to_ubjson(@)", header: cxheader.}
-proc to_ubjson*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; j: UNEXPOSED;
-    o: nlohmann::detail::output_adapter[cchar]; use_size: bool; use_type: bool): void {.
-    importcpp: "#.to_ubjson(@)", header: cxheader.}
-proc from_cbor*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; i: detail::input_adapter;
-    strict: bool; allow_exceptions: bool): UNEXPOSED {.importcpp: "#.from_cbor(@)",
+proc toCbor*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+            NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; j: UNEXPOSED;
+    o: NlohmannDetailOutputAdapter[Cchar]): void {.importcpp: "#.to_cbor(@)",
     header: cxheader.}
-proc from_msgpack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-                  NumberUnsignedType; NumberFloatType; AllocatorType;
-                  JSONSerializer](self: var basic_json[ObjectType, ArrayType,
-    StringType, BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType,
-    AllocatorType, JSONSerializer]; i: detail::input_adapter; strict: bool;
-                                  allow_exceptions: bool): UNEXPOSED {.
-    importcpp: "#.from_msgpack(@)", header: cxheader.}
-proc from_ubjson*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+proc toMsgpack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; j: UNEXPOSED): StdVector[
+    Uint8T] {.importcpp: "#.to_msgpack(@)", header: cxheader.}
+proc toMsgpack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; j: UNEXPOSED;
+    o: NlohmannDetailOutputAdapter[Uint8T]): void {.importcpp: "#.to_msgpack(@)",
+    header: cxheader.}
+proc toMsgpack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+               NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; j: UNEXPOSED;
+    o: NlohmannDetailOutputAdapter[Cchar]): void {.importcpp: "#.to_msgpack(@)",
+    header: cxheader.}
+proc toUbjson*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; j: UNEXPOSED; useSize: bool;
+    useType: bool): StdVector[Uint8T] {.importcpp: "#.to_ubjson(@)", header: cxheader.}
+proc toUbjson*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; j: UNEXPOSED;
+    o: NlohmannDetailOutputAdapter[Uint8T]; useSize: bool; useType: bool): void {.
+    importcpp: "#.to_ubjson(@)", header: cxheader.}
+proc toUbjson*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; j: UNEXPOSED;
+    o: NlohmannDetailOutputAdapter[Cchar]; useSize: bool; useType: bool): void {.
+    importcpp: "#.to_ubjson(@)", header: cxheader.}
+proc fromCbor*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; i: DetailInputAdapter;
+    strict: bool; allowExceptions: bool): UNEXPOSED {.importcpp: "#.from_cbor(@)",
+    header: cxheader.}
+proc fromMsgpack*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
                  NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; i: detail::input_adapter;
-    strict: bool; allow_exceptions: bool): UNEXPOSED {.importcpp: "#.from_ubjson(@)",
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; i: DetailInputAdapter;
+    strict: bool; allowExceptions: bool): UNEXPOSED {.importcpp: "#.from_msgpack(@)",
+    header: cxheader.}
+proc fromUbjson*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+                NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; i: DetailInputAdapter;
+    strict: bool; allowExceptions: bool): UNEXPOSED {.importcpp: "#.from_ubjson(@)",
     header: cxheader.}
 proc `[]`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    ptr: nlohmann::basic_json::json_pointer): nlohmann::basic_json::reference
+    ptr: NlohmannBasicJsonJsonPointer): NlohmannBasicJsonReference
 proc `[]`*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    ptr: nlohmann::basic_json::json_pointer): nlohmann::basic_json::const_reference
+    ptr: NlohmannBasicJsonJsonPointer): NlohmannBasicJsonConstReference
 proc at*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    ptr: nlohmann::basic_json::json_pointer): nlohmann::basic_json::reference {.
+    ptr: NlohmannBasicJsonJsonPointer): NlohmannBasicJsonReference {.
     importcpp: "#.at(@)", header: cxheader.}
 proc at*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+        NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    ptr: nlohmann::basic_json::json_pointer): nlohmann::basic_json::const_reference {.
+    ptr: NlohmannBasicJsonJsonPointer): NlohmannBasicJsonConstReference {.
     importcpp: "#.at(@)", header: cxheader.}
 proc flatten*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
              NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): UNEXPOSED {.
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): UNEXPOSED {.
     importcpp: "#.flatten(@)", header: cxheader.}
 proc unflatten*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
                NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                    NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                    AllocatorType, JSONSerializer]): UNEXPOSED {.
+    self: BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                   NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                   AllocatorType, JSONSerializer]): UNEXPOSED {.
     importcpp: "#.unflatten(@)", header: cxheader.}
 proc patch*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: basic_json[
+           NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
-    json_patch: UNEXPOSED): UNEXPOSED {.importcpp: "#.patch(@)", header: cxheader.}
+    jsonPatch: UNEXPOSED): UNEXPOSED {.importcpp: "#.patch(@)", header: cxheader.}
 proc diff*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var basic_json[
+          NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](self: var BasicJson[
     ObjectType, ArrayType, StringType, BooleanType, NumberIntegerType,
     NumberUnsignedType, NumberFloatType, AllocatorType, JSONSerializer];
     source: UNEXPOSED; target: UNEXPOSED; path: StdString): UNEXPOSED {.
     importcpp: "#.diff(@)", header: cxheader.}
-proc merge_patch*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
-                 NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
-    self: var basic_json[ObjectType, ArrayType, StringType, BooleanType,
-                       NumberIntegerType, NumberUnsignedType, NumberFloatType,
-                       AllocatorType, JSONSerializer]; patch: UNEXPOSED): void {.
+proc mergePatch*[ObjectType; ArrayType; StringType; BooleanType; NumberIntegerType;
+                NumberUnsignedType; NumberFloatType; AllocatorType; JSONSerializer](
+    self: var BasicJson[ObjectType, ArrayType, StringType, BooleanType,
+                      NumberIntegerType, NumberUnsignedType, NumberFloatType,
+                      AllocatorType, JSONSerializer]; patch: UNEXPOSED): void {.
     importcpp: "#.merge_patch(@)", header: cxheader.}

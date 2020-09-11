@@ -1,6 +1,6 @@
 
 const
-  cxheader = ""
+  cxheader = "/mnt/workspace/github/nimtrail/SourcetrailDB/external/cpp_sqlite/include/CppSQLite3.h"
 import
   sourcetrail / sqlite3
 
@@ -40,7 +40,7 @@ proc clear*(self: var CppSQLite3Binary): void {.importcpp: "#.clear(@)",
 type
   CppSQLite3Query* {.importcpp: r"CppSQLite3Query", header: cxheader.} = object
   
-proc `setFrom`*(self: var CppSQLite3Query; rQuery: CppSQLite3Query): CppSQLite3Query {.
+proc setFrom*(self: var CppSQLite3Query; rQuery: CppSQLite3Query): CppSQLite3Query {.
     importcpp: "# = #", header: cxheader.}
 proc numFields*(self: var CppSQLite3Query): cint {.importcpp: "#.numFields(@)",
     header: cxheader.}
@@ -60,14 +60,14 @@ proc getIntField*(self: var CppSQLite3Query; nField: cint; nNullValue: cint): ci
     importcpp: "#.getIntField(@)", header: cxheader.}
 proc getIntField*(self: var CppSQLite3Query; szField: cstring; nNullValue: cint): cint {.
     importcpp: "#.getIntField(@)", header: cxheader.}
-proc getInt64Field*(self: var CppSQLite3Query; nField: cint; nNullValue: sqlite_int64): sqlite_int64 {.
+proc getInt64Field*(self: var CppSQLite3Query; nField: cint; nNullValue: SqliteInt64): SqliteInt64 {.
     importcpp: "#.getInt64Field(@)", header: cxheader.}
 proc getInt64Field*(self: var CppSQLite3Query; szField: cstring;
-                   nNullValue: sqlite_int64): sqlite_int64 {.
+                   nNullValue: SqliteInt64): SqliteInt64 {.
     importcpp: "#.getInt64Field(@)", header: cxheader.}
-proc getFloatField*(self: var CppSQLite3Query; nField: cint; fNullValue: cdouble): cdouble {.
+proc getFloatField*(self: var CppSQLite3Query; nField: cint; fNullValue: Cdouble): Cdouble {.
     importcpp: "#.getFloatField(@)", header: cxheader.}
-proc getFloatField*(self: var CppSQLite3Query; szField: cstring; fNullValue: cdouble): cdouble {.
+proc getFloatField*(self: var CppSQLite3Query; szField: cstring; fNullValue: Cdouble): Cdouble {.
     importcpp: "#.getFloatField(@)", header: cxheader.}
 proc getStringField*(self: var CppSQLite3Query; nField: cint; szNullValue: cstring): cstring {.
     importcpp: "#.getStringField(@)", header: cxheader.}
@@ -89,7 +89,7 @@ proc finalize*(self: var CppSQLite3Query): void {.importcpp: "#.finalize(@)",
 type
   CppSQLite3Table* {.importcpp: r"CppSQLite3Table", header: cxheader.} = object
   
-proc `setFrom`*(self: var CppSQLite3Table; rTable: CppSQLite3Table): CppSQLite3Table {.
+proc setFrom*(self: var CppSQLite3Table; rTable: CppSQLite3Table): CppSQLite3Table {.
     importcpp: "# = #", header: cxheader.}
 proc numFields*(self: var CppSQLite3Table): cint {.importcpp: "#.numFields(@)",
     header: cxheader.}
@@ -105,9 +105,9 @@ proc getIntField*(self: var CppSQLite3Table; nField: cint; nNullValue: cint): ci
     importcpp: "#.getIntField(@)", header: cxheader.}
 proc getIntField*(self: var CppSQLite3Table; szField: cstring; nNullValue: cint): cint {.
     importcpp: "#.getIntField(@)", header: cxheader.}
-proc getFloatField*(self: var CppSQLite3Table; nField: cint; fNullValue: cdouble): cdouble {.
+proc getFloatField*(self: var CppSQLite3Table; nField: cint; fNullValue: Cdouble): Cdouble {.
     importcpp: "#.getFloatField(@)", header: cxheader.}
-proc getFloatField*(self: var CppSQLite3Table; szField: cstring; fNullValue: cdouble): cdouble {.
+proc getFloatField*(self: var CppSQLite3Table; szField: cstring; fNullValue: Cdouble): Cdouble {.
     importcpp: "#.getFloatField(@)", header: cxheader.}
 proc getStringField*(self: var CppSQLite3Table; nField: cint; szNullValue: cstring): cstring {.
     importcpp: "#.getStringField(@)", header: cxheader.}
@@ -124,7 +124,7 @@ proc finalize*(self: var CppSQLite3Table): void {.importcpp: "#.finalize(@)",
 type
   CppSQLite3Statement* {.importcpp: r"CppSQLite3Statement", header: cxheader.} = object
   
-proc `setFrom`*(self: var CppSQLite3Statement; rStatement: CppSQLite3Statement): CppSQLite3Statement {.
+proc setFrom*(self: var CppSQLite3Statement; rStatement: CppSQLite3Statement): CppSQLite3Statement {.
     importcpp: "# = #", header: cxheader.}
 proc execDML*(self: var CppSQLite3Statement): cint {.importcpp: "#.execDML(@)",
     header: cxheader.}
@@ -134,7 +134,7 @@ proc bind*(self: var CppSQLite3Statement; nParam: cint; szValue: cstring): void 
     importcpp: "#.bind(@)", header: cxheader.}
 proc bind*(self: var CppSQLite3Statement; nParam: cint; nValue: cint): void {.
     importcpp: "#.bind(@)", header: cxheader.}
-proc bind*(self: var CppSQLite3Statement; nParam: cint; dwValue: cdouble): void {.
+proc bind*(self: var CppSQLite3Statement; nParam: cint; dwValue: Cdouble): void {.
     importcpp: "#.bind(@)", header: cxheader.}
 proc bind*(self: var CppSQLite3Statement; nParam: cint; blobValue: ptr[cuchar];
           nLen: cint): void {.importcpp: "#.bind(@)", header: cxheader.}
@@ -146,7 +146,7 @@ proc bind*(self: var CppSQLite3Statement; szParam: cstring; szValue: cstring): v
     importcpp: "#.bind(@)", header: cxheader.}
 proc bind*(self: var CppSQLite3Statement; szParam: cstring; nValue: cint): void {.
     importcpp: "#.bind(@)", header: cxheader.}
-proc bind*(self: var CppSQLite3Statement; szParam: cstring; dwValue: cdouble): void {.
+proc bind*(self: var CppSQLite3Statement; szParam: cstring; dwValue: Cdouble): void {.
     importcpp: "#.bind(@)", header: cxheader.}
 proc bind*(self: var CppSQLite3Statement; szParam: cstring; blobValue: ptr[cuchar];
           nLen: cint): void {.importcpp: "#.bind(@)", header: cxheader.}
@@ -174,19 +174,19 @@ proc getTable*(self: var CppSQLite3DB; szSQL: cstring): CppSQLite3Table {.
     importcpp: "#.getTable(@)", header: cxheader.}
 proc compileStatement*(self: var CppSQLite3DB; szSQL: cstring): CppSQLite3Statement {.
     importcpp: "#.compileStatement(@)", header: cxheader.}
-proc lastRowId*(self: var CppSQLite3DB): sqlite_int64 {.importcpp: "#.lastRowId(@)",
+proc lastRowId*(self: var CppSQLite3DB): SqliteInt64 {.importcpp: "#.lastRowId(@)",
     header: cxheader.}
 proc interrupt*(self: var CppSQLite3DB): void {.importcpp: "#.interrupt(@)",
     header: cxheader.}
 proc setBusyTimeout*(self: var CppSQLite3DB; nMillisecs: cint): void {.
     importcpp: "#.setBusyTimeout(@)", header: cxheader.}
-proc SQLiteVersion*(self: var CppSQLite3DB): cstring {.
+proc sQLiteVersion*(self: var CppSQLite3DB): cstring {.
     importcpp: "#.SQLiteVersion(@)", header: cxheader.}
-proc SQLiteHeaderVersion*(self: var CppSQLite3DB): cstring {.
+proc sQLiteHeaderVersion*(self: var CppSQLite3DB): cstring {.
     importcpp: "#.SQLiteHeaderVersion(@)", header: cxheader.}
-proc SQLiteLibraryVersion*(self: var CppSQLite3DB): cstring {.
+proc sQLiteLibraryVersion*(self: var CppSQLite3DB): cstring {.
     importcpp: "#.SQLiteLibraryVersion(@)", header: cxheader.}
-proc SQLiteLibraryVersionNumber*(self: var CppSQLite3DB): cint {.
+proc sQLiteLibraryVersionNumber*(self: var CppSQLite3DB): cint {.
     importcpp: "#.SQLiteLibraryVersionNumber(@)", header: cxheader.}
-proc IsAutoCommitOn*(self: var CppSQLite3DB): bool {.
+proc isAutoCommitOn*(self: var CppSQLite3DB): bool {.
     importcpp: "#.IsAutoCommitOn(@)", header: cxheader.}

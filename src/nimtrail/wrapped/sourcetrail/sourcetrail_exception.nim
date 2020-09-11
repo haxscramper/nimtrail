@@ -1,6 +1,6 @@
 
 const
-  cxheader = ""
+  cxheader = "/mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailException.h"
 import
   cxstd / stringfwd
 

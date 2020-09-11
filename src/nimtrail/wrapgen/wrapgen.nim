@@ -33,15 +33,13 @@ let wrapConf = WrapConfig(
         ]
   ),
   fixTypeName: (
-    proc(ntype: NType[PNode], conf: WrapConfig): NType[PNode] =
-      result = ntype
-
-      if result.head.startsWith("std::"):
-        result = fixStdTypeName(result, conf)
+    proc(ntype: var NType[PNode], conf: WrapConfig) =
+      # Default implementation for type name fixes
+      fixTypeName(ntype, conf)
   ),
   ignoreCursor: (
     proc(cursor: CXCursor, conf: WrapConfig): bool =
-      if ($cursor).startsWith("__"):
+      if ($cursor).startsWith(@[ "__", "_" ]):
         return true
       if cursor.cxKind == ckNamespace and
          ($cursor in @["detail", "internal"]):
@@ -51,7 +49,7 @@ let wrapConf = WrapConfig(
   )
 )
 
-let dbase = createDatabase("../../SourcetrailDB")
+let dbase = createDatabase("../../../SourcetrailDB")
 
 var
   parseConf: ParseConfiguration
@@ -81,13 +79,13 @@ for command in dbase.getAllCompileCommands():
     parseConf.fileFlags[file] = command.getFlags()
     files.add file
 
-let wrapDir = "wrapped"
+let wrapDir = "../wrapped"
 
 try:
   let wrapped = wrapAll(files, parseConf, wrapConf)
   for wrapres in wrapped:
     let file = wrapDir / wrapres.importName.join("/") & ".nim"
-    info "Writing to file", file
+    # info "Writing to file", file
     mkDir file.parentDir()
     file.writeFile($wrapres.wrapped)
 
@@ -97,7 +95,7 @@ except:
   echo "error"
 
 try:
-  discard runShell(&"nim c --path:{wrapDir} wrap_user.nim")
+  discard runShell(&"nim c -o:wrap_user ../wrap_user.nim")
   info "Done compilation"
   let (stdout, stderr, code) = runShell(&"./wrap_user")
   echo stdout
