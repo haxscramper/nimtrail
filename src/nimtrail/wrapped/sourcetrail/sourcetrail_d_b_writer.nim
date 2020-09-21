@@ -5,9 +5,6 @@ import
   cxstd / stringfwd
 
 import
-  cxstd / stringfwd
-
-import
   sourcetrail / name_hierarchy
 
 import
@@ -23,91 +20,96 @@ import
   sourcetrail / reference_kind
 
 type
-  DatabaseStorage* {.importcpp: r"sourcetrail::DatabaseStorage", header: cxheader.} = object
+  SourcetrailDatabaseStorage* {.importcpp: r"sourcetrail::DatabaseStorage",
+                               header: cxheader.} = object
   
 type
-  SourcetrailDBWriter* {.importcpp: r"sourcetrail::SourcetrailDBWriter",
-                        header: cxheader.} = object
+  SourcetrailSourcetrailDBWriter* {.importcpp: r"sourcetrail::SourcetrailDBWriter",
+                                   header: cxheader.} = object
   
-proc getVersionString*(self: SourcetrailDBWriter): StdString {.
+proc getVersionString*(self: SourcetrailSourcetrailDBWriter): StdString {.
     importcpp: "#.getVersionString(@)", header: cxheader.}
-proc getSupportedDatabaseVersion*(self: SourcetrailDBWriter): cint {.
+proc getSupportedDatabaseVersion*(self: SourcetrailSourcetrailDBWriter): cint {.
     importcpp: "#.getSupportedDatabaseVersion(@)", header: cxheader.}
-proc getLastError*(self: SourcetrailDBWriter): StdString {.
+proc getLastError*(self: SourcetrailSourcetrailDBWriter): StdString {.
     importcpp: "#.getLastError(@)", header: cxheader.}
-proc setLastError*(self: SourcetrailDBWriter; error: StdString): void {.
+proc setLastError*(self: SourcetrailSourcetrailDBWriter; error: StdString): void {.
     importcpp: "#.setLastError(@)", header: cxheader.}
-proc clearLastError*(self: var SourcetrailDBWriter): void {.
+proc clearLastError*(self: var SourcetrailSourcetrailDBWriter): void {.
     importcpp: "#.clearLastError(@)", header: cxheader.}
-proc open*(self: var SourcetrailDBWriter; databaseFilePath: StdString): bool {.
+proc open*(self: var SourcetrailSourcetrailDBWriter; databaseFilePath: StdString): bool {.
     importcpp: "#.open(@)", header: cxheader.}
-proc close*(self: var SourcetrailDBWriter): bool {.importcpp: "#.close(@)",
-    header: cxheader.}
-proc clear*(self: var SourcetrailDBWriter): bool {.importcpp: "#.clear(@)",
-    header: cxheader.}
-proc isEmpty*(self: SourcetrailDBWriter): bool {.importcpp: "#.isEmpty(@)",
-    header: cxheader.}
-proc isCompatible*(self: SourcetrailDBWriter): bool {.
+proc close*(self: var SourcetrailSourcetrailDBWriter): bool {.
+    importcpp: "#.close(@)", header: cxheader.}
+proc clear*(self: var SourcetrailSourcetrailDBWriter): bool {.
+    importcpp: "#.clear(@)", header: cxheader.}
+proc isEmpty*(self: SourcetrailSourcetrailDBWriter): bool {.
+    importcpp: "#.isEmpty(@)", header: cxheader.}
+proc isCompatible*(self: SourcetrailSourcetrailDBWriter): bool {.
     importcpp: "#.isCompatible(@)", header: cxheader.}
-proc getLoadedDatabaseVersion*(self: SourcetrailDBWriter): cint {.
+proc getLoadedDatabaseVersion*(self: SourcetrailSourcetrailDBWriter): cint {.
     importcpp: "#.getLoadedDatabaseVersion(@)", header: cxheader.}
-proc beginTransaction*(self: var SourcetrailDBWriter): bool {.
+proc beginTransaction*(self: var SourcetrailSourcetrailDBWriter): bool {.
     importcpp: "#.beginTransaction(@)", header: cxheader.}
-proc commitTransaction*(self: var SourcetrailDBWriter): bool {.
+proc commitTransaction*(self: var SourcetrailSourcetrailDBWriter): bool {.
     importcpp: "#.commitTransaction(@)", header: cxheader.}
-proc rollbackTransaction*(self: var SourcetrailDBWriter): bool {.
+proc rollbackTransaction*(self: var SourcetrailSourcetrailDBWriter): bool {.
     importcpp: "#.rollbackTransaction(@)", header: cxheader.}
-proc optimizeDatabaseMemory*(self: var SourcetrailDBWriter): bool {.
+proc optimizeDatabaseMemory*(self: var SourcetrailSourcetrailDBWriter): bool {.
     importcpp: "#.optimizeDatabaseMemory(@)", header: cxheader.}
-proc recordSymbol*(self: var SourcetrailDBWriter;
+proc recordSymbol*(self: var SourcetrailSourcetrailDBWriter;
                   nameHierarchy: SourcetrailNameHierarchy): cint {.
     importcpp: "#.recordSymbol(@)", header: cxheader.}
-proc recordSymbolDefinitionKind*(self: var SourcetrailDBWriter; symbolId: cint;
+proc recordSymbolDefinitionKind*(self: var SourcetrailSourcetrailDBWriter;
+                                symbolId: cint;
                                 definitionKind: SourcetrailDefinitionKind): bool {.
     importcpp: "#.recordSymbolDefinitionKind(@)", header: cxheader.}
-proc recordSymbolKind*(self: var SourcetrailDBWriter; symbolId: cint;
+proc recordSymbolKind*(self: var SourcetrailSourcetrailDBWriter; symbolId: cint;
                       symbolKind: SourcetrailSymbolKind): bool {.
     importcpp: "#.recordSymbolKind(@)", header: cxheader.}
-proc recordSymbolLocation*(self: var SourcetrailDBWriter; symbolId: cint;
+proc recordSymbolLocation*(self: var SourcetrailSourcetrailDBWriter; symbolId: cint;
                           location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordSymbolLocation(@)", header: cxheader.}
-proc recordSymbolScopeLocation*(self: var SourcetrailDBWriter; symbolId: cint;
-                               location: SourcetrailSourceRange): bool {.
+proc recordSymbolScopeLocation*(self: var SourcetrailSourcetrailDBWriter;
+                               symbolId: cint; location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordSymbolScopeLocation(@)", header: cxheader.}
-proc recordSymbolSignatureLocation*(self: var SourcetrailDBWriter; symbolId: cint;
+proc recordSymbolSignatureLocation*(self: var SourcetrailSourcetrailDBWriter;
+                                   symbolId: cint;
                                    location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordSymbolSignatureLocation(@)", header: cxheader.}
-proc recordReference*(self: var SourcetrailDBWriter; contextSymbolId: cint;
-                     referencedSymbolId: cint;
+proc recordReference*(self: var SourcetrailSourcetrailDBWriter;
+                     contextSymbolId: cint; referencedSymbolId: cint;
                      referenceKind: SourcetrailReferenceKind): cint {.
     importcpp: "#.recordReference(@)", header: cxheader.}
-proc recordReferenceLocation*(self: var SourcetrailDBWriter; referenceId: cint;
-                             location: SourcetrailSourceRange): bool {.
+proc recordReferenceLocation*(self: var SourcetrailSourcetrailDBWriter;
+                             referenceId: cint; location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordReferenceLocation(@)", header: cxheader.}
-proc recordReferenceIsAmbiuous*(self: var SourcetrailDBWriter; referenceId: cint): bool {.
+proc recordReferenceIsAmbiuous*(self: var SourcetrailSourcetrailDBWriter;
+                               referenceId: cint): bool {.
     importcpp: "#.recordReferenceIsAmbiuous(@)", header: cxheader.}
-proc recordReferenceToUnsolvedSymhol*(self: var SourcetrailDBWriter;
+proc recordReferenceToUnsolvedSymhol*(self: var SourcetrailSourcetrailDBWriter;
                                      contextSymbolId: cint;
                                      referenceKind: SourcetrailReferenceKind;
                                      location: SourcetrailSourceRange): cint {.
     importcpp: "#.recordReferenceToUnsolvedSymhol(@)", header: cxheader.}
-proc recordQualifierLocation*(self: var SourcetrailDBWriter;
+proc recordQualifierLocation*(self: var SourcetrailSourcetrailDBWriter;
                              referencedSymbolId: cint;
                              location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordQualifierLocation(@)", header: cxheader.}
-proc recordFile*(self: var SourcetrailDBWriter; filePath: StdString): cint {.
+proc recordFile*(self: var SourcetrailSourcetrailDBWriter; filePath: StdString): cint {.
     importcpp: "#.recordFile(@)", header: cxheader.}
-proc recordFileLanguage*(self: var SourcetrailDBWriter; fileId: cint;
+proc recordFileLanguage*(self: var SourcetrailSourcetrailDBWriter; fileId: cint;
                         languageIdentifier: StdString): bool {.
     importcpp: "#.recordFileLanguage(@)", header: cxheader.}
-proc recordLocalSymbol*(self: var SourcetrailDBWriter; name: StdString): cint {.
+proc recordLocalSymbol*(self: var SourcetrailSourcetrailDBWriter; name: StdString): cint {.
     importcpp: "#.recordLocalSymbol(@)", header: cxheader.}
-proc recordLocalSymbolLocation*(self: var SourcetrailDBWriter; localSymbolId: cint;
+proc recordLocalSymbolLocation*(self: var SourcetrailSourcetrailDBWriter;
+                               localSymbolId: cint;
                                location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordLocalSymbolLocation(@)", header: cxheader.}
-proc recordAtomicSourceRange*(self: var SourcetrailDBWriter;
+proc recordAtomicSourceRange*(self: var SourcetrailSourcetrailDBWriter;
                              sourceRange: SourcetrailSourceRange): bool {.
     importcpp: "#.recordAtomicSourceRange(@)", header: cxheader.}
-proc recordError*(self: var SourcetrailDBWriter; message: StdString; fatal: bool;
-                 location: SourcetrailSourceRange): bool {.
+proc recordError*(self: var SourcetrailSourcetrailDBWriter; message: StdString;
+                 fatal: bool; location: SourcetrailSourceRange): bool {.
     importcpp: "#.recordError(@)", header: cxheader.}

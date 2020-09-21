@@ -8,12 +8,36 @@ type
   Sqlite3* {.importcpp: r"sqlite3", header: cxheader.} = object
   
 type
+  Sqlite3* {.importcpp: r"sqlite3", header: cxheader.} = object
+  
+type
+  SqliteInt64* {.importcpp: r"sqlite_int64", header: cxheader.} = object
+  
+type
+  SqliteUint64* {.importcpp: r"sqlite_uint64", header: cxheader.} = object
+  
+type
+  Sqlite3Int64* {.importcpp: r"sqlite3_int64", header: cxheader.} = object
+  
+type
+  Sqlite3Uint64* {.importcpp: r"sqlite3_uint64", header: cxheader.} = object
+  
+type
+  Sqlite3Callback* {.importcpp: r"sqlite3_callback", header: cxheader.} = object
+  
+type
+  Sqlite3File* {.importcpp: r"sqlite3_file", header: cxheader.} = object
+  
+type
   Sqlite3File* {.importcpp: r"sqlite3_file", header: cxheader.} = object
   
 type
   Sqlite3File* {.importcpp: r"sqlite3_file", header: cxheader.} = object
     pMethods*: ptr[struct sqlite3_io_methods]
 
+type
+  Sqlite3IoMethods* {.importcpp: r"sqlite3_io_methods", header: cxheader.} = object
+  
 type
   Sqlite3IoMethods* {.importcpp: r"sqlite3_io_methods", header: cxheader.} = object
     iVersion*: cint
@@ -44,7 +68,16 @@ type
   Sqlite3Mutex* {.importcpp: r"sqlite3_mutex", header: cxheader.} = object
   
 type
+  Sqlite3Mutex* {.importcpp: r"sqlite3_mutex", header: cxheader.} = object
+  
+type
   Sqlite3Vfs* {.importcpp: r"sqlite3_vfs", header: cxheader.} = object
+  
+type
+  Sqlite3Vfs* {.importcpp: r"sqlite3_vfs", header: cxheader.} = object
+  
+type
+  Sqlite3SyscallPtr* {.importcpp: r"sqlite3_syscall_ptr", header: cxheader.} = object
   
 type
   Sqlite3Vfs* {.importcpp: r"sqlite3_vfs", header: cxheader.} = object
@@ -83,6 +116,9 @@ type
   
 type
   Sqlite3MemMethods* {.importcpp: r"sqlite3_mem_methods", header: cxheader.} = object
+  
+type
+  Sqlite3MemMethods* {.importcpp: r"sqlite3_mem_methods", header: cxheader.} = object
     xMalloc*: proc (a0: cint): pointer {.cdecl.}
     xFree*: proc (a0: pointer): void {.cdecl.}
     xRealloc*: proc (a0: pointer; a1: cint): pointer {.cdecl.}
@@ -96,10 +132,25 @@ type
   Sqlite3Stmt* {.importcpp: r"sqlite3_stmt", header: cxheader.} = object
   
 type
+  Sqlite3Stmt* {.importcpp: r"sqlite3_stmt", header: cxheader.} = object
+  
+type
   Mem* {.importcpp: r"Mem", header: cxheader.} = object
   
 type
+  Sqlite3Value* {.importcpp: r"sqlite3_value", header: cxheader.} = object
+  
+type
   Sqlite3Context* {.importcpp: r"sqlite3_context", header: cxheader.} = object
+  
+type
+  Sqlite3Context* {.importcpp: r"sqlite3_context", header: cxheader.} = object
+  
+type
+  Sqlite3DestructorType* {.importcpp: r"sqlite3_destructor_type", header: cxheader.} = object
+  
+type
+  Sqlite3Vtab* {.importcpp: r"sqlite3_vtab", header: cxheader.} = object
   
 type
   Sqlite3Vtab* {.importcpp: r"sqlite3_vtab", header: cxheader.} = object
@@ -108,7 +159,16 @@ type
   Sqlite3IndexInfo* {.importcpp: r"sqlite3_index_info", header: cxheader.} = object
   
 type
+  Sqlite3IndexInfo* {.importcpp: r"sqlite3_index_info", header: cxheader.} = object
+  
+type
   Sqlite3VtabCursor* {.importcpp: r"sqlite3_vtab_cursor", header: cxheader.} = object
+  
+type
+  Sqlite3VtabCursor* {.importcpp: r"sqlite3_vtab_cursor", header: cxheader.} = object
+  
+type
+  Sqlite3Module* {.importcpp: r"sqlite3_module", header: cxheader.} = object
   
 type
   Sqlite3Module* {.importcpp: r"sqlite3_module", header: cxheader.} = object
@@ -176,6 +236,12 @@ type
   Sqlite3Blob* {.importcpp: r"sqlite3_blob", header: cxheader.} = object
   
 type
+  Sqlite3Blob* {.importcpp: r"sqlite3_blob", header: cxheader.} = object
+  
+type
+  Sqlite3MutexMethods* {.importcpp: r"sqlite3_mutex_methods", header: cxheader.} = object
+  
+type
   Sqlite3MutexMethods* {.importcpp: r"sqlite3_mutex_methods", header: cxheader.} = object
   
 type
@@ -194,6 +260,12 @@ type
   Sqlite3Pcache* {.importcpp: r"sqlite3_pcache", header: cxheader.} = object
   
 type
+  Sqlite3Pcache* {.importcpp: r"sqlite3_pcache", header: cxheader.} = object
+  
+type
+  Sqlite3PcachePage* {.importcpp: r"sqlite3_pcache_page", header: cxheader.} = object
+  
+type
   Sqlite3PcachePage* {.importcpp: r"sqlite3_pcache_page", header: cxheader.} = object
   
 type
@@ -201,6 +273,9 @@ type
     pBuf*: pointer
     pExtra*: pointer
 
+type
+  Sqlite3PcacheMethods2* {.importcpp: r"sqlite3_pcache_methods2", header: cxheader.} = object
+  
 type
   Sqlite3PcacheMethods2* {.importcpp: r"sqlite3_pcache_methods2", header: cxheader.} = object
   
@@ -228,6 +303,9 @@ type
   
 type
   Sqlite3PcacheMethods* {.importcpp: r"sqlite3_pcache_methods", header: cxheader.} = object
+  
+type
+  Sqlite3PcacheMethods* {.importcpp: r"sqlite3_pcache_methods", header: cxheader.} = object
     pArg*: pointer
     xInit*: proc (a0: pointer): cint {.cdecl.}
     xShutdown*: proc (a0: pointer): void {.cdecl.}
@@ -245,10 +323,22 @@ type
   Sqlite3Backup* {.importcpp: r"sqlite3_backup", header: cxheader.} = object
   
 type
+  Sqlite3Backup* {.importcpp: r"sqlite3_backup", header: cxheader.} = object
+  
+type
+  Sqlite3RtreeGeometry* {.importcpp: r"sqlite3_rtree_geometry", header: cxheader.} = object
+  
+type
   Sqlite3RtreeGeometry* {.importcpp: r"sqlite3_rtree_geometry", header: cxheader.} = object
   
 type
   Sqlite3RtreeQueryInfo* {.importcpp: r"sqlite3_rtree_query_info", header: cxheader.} = object
+  
+type
+  Sqlite3RtreeQueryInfo* {.importcpp: r"sqlite3_rtree_query_info", header: cxheader.} = object
+  
+type
+  Sqlite3RtreeDbl* {.importcpp: r"sqlite3_rtree_dbl", header: cxheader.} = object
   
 type
   Sqlite3RtreeGeometry* {.importcpp: r"sqlite3_rtree_geometry", header: cxheader.} = object

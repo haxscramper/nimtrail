@@ -40,7 +40,7 @@ proc clear*(self: var CppSQLite3Binary): void {.importcpp: "#.clear(@)",
 type
   CppSQLite3Query* {.importcpp: r"CppSQLite3Query", header: cxheader.} = object
   
-proc setFrom*(self: var CppSQLite3Query; rQuery: CppSQLite3Query): CppSQLite3Query {.
+proc setFrom*(self: var CppSQLite3Query; rQuery: CppSQLite3Query): void {.
     importcpp: "# = #", header: cxheader.}
 proc numFields*(self: var CppSQLite3Query): cint {.importcpp: "#.numFields(@)",
     header: cxheader.}
@@ -89,7 +89,7 @@ proc finalize*(self: var CppSQLite3Query): void {.importcpp: "#.finalize(@)",
 type
   CppSQLite3Table* {.importcpp: r"CppSQLite3Table", header: cxheader.} = object
   
-proc setFrom*(self: var CppSQLite3Table; rTable: CppSQLite3Table): CppSQLite3Table {.
+proc setFrom*(self: var CppSQLite3Table; rTable: CppSQLite3Table): void {.
     importcpp: "# = #", header: cxheader.}
 proc numFields*(self: var CppSQLite3Table): cint {.importcpp: "#.numFields(@)",
     header: cxheader.}
@@ -124,7 +124,7 @@ proc finalize*(self: var CppSQLite3Table): void {.importcpp: "#.finalize(@)",
 type
   CppSQLite3Statement* {.importcpp: r"CppSQLite3Statement", header: cxheader.} = object
   
-proc setFrom*(self: var CppSQLite3Statement; rStatement: CppSQLite3Statement): CppSQLite3Statement {.
+proc setFrom*(self: var CppSQLite3Statement; rStatement: CppSQLite3Statement): void {.
     importcpp: "# = #", header: cxheader.}
 proc execDML*(self: var CppSQLite3Statement): cint {.importcpp: "#.execDML(@)",
     header: cxheader.}

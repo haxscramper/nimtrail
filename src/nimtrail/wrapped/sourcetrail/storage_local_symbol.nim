@@ -5,11 +5,11 @@ import
   cxstd / stringfwd
 
 type
-  StorageLocalSymbolData* {.importcpp: r"sourcetrail::StorageLocalSymbolData",
-                           header: cxheader.} = object
+  SourcetrailStorageLocalSymbolData* {.importcpp: r"sourcetrail::StorageLocalSymbolData",
+                                      header: cxheader.} = object
     name*: StdString
 
 type
-  StorageLocalSymbol* {.importcpp: r"sourcetrail::StorageLocalSymbol",
-                       header: cxheader.} = object
+  SourcetrailStorageLocalSymbol* {.importcpp: r"sourcetrail::StorageLocalSymbol",
+                                  header: cxheader.} = object
     id*: cint

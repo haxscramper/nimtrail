@@ -15,6 +15,7 @@ import gram
 import tables
 
 startColorLogger()
+startHax()
 
 let wrapConf = WrapConfig(
   makeHeader: proc(conf: WrapConfig): PNode =
@@ -85,7 +86,6 @@ try:
   let wrapped = wrapAll(files, parseConf, wrapConf)
   for wrapres in wrapped:
     let file = wrapDir / wrapres.importName.join("/") & ".nim"
-    # info "Writing to file", file
     mkDir file.parentDir()
     file.writeFile($wrapres.wrapped)
 

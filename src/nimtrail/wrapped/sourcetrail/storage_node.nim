@@ -5,10 +5,12 @@ import
   cxstd / stringfwd
 
 type
-  StorageNodeData* {.importcpp: r"sourcetrail::StorageNodeData", header: cxheader.} = object
+  SourcetrailStorageNodeData* {.importcpp: r"sourcetrail::StorageNodeData",
+                               header: cxheader.} = object
     nodeKind*: cint
     serializedName*: StdString
 
 type
-  StorageNode* {.importcpp: r"sourcetrail::StorageNode", header: cxheader.} = object
+  SourcetrailStorageNode* {.importcpp: r"sourcetrail::StorageNode",
+                           header: cxheader.} = object
     id*: cint

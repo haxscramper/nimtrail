@@ -8,9 +8,6 @@ import
   cxstd / unique_ptr
 
 import
-  cxstd / stringfwd
-
-import
   sourcetrail / storage_element_component
 
 import
@@ -41,55 +38,62 @@ import
   cxstd / stl_vector
 
 type
-  DatabaseStorage* {.importcpp: r"sourcetrail::DatabaseStorage", header: cxheader.} = object
+  SourcetrailDatabaseStorage* {.importcpp: r"sourcetrail::DatabaseStorage",
+                               header: cxheader.} = object
   
-proc getSupportedDatabaseVersion*(self: var DatabaseStorage): cint {.
+proc getSupportedDatabaseVersion*(self: var SourcetrailDatabaseStorage): cint {.
     importcpp: "#.getSupportedDatabaseVersion(@)", header: cxheader.}
-proc openDatabase*(self: var DatabaseStorage; dbFilePath: StdString): StdUniquePtr[
-    SourcetrailDatabaseStorage] {.importcpp: "#.openDatabase(@)", header: cxheader.}
-proc setupDatabase*(self: var DatabaseStorage): void {.
+proc openDatabase*(self: var SourcetrailDatabaseStorage; dbFilePath: StdString): StdUniquePtr {.
+    importcpp: "#.openDatabase(@)", header: cxheader.}
+proc setupDatabase*(self: var SourcetrailDatabaseStorage): void {.
     importcpp: "#.setupDatabase(@)", header: cxheader.}
-proc clearDatabase*(self: var DatabaseStorage): void {.
+proc clearDatabase*(self: var SourcetrailDatabaseStorage): void {.
     importcpp: "#.clearDatabase(@)", header: cxheader.}
-proc setProjectSettingsText*(self: var DatabaseStorage; text: StdString): void {.
+proc setProjectSettingsText*(self: var SourcetrailDatabaseStorage; text: StdString): void {.
     importcpp: "#.setProjectSettingsText(@)", header: cxheader.}
-proc isEmpty*(self: DatabaseStorage): bool {.importcpp: "#.isEmpty(@)",
+proc isEmpty*(self: SourcetrailDatabaseStorage): bool {.importcpp: "#.isEmpty(@)",
     header: cxheader.}
-proc isCompatible*(self: DatabaseStorage): bool {.importcpp: "#.isCompatible(@)",
-    header: cxheader.}
-proc getLoadedDatabaseVersion*(self: DatabaseStorage): cint {.
+proc isCompatible*(self: SourcetrailDatabaseStorage): bool {.
+    importcpp: "#.isCompatible(@)", header: cxheader.}
+proc getLoadedDatabaseVersion*(self: SourcetrailDatabaseStorage): cint {.
     importcpp: "#.getLoadedDatabaseVersion(@)", header: cxheader.}
-proc beginTransaction*(self: var DatabaseStorage): void {.
+proc beginTransaction*(self: var SourcetrailDatabaseStorage): void {.
     importcpp: "#.beginTransaction(@)", header: cxheader.}
-proc commitTransaction*(self: var DatabaseStorage): void {.
+proc commitTransaction*(self: var SourcetrailDatabaseStorage): void {.
     importcpp: "#.commitTransaction(@)", header: cxheader.}
-proc rollbackTransaction*(self: var DatabaseStorage): void {.
+proc rollbackTransaction*(self: var SourcetrailDatabaseStorage): void {.
     importcpp: "#.rollbackTransaction(@)", header: cxheader.}
-proc optimizeDatabaseMemory*(self: var DatabaseStorage): void {.
+proc optimizeDatabaseMemory*(self: var SourcetrailDatabaseStorage): void {.
     importcpp: "#.optimizeDatabaseMemory(@)", header: cxheader.}
-proc addElementComponent*(self: var DatabaseStorage; storageElementComponentData: SourcetrailStorageElementComponentData): cint {.
+proc addElementComponent*(self: var SourcetrailDatabaseStorage;
+    storageElementComponentData: SourcetrailStorageElementComponentData): cint {.
     importcpp: "#.addElementComponent(@)", header: cxheader.}
-proc addNode*(self: var DatabaseStorage; storageNodeData: SourcetrailStorageNodeData): cint {.
+proc addNode*(self: var SourcetrailDatabaseStorage;
+             storageNodeData: SourcetrailStorageNodeData): cint {.
     importcpp: "#.addNode(@)", header: cxheader.}
-proc addSymbol*(self: var DatabaseStorage; storageSymbol: SourcetrailStorageSymbol): void {.
+proc addSymbol*(self: var SourcetrailDatabaseStorage;
+               storageSymbol: SourcetrailStorageSymbol): void {.
     importcpp: "#.addSymbol(@)", header: cxheader.}
-proc addFile*(self: var DatabaseStorage; storageFile: SourcetrailStorageFile): void {.
+proc addFile*(self: var SourcetrailDatabaseStorage;
+             storageFile: SourcetrailStorageFile): void {.
     importcpp: "#.addFile(@)", header: cxheader.}
-proc addEdge*(self: var DatabaseStorage; storageEdgeData: SourcetrailStorageEdgeData): cint {.
+proc addEdge*(self: var SourcetrailDatabaseStorage;
+             storageEdgeData: SourcetrailStorageEdgeData): cint {.
     importcpp: "#.addEdge(@)", header: cxheader.}
-proc addLocalSymbol*(self: var DatabaseStorage;
+proc addLocalSymbol*(self: var SourcetrailDatabaseStorage;
                     storageLocalSymbolData: SourcetrailStorageLocalSymbolData): cint {.
     importcpp: "#.addLocalSymbol(@)", header: cxheader.}
-proc addSourceLocation*(self: var DatabaseStorage; storageSourceLocationData: SourcetrailStorageSourceLocationData): cint {.
+proc addSourceLocation*(self: var SourcetrailDatabaseStorage;
+    storageSourceLocationData: SourcetrailStorageSourceLocationData): cint {.
     importcpp: "#.addSourceLocation(@)", header: cxheader.}
-proc addOccurrence*(self: var DatabaseStorage;
+proc addOccurrence*(self: var SourcetrailDatabaseStorage;
                    storageOccurrence: SourcetrailStorageOccurrence): void {.
     importcpp: "#.addOccurrence(@)", header: cxheader.}
-proc addError*(self: var DatabaseStorage;
+proc addError*(self: var SourcetrailDatabaseStorage;
               storageErrorData: SourcetrailStorageErrorData): cint {.
     importcpp: "#.addError(@)", header: cxheader.}
-proc setNodeType*(self: var DatabaseStorage; nodeId: cint; nodeKind: cint): void {.
+proc setNodeType*(self: var SourcetrailDatabaseStorage; nodeId: cint; nodeKind: cint): void {.
     importcpp: "#.setNodeType(@)", header: cxheader.}
-proc setFileLanguage*(self: var DatabaseStorage; fileId: cint;
+proc setFileLanguage*(self: var SourcetrailDatabaseStorage; fileId: cint;
                      languageIdentifier: StdString): void {.
     importcpp: "#.setFileLanguage(@)", header: cxheader.}

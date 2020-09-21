@@ -7,16 +7,15 @@ import
 import
   cxstd / stl_vector
 
-import
-  cxstd / stringfwd
-
 type
-  NameElement* {.importcpp: r"sourcetrail::NameElement", header: cxheader.} = object
+  SourcetrailNameElement* {.importcpp: r"sourcetrail::NameElement",
+                           header: cxheader.} = object
     prefix*: StdString
     name*: StdString
     postfix*: StdString
 
 type
-  NameHierarchy* {.importcpp: r"sourcetrail::NameHierarchy", header: cxheader.} = object
+  SourcetrailNameHierarchy* {.importcpp: r"sourcetrail::NameHierarchy",
+                             header: cxheader.} = object
     nameDelimiter*: StdString
     nameElements*: StdVector[SourcetrailNameElement]

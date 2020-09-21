@@ -2,345 +2,358 @@
 const
   cxheader = "/usr/include/c++/10.2.0/type_traits"
 type
-  IntegralConstant*[Tp] {.importcpp: r"std::integral_constant<'0>",
-                         header: cxheader.} = object
-  
-type
-  Conditional*[] {.importcpp: r"std::conditional<'0, '1>", header: cxheader.} = object
-  
-type
-  IsReference*[] {.importcpp: r"std::is_reference<'0>", header: cxheader.} = object
-  
-type
-  IsFunction*[] {.importcpp: r"std::is_function<'0>", header: cxheader.} = object
-  
-type
-  IsVoid*[] {.importcpp: r"std::is_void<'0>", header: cxheader.} = object
-  
-type
-  RemoveCv*[] {.importcpp: r"std::remove_cv<'0>", header: cxheader.} = object
-  
-type
-  IsConst*[] {.importcpp: r"std::is_const<'0>", header: cxheader.} = object
-  
-type
-  IsVoid*[Tp] {.importcpp: r"std::is_void<'0>", header: cxheader.} = object
-  
-type
-  IsIntegral*[Tp] {.importcpp: r"std::is_integral<'0>", header: cxheader.} = object
-  
-type
-  IsFloatingPoint*[Tp] {.importcpp: r"std::is_floating_point<'0>", header: cxheader.} = object
-  
-type
-  IsArray*[] {.importcpp: r"std::is_array<'0>", header: cxheader.} = object
-  
-type
-  IsPointer*[Tp] {.importcpp: r"std::is_pointer<'0>", header: cxheader.} = object
-  
-type
-  IsLvalueReference*[] {.importcpp: r"std::is_lvalue_reference<'0>",
-                        header: cxheader.} = object
-  
-type
-  IsRvalueReference*[] {.importcpp: r"std::is_rvalue_reference<'0>",
-                        header: cxheader.} = object
-  
-type
-  IsMemberObjectPointer*[Tp] {.importcpp: r"std::is_member_object_pointer<'0>",
-                              header: cxheader.} = object
-  
-type
-  IsMemberFunctionPointer*[Tp] {.importcpp: r"std::is_member_function_pointer<'0>",
-                                header: cxheader.} = object
-  
-type
-  IsEnum*[Tp] {.importcpp: r"std::is_enum<'0>", header: cxheader.} = object
-  
-type
-  IsUnion*[Tp] {.importcpp: r"std::is_union<'0>", header: cxheader.} = object
-  
-type
-  IsClass*[Tp] {.importcpp: r"std::is_class<'0>", header: cxheader.} = object
-  
-type
-  IsFunction*[Tp] {.importcpp: r"std::is_function<'0>", header: cxheader.} = object
-  
-type
-  IsNullPointer*[Tp] {.importcpp: r"std::is_null_pointer<'0>", header: cxheader.} = object
-  
-type
-  IsReference*[Tp] {.importcpp: r"std::is_reference<'0>", header: cxheader.} = object
-  
-type
-  IsArithmetic*[Tp] {.importcpp: r"std::is_arithmetic<'0>", header: cxheader.} = object
-  
-type
-  IsFundamental*[Tp] {.importcpp: r"std::is_fundamental<'0>", header: cxheader.} = object
-  
-type
-  IsObject*[Tp] {.importcpp: r"std::is_object<'0>", header: cxheader.} = object
-  
-type
-  IsMemberPointer*[] {.importcpp: r"std::is_member_pointer<'0>", header: cxheader.} = object
-  
-type
-  IsScalar*[Tp] {.importcpp: r"std::is_scalar<'0>", header: cxheader.} = object
-  
-type
-  IsCompound*[Tp] {.importcpp: r"std::is_compound<'0>", header: cxheader.} = object
-  
-type
-  IsMemberPointer*[Tp] {.importcpp: r"std::is_member_pointer<'0>", header: cxheader.} = object
-  
-type
-  IsSame*[] {.importcpp: r"std::is_same<'0, '1>", header: cxheader.} = object
-  
-type
-  IsConst*[] {.importcpp: r"std::is_const<'0>", header: cxheader.} = object
-  
-type
-  IsVolatile*[] {.importcpp: r"std::is_volatile<'0>", header: cxheader.} = object
-  
-type
-  IsTrivial*[Tp] {.importcpp: r"std::is_trivial<'0>", header: cxheader.} = object
-  
-type
-  IsTriviallyCopyable*[Tp] {.importcpp: r"std::is_trivially_copyable<'0>",
+  StdIntegralConstant*[Tp] {.importcpp: r"std::integral_constant<'0>",
                             header: cxheader.} = object
   
 type
-  IsStandardLayout*[Tp] {.importcpp: r"std::is_standard_layout<'0>",
-                         header: cxheader.} = object
+  StdTrueType* {.importcpp: r"std::true_type", header: cxheader.} = object
   
 type
-  IsPod*[Tp] {.importcpp: r"std::is_pod<'0>", header: cxheader.} = object
+  StdFalseType* {.importcpp: r"std::false_type", header: cxheader.} = object
   
 type
-  IsLiteralType*[Tp] {.importcpp: r"std::is_literal_type<'0>", header: cxheader.} = object
+  StdConditional*[] {.importcpp: r"std::conditional<'0, '1>", header: cxheader.} = object
   
 type
-  IsEmpty*[Tp] {.importcpp: r"std::is_empty<'0>", header: cxheader.} = object
+  StdIsReference*[] {.importcpp: r"std::is_reference<'0>", header: cxheader.} = object
   
 type
-  IsPolymorphic*[Tp] {.importcpp: r"std::is_polymorphic<'0>", header: cxheader.} = object
+  StdIsFunction*[] {.importcpp: r"std::is_function<'0>", header: cxheader.} = object
   
 type
-  IsAbstract*[Tp] {.importcpp: r"std::is_abstract<'0>", header: cxheader.} = object
+  StdIsVoid*[] {.importcpp: r"std::is_void<'0>", header: cxheader.} = object
   
 type
-  IsSigned*[Tp] {.importcpp: r"std::is_signed<'0>", header: cxheader.} = object
+  StdRemoveCv*[] {.importcpp: r"std::remove_cv<'0>", header: cxheader.} = object
   
 type
-  IsUnsigned*[Tp] {.importcpp: r"std::is_unsigned<'0>", header: cxheader.} = object
+  StdIsConst*[] {.importcpp: r"std::is_const<'0>", header: cxheader.} = object
   
 type
-  Extent*[] {.importcpp: r"std::extent<'0>", header: cxheader.} = object
+  StdIsVoid*[Tp] {.importcpp: r"std::is_void<'0>", header: cxheader.} = object
   
 type
-  RemoveAllExtents*[] {.importcpp: r"std::remove_all_extents<'0>", header: cxheader.} = object
+  StdIsIntegral*[Tp] {.importcpp: r"std::is_integral<'0>", header: cxheader.} = object
   
 type
-  IsDestructible*[Tp] {.importcpp: r"std::is_destructible<'0>", header: cxheader.} = object
+  StdIsFloatingPoint*[Tp] {.importcpp: r"std::is_floating_point<'0>",
+                           header: cxheader.} = object
   
 type
-  IsNothrowDestructible*[Tp] {.importcpp: r"std::is_nothrow_destructible<'0>",
-                              header: cxheader.} = object
+  StdIsArray*[] {.importcpp: r"std::is_array<'0>", header: cxheader.} = object
   
 type
-  IsConstructible*[Tp; Args] {.importcpp: r"std::is_constructible<'0, '1>",
-                             header: cxheader.} = object
+  StdIsPointer*[Tp] {.importcpp: r"std::is_pointer<'0>", header: cxheader.} = object
   
 type
-  IsDefaultConstructible*[Tp] {.importcpp: r"std::is_default_constructible<'0>",
-                               header: cxheader.} = object
+  StdIsLvalueReference*[] {.importcpp: r"std::is_lvalue_reference<'0>",
+                           header: cxheader.} = object
   
 type
-  IsCopyConstructible*[Tp] {.importcpp: r"std::is_copy_constructible<'0>",
-                            header: cxheader.} = object
+  StdIsRvalueReference*[] {.importcpp: r"std::is_rvalue_reference<'0>",
+                           header: cxheader.} = object
   
 type
-  IsMoveConstructible*[Tp] {.importcpp: r"std::is_move_constructible<'0>",
-                            header: cxheader.} = object
-  
-type
-  IsNothrowConstructible*[Tp; Args] {.importcpp: r"std::is_nothrow_constructible<'0, '1>",
-                                    header: cxheader.} = object
-  
-type
-  IsNothrowDefaultConstructible*[Tp] {.importcpp: r"std::is_nothrow_default_constructible<'0>",
-                                      header: cxheader.} = object
-  
-type
-  IsNothrowCopyConstructible*[Tp] {.importcpp: r"std::is_nothrow_copy_constructible<'0>",
-                                   header: cxheader.} = object
-  
-type
-  IsNothrowMoveConstructible*[Tp] {.importcpp: r"std::is_nothrow_move_constructible<'0>",
-                                   header: cxheader.} = object
-  
-type
-  IsAssignable*[Tp; Up] {.importcpp: r"std::is_assignable<'0, '1>", header: cxheader.} = object
-  
-type
-  IsCopyAssignable*[Tp] {.importcpp: r"std::is_copy_assignable<'0>",
-                         header: cxheader.} = object
-  
-type
-  IsMoveAssignable*[Tp] {.importcpp: r"std::is_move_assignable<'0>",
-                         header: cxheader.} = object
-  
-type
-  IsNothrowAssignable*[Tp; Up] {.importcpp: r"std::is_nothrow_assignable<'0, '1>",
-                               header: cxheader.} = object
-  
-type
-  IsNothrowCopyAssignable*[Tp] {.importcpp: r"std::is_nothrow_copy_assignable<'0>",
-                                header: cxheader.} = object
-  
-type
-  IsNothrowMoveAssignable*[Tp] {.importcpp: r"std::is_nothrow_move_assignable<'0>",
-                                header: cxheader.} = object
-  
-type
-  IsTriviallyConstructible*[Tp; Args] {.importcpp: r"std::is_trivially_constructible<'0, '1>",
-                                      header: cxheader.} = object
-  
-type
-  IsTriviallyDefaultConstructible*[Tp] {.importcpp: r"std::is_trivially_default_constructible<'0>",
-                                        header: cxheader.} = object
-  
-type
-  IsTriviallyCopyConstructible*[Tp] {.importcpp: r"std::is_trivially_copy_constructible<'0>",
-                                     header: cxheader.} = object
-  
-type
-  IsTriviallyMoveConstructible*[Tp] {.importcpp: r"std::is_trivially_move_constructible<'0>",
-                                     header: cxheader.} = object
-  
-type
-  IsTriviallyAssignable*[Tp; Up] {.importcpp: r"std::is_trivially_assignable<'0, '1>",
+  StdIsMemberObjectPointer*[Tp] {.importcpp: r"std::is_member_object_pointer<'0>",
                                  header: cxheader.} = object
   
 type
-  IsTriviallyCopyAssignable*[Tp] {.importcpp: r"std::is_trivially_copy_assignable<'0>",
-                                  header: cxheader.} = object
+  StdIsMemberFunctionPointer*[Tp] {.importcpp: r"std::is_member_function_pointer<'0>",
+                                   header: cxheader.} = object
   
 type
-  IsTriviallyMoveAssignable*[Tp] {.importcpp: r"std::is_trivially_move_assignable<'0>",
-                                  header: cxheader.} = object
+  StdIsEnum*[Tp] {.importcpp: r"std::is_enum<'0>", header: cxheader.} = object
   
 type
-  IsTriviallyDestructible*[Tp] {.importcpp: r"std::is_trivially_destructible<'0>",
-                                header: cxheader.} = object
+  StdIsUnion*[Tp] {.importcpp: r"std::is_union<'0>", header: cxheader.} = object
   
 type
-  HasVirtualDestructor*[Tp] {.importcpp: r"std::has_virtual_destructor<'0>",
-                             header: cxheader.} = object
+  StdIsClass*[Tp] {.importcpp: r"std::is_class<'0>", header: cxheader.} = object
   
 type
-  AlignmentOf*[Tp] {.importcpp: r"std::alignment_of<'0>", header: cxheader.} = object
+  StdIsFunction*[Tp] {.importcpp: r"std::is_function<'0>", header: cxheader.} = object
   
 type
-  Rank*[] {.importcpp: r"std::rank<'0>", header: cxheader.} = object
+  StdIsNullPointer*[Tp] {.importcpp: r"std::is_null_pointer<'0>", header: cxheader.} = object
   
 type
-  Extent*[] {.importcpp: r"std::extent<'0>", header: cxheader.} = object
+  StdIsReference*[Tp] {.importcpp: r"std::is_reference<'0>", header: cxheader.} = object
   
 type
-  IsSame*[Tp; Up] {.importcpp: r"std::is_same<'0, '1>", header: cxheader.} = object
+  StdIsArithmetic*[Tp] {.importcpp: r"std::is_arithmetic<'0>", header: cxheader.} = object
   
 type
-  IsBaseOf*[Base; Derived] {.importcpp: r"std::is_base_of<'0, '1>", header: cxheader.} = object
+  StdIsFundamental*[Tp] {.importcpp: r"std::is_fundamental<'0>", header: cxheader.} = object
   
 type
-  IsConvertible*[From; To] {.importcpp: r"std::is_convertible<'0, '1>",
-                           header: cxheader.} = object
+  StdIsObject*[Tp] {.importcpp: r"std::is_object<'0>", header: cxheader.} = object
   
 type
-  RemoveConst*[Tp] {.importcpp: r"std::remove_const<'0>", header: cxheader.} = object
-  
-type
-  RemoveVolatile*[Tp] {.importcpp: r"std::remove_volatile<'0>", header: cxheader.} = object
-  
-type
-  RemoveCv*[Tp] {.importcpp: r"std::remove_cv<'0>", header: cxheader.} = object
-  
-type
-  AddConst*[Tp] {.importcpp: r"std::add_const<'0>", header: cxheader.} = object
-  
-type
-  AddVolatile*[Tp] {.importcpp: r"std::add_volatile<'0>", header: cxheader.} = object
-  
-type
-  AddCv*[Tp] {.importcpp: r"std::add_cv<'0>", header: cxheader.} = object
-  
-type
-  RemoveReference*[Tp] {.importcpp: r"std::remove_reference<'0>", header: cxheader.} = object
-  
-type
-  AddLvalueReference*[Tp] {.importcpp: r"std::add_lvalue_reference<'0>",
-                           header: cxheader.} = object
-  
-type
-  AddRvalueReference*[Tp] {.importcpp: r"std::add_rvalue_reference<'0>",
-                           header: cxheader.} = object
-  
-type
-  MakeUnsigned*[Tp] {.importcpp: r"std::make_unsigned<'0>", header: cxheader.} = object
-  
-type
-  MakeSigned*[Tp] {.importcpp: r"std::make_signed<'0>", header: cxheader.} = object
-  
-type
-  RemoveExtent*[Tp] {.importcpp: r"std::remove_extent<'0>", header: cxheader.} = object
-  
-type
-  RemoveAllExtents*[Tp] {.importcpp: r"std::remove_all_extents<'0>",
+  StdIsMemberPointer*[] {.importcpp: r"std::is_member_pointer<'0>",
                          header: cxheader.} = object
   
 type
-  RemovePointer*[Tp] {.importcpp: r"std::remove_pointer<'0>", header: cxheader.} = object
+  StdIsScalar*[Tp] {.importcpp: r"std::is_scalar<'0>", header: cxheader.} = object
   
 type
-  AddPointer*[Tp] {.importcpp: r"std::add_pointer<'0>", header: cxheader.} = object
+  StdIsCompound*[Tp] {.importcpp: r"std::is_compound<'0>", header: cxheader.} = object
   
 type
-  AlignedStorage* {.importcpp: r"std::aligned_storage", header: cxheader.} = object
+  StdIsMemberPointer*[Tp] {.importcpp: r"std::is_member_pointer<'0>",
+                           header: cxheader.} = object
   
 type
-  AlignedUnion*[Types] {.importcpp: r"std::aligned_union<'0>", header: cxheader.} = object
+  StdIsSame*[] {.importcpp: r"std::is_same<'0, '1>", header: cxheader.} = object
   
 type
-  StdAlignedUnionType* {.importcpp: r"std::aligned_union<'0>::type",
-                        header: cxheader.} = object
+  StdIsConst*[] {.importcpp: r"std::is_const<'0>", header: cxheader.} = object
   
 type
-  Decay*[Tp] {.importcpp: r"std::decay<'0>", header: cxheader.} = object
+  StdIsVolatile*[] {.importcpp: r"std::is_volatile<'0>", header: cxheader.} = object
   
 type
-  StdDecayType* {.importcpp: r"std::decay<'0>::type", header: cxheader.} = object
+  StdIsTrivial*[Tp] {.importcpp: r"std::is_trivial<'0>", header: cxheader.} = object
   
 type
-  ReferenceWrapper*[Tp] {.importcpp: r"std::reference_wrapper<'0>",
-                         header: cxheader.} = object
+  StdIsTriviallyCopyable*[Tp] {.importcpp: r"std::is_trivially_copyable<'0>",
+                               header: cxheader.} = object
   
 type
-  EnableIf*[Tp] {.importcpp: r"std::enable_if<'0>", header: cxheader.} = object
+  StdIsStandardLayout*[Tp] {.importcpp: r"std::is_standard_layout<'0>",
+                            header: cxheader.} = object
   
 type
-  Conditional*[Iftrue; Iffalse] {.importcpp: r"std::conditional<'0, '1>",
+  StdIsPod*[Tp] {.importcpp: r"std::is_pod<'0>", header: cxheader.} = object
+  
+type
+  StdIsLiteralType*[Tp] {.importcpp: r"std::is_literal_type<'0>", header: cxheader.} = object
+  
+type
+  StdIsEmpty*[Tp] {.importcpp: r"std::is_empty<'0>", header: cxheader.} = object
+  
+type
+  StdIsPolymorphic*[Tp] {.importcpp: r"std::is_polymorphic<'0>", header: cxheader.} = object
+  
+type
+  StdIsAbstract*[Tp] {.importcpp: r"std::is_abstract<'0>", header: cxheader.} = object
+  
+type
+  StdIsSigned*[Tp] {.importcpp: r"std::is_signed<'0>", header: cxheader.} = object
+  
+type
+  StdIsUnsigned*[Tp] {.importcpp: r"std::is_unsigned<'0>", header: cxheader.} = object
+  
+type
+  StdExtent*[] {.importcpp: r"std::extent<'0>", header: cxheader.} = object
+  
+type
+  StdRemoveAllExtents*[] {.importcpp: r"std::remove_all_extents<'0>",
+                          header: cxheader.} = object
+  
+type
+  StdIsDestructible*[Tp] {.importcpp: r"std::is_destructible<'0>", header: cxheader.} = object
+  
+type
+  StdIsNothrowDestructible*[Tp] {.importcpp: r"std::is_nothrow_destructible<'0>",
+                                 header: cxheader.} = object
+  
+type
+  StdIsConstructible*[Tp; Args] {.importcpp: r"std::is_constructible<'0, '1>",
                                 header: cxheader.} = object
   
 type
-  CommonType*[Tp] {.importcpp: r"std::common_type<'0>", header: cxheader.} = object
+  StdIsDefaultConstructible*[Tp] {.importcpp: r"std::is_default_constructible<'0>",
+                                  header: cxheader.} = object
   
 type
-  UnderlyingType*[Tp] {.importcpp: r"std::underlying_type<'0>", header: cxheader.} = object
+  StdIsCopyConstructible*[Tp] {.importcpp: r"std::is_copy_constructible<'0>",
+                               header: cxheader.} = object
   
 type
-  ResultOf*[Signature] {.importcpp: r"std::result_of<'0>", header: cxheader.} = object
+  StdIsMoveConstructible*[Tp] {.importcpp: r"std::is_move_constructible<'0>",
+                               header: cxheader.} = object
   
 type
-  Tuple*[Elements] {.importcpp: r"std::tuple<'0>", header: cxheader.} = object
+  StdIsNothrowConstructible*[Tp; Args] {.importcpp: r"std::is_nothrow_constructible<'0, '1>",
+                                       header: cxheader.} = object
+  
+type
+  StdIsNothrowDefaultConstructible*[Tp] {.
+      importcpp: r"std::is_nothrow_default_constructible<'0>", header: cxheader.} = object
+  
+type
+  StdIsNothrowCopyConstructible*[Tp] {.importcpp: r"std::is_nothrow_copy_constructible<'0>",
+                                      header: cxheader.} = object
+  
+type
+  StdIsNothrowMoveConstructible*[Tp] {.importcpp: r"std::is_nothrow_move_constructible<'0>",
+                                      header: cxheader.} = object
+  
+type
+  StdIsAssignable*[Tp; Up] {.importcpp: r"std::is_assignable<'0, '1>",
+                           header: cxheader.} = object
+  
+type
+  StdIsCopyAssignable*[Tp] {.importcpp: r"std::is_copy_assignable<'0>",
+                            header: cxheader.} = object
+  
+type
+  StdIsMoveAssignable*[Tp] {.importcpp: r"std::is_move_assignable<'0>",
+                            header: cxheader.} = object
+  
+type
+  StdIsNothrowAssignable*[Tp; Up] {.importcpp: r"std::is_nothrow_assignable<'0, '1>",
+                                  header: cxheader.} = object
+  
+type
+  StdIsNothrowCopyAssignable*[Tp] {.importcpp: r"std::is_nothrow_copy_assignable<'0>",
+                                   header: cxheader.} = object
+  
+type
+  StdIsNothrowMoveAssignable*[Tp] {.importcpp: r"std::is_nothrow_move_assignable<'0>",
+                                   header: cxheader.} = object
+  
+type
+  StdIsTriviallyConstructible*[Tp; Args] {.
+      importcpp: r"std::is_trivially_constructible<'0, '1>", header: cxheader.} = object
+  
+type
+  StdIsTriviallyDefaultConstructible*[Tp] {.
+      importcpp: r"std::is_trivially_default_constructible<'0>", header: cxheader.} = object
+  
+type
+  StdIsTriviallyCopyConstructible*[Tp] {.importcpp: r"std::is_trivially_copy_constructible<'0>",
+                                        header: cxheader.} = object
+  
+type
+  StdIsTriviallyMoveConstructible*[Tp] {.importcpp: r"std::is_trivially_move_constructible<'0>",
+                                        header: cxheader.} = object
+  
+type
+  StdIsTriviallyAssignable*[Tp; Up] {.importcpp: r"std::is_trivially_assignable<'0, '1>",
+                                    header: cxheader.} = object
+  
+type
+  StdIsTriviallyCopyAssignable*[Tp] {.importcpp: r"std::is_trivially_copy_assignable<'0>",
+                                     header: cxheader.} = object
+  
+type
+  StdIsTriviallyMoveAssignable*[Tp] {.importcpp: r"std::is_trivially_move_assignable<'0>",
+                                     header: cxheader.} = object
+  
+type
+  StdIsTriviallyDestructible*[Tp] {.importcpp: r"std::is_trivially_destructible<'0>",
+                                   header: cxheader.} = object
+  
+type
+  StdHasVirtualDestructor*[Tp] {.importcpp: r"std::has_virtual_destructor<'0>",
+                                header: cxheader.} = object
+  
+type
+  StdAlignmentOf*[Tp] {.importcpp: r"std::alignment_of<'0>", header: cxheader.} = object
+  
+type
+  StdRank*[] {.importcpp: r"std::rank<'0>", header: cxheader.} = object
+  
+type
+  StdExtent*[] {.importcpp: r"std::extent<'0>", header: cxheader.} = object
+  
+type
+  StdIsSame*[Tp; Up] {.importcpp: r"std::is_same<'0, '1>", header: cxheader.} = object
+  
+type
+  StdIsBaseOf*[Base; Derived] {.importcpp: r"std::is_base_of<'0, '1>",
+                              header: cxheader.} = object
+  
+type
+  StdIsConvertible*[From; To] {.importcpp: r"std::is_convertible<'0, '1>",
+                              header: cxheader.} = object
+  
+type
+  StdRemoveConst*[Tp] {.importcpp: r"std::remove_const<'0>", header: cxheader.} = object
+  
+type
+  StdRemoveVolatile*[Tp] {.importcpp: r"std::remove_volatile<'0>", header: cxheader.} = object
+  
+type
+  StdRemoveCv*[Tp] {.importcpp: r"std::remove_cv<'0>", header: cxheader.} = object
+  
+type
+  StdAddConst*[Tp] {.importcpp: r"std::add_const<'0>", header: cxheader.} = object
+  
+type
+  StdAddVolatile*[Tp] {.importcpp: r"std::add_volatile<'0>", header: cxheader.} = object
+  
+type
+  StdAddCv*[Tp] {.importcpp: r"std::add_cv<'0>", header: cxheader.} = object
+  
+type
+  StdRemoveReference*[Tp] {.importcpp: r"std::remove_reference<'0>",
+                           header: cxheader.} = object
+  
+type
+  StdAddLvalueReference*[Tp] {.importcpp: r"std::add_lvalue_reference<'0>",
+                              header: cxheader.} = object
+  
+type
+  StdAddRvalueReference*[Tp] {.importcpp: r"std::add_rvalue_reference<'0>",
+                              header: cxheader.} = object
+  
+type
+  StdMakeUnsigned*[Tp] {.importcpp: r"std::make_unsigned<'0>", header: cxheader.} = object
+  
+type
+  StdMakeSigned*[Tp] {.importcpp: r"std::make_signed<'0>", header: cxheader.} = object
+  
+type
+  StdRemoveExtent*[Tp] {.importcpp: r"std::remove_extent<'0>", header: cxheader.} = object
+  
+type
+  StdRemoveAllExtents*[Tp] {.importcpp: r"std::remove_all_extents<'0>",
+                            header: cxheader.} = object
+  
+type
+  StdRemovePointer*[Tp] {.importcpp: r"std::remove_pointer<'0>", header: cxheader.} = object
+  
+type
+  StdAddPointer*[Tp] {.importcpp: r"std::add_pointer<'0>", header: cxheader.} = object
+  
+type
+  StdAlignedStorage* {.importcpp: r"std::aligned_storage", header: cxheader.} = object
+  
+type
+  StdAlignedUnion*[Types] {.importcpp: r"std::aligned_union<'0>", header: cxheader.} = object
+  
+type
+  StdAlignedUnionType*[Types] {.importcpp: r"std::aligned_union<'0>::type",
+                               header: cxheader.} = object
+  
+type
+  StdDecay*[Tp] {.importcpp: r"std::decay<'0>", header: cxheader.} = object
+  
+type
+  StdDecayType*[Tp] {.importcpp: r"std::decay<'0>::type", header: cxheader.} = object
+  
+type
+  StdReferenceWrapper*[Tp] {.importcpp: r"std::reference_wrapper<'0>",
+                            header: cxheader.} = object
+  
+type
+  StdEnableIf*[Tp] {.importcpp: r"std::enable_if<'0>", header: cxheader.} = object
+  
+type
+  StdConditional*[Iftrue; Iffalse] {.importcpp: r"std::conditional<'0, '1>",
+                                   header: cxheader.} = object
+  
+type
+  StdCommonType*[Tp] {.importcpp: r"std::common_type<'0>", header: cxheader.} = object
+  
+type
+  StdUnderlyingType*[Tp] {.importcpp: r"std::underlying_type<'0>", header: cxheader.} = object
+  
+type
+  StdResultOf*[Signature] {.importcpp: r"std::result_of<'0>", header: cxheader.} = object
+  
+type
+  StdTuple*[Elements] {.importcpp: r"std::tuple<'0>", header: cxheader.} = object
   

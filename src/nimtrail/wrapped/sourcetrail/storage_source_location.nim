@@ -2,8 +2,8 @@
 const
   cxheader = "/mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h"
 type
-  StorageSourceLocationData* {.importcpp: r"sourcetrail::StorageSourceLocationData",
-                              header: cxheader.} = object
+  SourcetrailStorageSourceLocationData* {.
+      importcpp: r"sourcetrail::StorageSourceLocationData", header: cxheader.} = object
     fileNodeId*: cint
     startLineNumber*: cint
     startColumnNumber*: cint
@@ -12,6 +12,6 @@ type
     locationKind*: cint
 
 type
-  StorageSourceLocation* {.importcpp: r"sourcetrail::StorageSourceLocation",
-                          header: cxheader.} = object
+  SourcetrailStorageSourceLocation* {.importcpp: r"sourcetrail::StorageSourceLocation",
+                                     header: cxheader.} = object
     id*: cint
