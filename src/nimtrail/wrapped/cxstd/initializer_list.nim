@@ -6,29 +6,17 @@ type
                           header: cxheader.} = object
   
 type
-  StdInitializerListValueType*[E] {.importcpp: r"std::initializer_list<'0>::value_type",
-                                   header: cxheader.} = object
-  
+  StdInitializerListValueType[E] = UNEXPOSED
 type
-  StdInitializerListReference*[E] {.importcpp: r"std::initializer_list<'0>::reference",
-                                   header: cxheader.} = object
-  
+  StdInitializerListReference[E] = UNEXPOSED
 type
-  StdInitializerListConstReference*[E] {.importcpp: r"std::initializer_list<'0>::const_reference",
-                                        header: cxheader.} = object
-  
+  StdInitializerListConstReference[E] = UNEXPOSED
 type
-  StdInitializerListSizeType*[E] {.importcpp: r"std::initializer_list<'0>::size_type",
-                                  header: cxheader.} = object
-  
+  StdInitializerListSizeType[E] = culong
 type
-  StdInitializerListIterator*[E] {.importcpp: r"std::initializer_list<'0>::iterator",
-                                  header: cxheader.} = object
-  
+  StdInitializerListIterator[E] = ptr[UNEXPOSED]
 type
-  StdInitializerListConstIterator*[E] {.importcpp: r"std::initializer_list<'0>::const_iterator",
-                                       header: cxheader.} = object
-  
+  StdInitializerListConstIterator[E] = ptr[UNEXPOSED]
 proc size*[E](self: StdInitializerList[E]): StdInitializerListSizeType[E] {.
     importcpp: "#.size(@)", header: cxheader.}
 proc cxbegin*[E](self: StdInitializerList[E]): StdInitializerListConstIterator[E] {.

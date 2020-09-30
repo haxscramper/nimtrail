@@ -17,17 +17,11 @@ type
   StdUniquePtr*[Tp] {.importcpp: r"std::unique_ptr<'0>", header: cxheader.} = object
   
 type
-  StdUniquePtrPointer*[Tp] {.importcpp: r"std::unique_ptr<'0>::pointer",
-                            header: cxheader.} = object
-  
+  StdUniquePtrPointer[Tp] = UNEXPOSED
 type
-  StdUniquePtrElementType*[Tp] {.importcpp: r"std::unique_ptr<'0>::element_type",
-                                header: cxheader.} = object
-  
+  StdUniquePtrElementType[Tp] = UNEXPOSED
 type
-  StdUniquePtrDeleterType*[Tp] {.importcpp: r"std::unique_ptr<'0>::deleter_type",
-                                header: cxheader.} = object
-  
+  StdUniquePtrDeleterType[Tp] = UNEXPOSED
 proc setFrom*[Tp](self: var StdUniquePtr[Tp]; a1: StdNullptrT[Tp]): void {.
     importcpp: "# = #", header: cxheader.}
 proc `->`*[Tp](): StdUniquePtrPointer[Tp] {.importcpp: "#.operator->()",

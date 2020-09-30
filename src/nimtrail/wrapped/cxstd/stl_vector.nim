@@ -8,56 +8,31 @@ type
   StdVector*[Tp] {.importcpp: r"std::vector<'0>", header: cxheader.} = object
   
 type
-  StdVectorValueType*[Tp] {.importcpp: r"std::vector<'0>::value_type",
-                           header: cxheader.} = object
-  
+  StdVectorValueType[Tp] = UNEXPOSED
 type
-  StdVectorPointer*[Tp] {.importcpp: r"std::vector<'0>::pointer", header: cxheader.} = object
-  
+  StdVectorPointer[Tp] = UNEXPOSED
 type
-  StdVectorConstPointer*[Tp] {.importcpp: r"std::vector<'0>::const_pointer",
-                              header: cxheader.} = object
-  
+  StdVectorConstPointer[Tp] = UNEXPOSED
 type
-  StdVectorReference*[Tp] {.importcpp: r"std::vector<'0>::reference",
-                           header: cxheader.} = object
-  
+  StdVectorReference[Tp] = UNEXPOSED
 type
-  StdVectorConstReference*[Tp] {.importcpp: r"std::vector<'0>::const_reference",
-                                header: cxheader.} = object
-  
+  StdVectorConstReference[Tp] = UNEXPOSED
 type
-  StdVectorIterator*[Tp] {.importcpp: r"std::vector<'0>::iterator",
-                          header: cxheader.} = object
-  
+  StdVectorIterator[Tp] = UNEXPOSED
 type
-  StdVectorConstIterator*[Tp] {.importcpp: r"std::vector<'0>::const_iterator",
-                               header: cxheader.} = object
-  
+  StdVectorConstIterator[Tp] = UNEXPOSED
 type
-  StdVectorConstReverseIterator*[Tp] {.importcpp: r"std::vector<'0>::const_reverse_iterator",
-                                      header: cxheader.} = object
-  
+  StdVectorConstReverseIterator[Tp] = UNEXPOSED
 type
-  StdVectorReverseIterator*[Tp] {.importcpp: r"std::vector<'0>::reverse_iterator",
-                                 header: cxheader.} = object
-  
+  StdVectorReverseIterator[Tp] = UNEXPOSED
 type
-  StdVectorSizeType*[Tp] {.importcpp: r"std::vector<'0>::size_type",
-                          header: cxheader.} = object
-  
+  StdVectorSizeType[Tp] = culong
 type
-  StdVectorDifferenceType*[Tp] {.importcpp: r"std::vector<'0>::difference_type",
-                                header: cxheader.} = object
-  
+  StdVectorDifferenceType[Tp] = clong
 type
-  StdVectorAllocatorType*[Tp] {.importcpp: r"std::vector<'0>::allocator_type",
-                               header: cxheader.} = object
-  
+  StdVectorAllocatorType[Tp] = UNEXPOSED
 type
-  StdVectorGetAllocator*[Tp] {.importcpp: r"std::vector<'0>::get_allocator",
-                              header: cxheader.} = object
-  
+  StdVectorGetAllocator[Tp] = !!!
 proc assign*[Tp](self: var StdVector[Tp]; n: StdVectorSizeType[Tp];
                 val: StdVectorValueType[Tp]): void {.importcpp: "#.assign(@)",
     header: cxheader.}

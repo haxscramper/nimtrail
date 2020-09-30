@@ -6,11 +6,9 @@ type
                             header: cxheader.} = object
   
 type
-  StdTrueType* {.importcpp: r"std::true_type", header: cxheader.} = object
-  
+  StdTrueType = StdIntegralConstant[bool]
 type
-  StdFalseType* {.importcpp: r"std::false_type", header: cxheader.} = object
-  
+  StdFalseType = StdIntegralConstant[bool]
 type
   StdConditional*[] {.importcpp: r"std::conditional<'0, '1>", header: cxheader.} = object
   
@@ -325,15 +323,12 @@ type
   StdAlignedUnion*[Types] {.importcpp: r"std::aligned_union<'0>", header: cxheader.} = object
   
 type
-  StdAlignedUnionType*[Types] {.importcpp: r"std::aligned_union<'0>::type",
-                               header: cxheader.} = object
-  
+  StdAlignedUnionType[Types] = UNEXPOSED
 type
   StdDecay*[Tp] {.importcpp: r"std::decay<'0>", header: cxheader.} = object
   
 type
-  StdDecayType*[Tp] {.importcpp: r"std::decay<'0>::type", header: cxheader.} = object
-  
+  StdDecayType[Tp] = UNEXPOSED
 type
   StdReferenceWrapper*[Tp] {.importcpp: r"std::reference_wrapper<'0>",
                             header: cxheader.} = object
