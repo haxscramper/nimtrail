@@ -64,12 +64,30 @@ parseConf.globalFlags = getBuiltinHeaders().toIncludes() & @[
 # parsed independently and require manual tuning. Right now I will
 # just hardcode paths & versions, but this one should be detectable
 # automatically.
-parseConf.fileFlags["/usr/include/c++/10.2.0/bits/stl_vector.h"] = @[
-    "--include-with-prefix=/usr/include/c++/10.2.0/bits/",
-    "--include=stl_algobase.h",
-    "--include=allocator.h",
-    "--include=stl_construct.h",
-    "--include=stl_uninitialized.h",
+
+let
+  cxxstd = "/usr/include/c++/10.2.0/bits"
+  bitsPrefix = "--include-with-prefix=/usr/include/c++/10.2.0/bits/"
+
+parseConf.fileFlags[cxxstd / "stl_vector.h"] = @[
+  bitsPrefix,
+  "--include=stl_algobase.h",
+  "--include=allocator.h",
+  "--include=stl_construct.h",
+  "--include=stl_uninitialized.h",
+]
+
+let addConfig =
+  "--include=/usr/include/c++/10.2.0/x86_64-pc-linux-gnu/bits/c++config.h"
+
+parseConf.fileFlags[cxxstd / "stl_function.h"] = @[
+  addConfig,
+]
+
+parseConf.fileFlags[cxxstd / "stl_iterator.h"] = @[
+  bitsPrefix,
+  "--include=stl_iterator_base_types.h",
+  "--include=stl_iterator_base_funcs.h",
 ]
 
 for command in dbase.getAllCompileCommands():
@@ -93,6 +111,7 @@ try:
 except:
   pprintErr()
   echo "error"
+  quit 1
 
 try:
   discard runShell(&"nim c -o:wrap_user ../wrap_user.nim")
