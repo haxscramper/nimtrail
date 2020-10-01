@@ -8,7 +8,7 @@ import
   cxstd / cppconfig
 
 type
-  StdAutoPtr*[] {.importcpp: r"std::auto_ptr<'0>", header: cxheader.} = object
+  StdAutoPtr*[T0] {.importcpp: r"std::auto_ptr<'0>", header: cxheader.} = object
   
 type
   StdDefaultDelete*[Tp] {.importcpp: r"std::default_delete<'0>", header: cxheader.} = object
@@ -17,15 +17,21 @@ type
   StdUniquePtr*[Tp] {.importcpp: r"std::unique_ptr<'0>", header: cxheader.} = object
   
 type
-  StdUniquePtrPointer[Tp] = UNEXPOSED
+  StdUniquePtrPointer*[Tp] {.importcpp: r"std::unique_ptr<'0>::pointer",
+                            header: cxheader.} = object
+  
 type
-  StdUniquePtrElementType[Tp] = UNEXPOSED
+  StdUniquePtrElementType*[Tp] {.importcpp: r"std::unique_ptr<'0>::element_type",
+                                header: cxheader.} = object
+  
 type
-  StdUniquePtrDeleterType[Tp] = UNEXPOSED
+  StdUniquePtrDeleterType*[Tp] {.importcpp: r"std::unique_ptr<'0>::deleter_type",
+                                header: cxheader.} = object
+  
 proc setFrom*[Tp](self: var StdUniquePtr[Tp]; a1: StdNullptrT[Tp]): void {.
     importcpp: "# = #", header: cxheader.}
-proc `->`*[Tp](): StdUniquePtrPointer[Tp] {.importcpp: "#.operator->()",
-    header: cxheader.}
+proc `->`*[Tp](self: StdUniquePtr[Tp]): StdUniquePtrPointer[Tp] {.
+    importcpp: "#.operator->()", header: cxheader.}
 proc get*[Tp](self: StdUniquePtr[Tp]): StdUniquePtrPointer[Tp] {.
     importcpp: "#.get(@)", header: cxheader.}
 proc getDeleter*[Tp](self: var StdUniquePtr[Tp]): StdUniquePtrDeleterType {.

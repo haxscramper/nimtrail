@@ -5,13 +5,14 @@ type
   StdCharTraits*[CharT] {.importcpp: r"std::char_traits<'0>", header: cxheader.} = object
   
 type
-  StdString = StdCxx11BasicString[cchar, StdCharTraits[cchar], StdAllocator[cchar]]
+  StdCxx11BasicString*[CharT] {.importcpp: r"std::__cxx11::basic_string<'0>",
+                               header: cxheader.} = object
+  
 type
-  StdWstring = StdCxx11BasicString[uint32, StdCharTraits[uint32],
-                                 StdAllocator[uint32]]
+  StdString* = StdCxx11BasicString[cchar]
 type
-  StdU16string = StdCxx11BasicString[Uint16, StdCharTraits[Uint16],
-                                   StdAllocator[Uint16]]
+  StdWstring* = StdCxx11BasicString[uint32]
 type
-  StdU32string = StdCxx11BasicString[uint32, StdCharTraits[uint32],
-                                   StdAllocator[uint32]]
+  StdU16string* = StdCxx11BasicString[uint16]
+type
+  StdU32string* = StdCxx11BasicString[uint32]

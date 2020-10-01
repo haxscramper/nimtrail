@@ -6,26 +6,26 @@ type
                             header: cxheader.} = object
   
 type
-  StdTrueType = StdIntegralConstant[bool]
+  StdTrueType* = StdIntegralConstant[bool]
 type
-  StdFalseType = StdIntegralConstant[bool]
+  StdFalseType* = StdIntegralConstant[bool]
 type
-  StdConditional*[] {.importcpp: r"std::conditional<'0, '1>", header: cxheader.} = object
+  StdConditional*[T0; T0] {.importcpp: r"std::conditional<'0, '1>", header: cxheader.} = object
   
 type
-  StdIsReference*[] {.importcpp: r"std::is_reference<'0>", header: cxheader.} = object
+  StdIsReference*[T0] {.importcpp: r"std::is_reference<'0>", header: cxheader.} = object
   
 type
-  StdIsFunction*[] {.importcpp: r"std::is_function<'0>", header: cxheader.} = object
+  StdIsFunction*[T0] {.importcpp: r"std::is_function<'0>", header: cxheader.} = object
   
 type
-  StdIsVoid*[] {.importcpp: r"std::is_void<'0>", header: cxheader.} = object
+  StdIsVoid*[T0] {.importcpp: r"std::is_void<'0>", header: cxheader.} = object
   
 type
-  StdRemoveCv*[] {.importcpp: r"std::remove_cv<'0>", header: cxheader.} = object
+  StdRemoveCv*[T0] {.importcpp: r"std::remove_cv<'0>", header: cxheader.} = object
   
 type
-  StdIsConst*[] {.importcpp: r"std::is_const<'0>", header: cxheader.} = object
+  StdIsConst*[T0] {.importcpp: r"std::is_const<'0>", header: cxheader.} = object
   
 type
   StdIsVoid*[Tp] {.importcpp: r"std::is_void<'0>", header: cxheader.} = object
@@ -38,18 +38,18 @@ type
                            header: cxheader.} = object
   
 type
-  StdIsArray*[] {.importcpp: r"std::is_array<'0>", header: cxheader.} = object
+  StdIsArray*[T0] {.importcpp: r"std::is_array<'0>", header: cxheader.} = object
   
 type
   StdIsPointer*[Tp] {.importcpp: r"std::is_pointer<'0>", header: cxheader.} = object
   
 type
-  StdIsLvalueReference*[] {.importcpp: r"std::is_lvalue_reference<'0>",
-                           header: cxheader.} = object
+  StdIsLvalueReference*[T0] {.importcpp: r"std::is_lvalue_reference<'0>",
+                             header: cxheader.} = object
   
 type
-  StdIsRvalueReference*[] {.importcpp: r"std::is_rvalue_reference<'0>",
-                           header: cxheader.} = object
+  StdIsRvalueReference*[T0] {.importcpp: r"std::is_rvalue_reference<'0>",
+                             header: cxheader.} = object
   
 type
   StdIsMemberObjectPointer*[Tp] {.importcpp: r"std::is_member_object_pointer<'0>",
@@ -87,8 +87,8 @@ type
   StdIsObject*[Tp] {.importcpp: r"std::is_object<'0>", header: cxheader.} = object
   
 type
-  StdIsMemberPointer*[] {.importcpp: r"std::is_member_pointer<'0>",
-                         header: cxheader.} = object
+  StdIsMemberPointer*[T0] {.importcpp: r"std::is_member_pointer<'0>",
+                           header: cxheader.} = object
   
 type
   StdIsScalar*[Tp] {.importcpp: r"std::is_scalar<'0>", header: cxheader.} = object
@@ -101,13 +101,13 @@ type
                            header: cxheader.} = object
   
 type
-  StdIsSame*[] {.importcpp: r"std::is_same<'0, '1>", header: cxheader.} = object
+  StdIsSame*[T0; T0] {.importcpp: r"std::is_same<'0, '1>", header: cxheader.} = object
   
 type
-  StdIsConst*[] {.importcpp: r"std::is_const<'0>", header: cxheader.} = object
+  StdIsConst*[T0] {.importcpp: r"std::is_const<'0>", header: cxheader.} = object
   
 type
-  StdIsVolatile*[] {.importcpp: r"std::is_volatile<'0>", header: cxheader.} = object
+  StdIsVolatile*[T0] {.importcpp: r"std::is_volatile<'0>", header: cxheader.} = object
   
 type
   StdIsTrivial*[Tp] {.importcpp: r"std::is_trivial<'0>", header: cxheader.} = object
@@ -142,11 +142,11 @@ type
   StdIsUnsigned*[Tp] {.importcpp: r"std::is_unsigned<'0>", header: cxheader.} = object
   
 type
-  StdExtent*[] {.importcpp: r"std::extent<'0>", header: cxheader.} = object
+  StdExtent*[T0] {.importcpp: r"std::extent<'0>", header: cxheader.} = object
   
 type
-  StdRemoveAllExtents*[] {.importcpp: r"std::remove_all_extents<'0>",
-                          header: cxheader.} = object
+  StdRemoveAllExtents*[T0] {.importcpp: r"std::remove_all_extents<'0>",
+                            header: cxheader.} = object
   
 type
   StdIsDestructible*[Tp] {.importcpp: r"std::is_destructible<'0>", header: cxheader.} = object
@@ -251,10 +251,10 @@ type
   StdAlignmentOf*[Tp] {.importcpp: r"std::alignment_of<'0>", header: cxheader.} = object
   
 type
-  StdRank*[] {.importcpp: r"std::rank<'0>", header: cxheader.} = object
+  StdRank*[T0] {.importcpp: r"std::rank<'0>", header: cxheader.} = object
   
 type
-  StdExtent*[] {.importcpp: r"std::extent<'0>", header: cxheader.} = object
+  StdExtent*[T0] {.importcpp: r"std::extent<'0>", header: cxheader.} = object
   
 type
   StdIsSame*[Tp; Up] {.importcpp: r"std::is_same<'0, '1>", header: cxheader.} = object
@@ -323,12 +323,15 @@ type
   StdAlignedUnion*[Types] {.importcpp: r"std::aligned_union<'0>", header: cxheader.} = object
   
 type
-  StdAlignedUnionType[Types] = UNEXPOSED
+  StdAlignedUnionType*[Types] {.importcpp: r"std::aligned_union<'0>::type",
+                               header: cxheader.} = object
+  
 type
   StdDecay*[Tp] {.importcpp: r"std::decay<'0>", header: cxheader.} = object
   
 type
-  StdDecayType[Tp] = UNEXPOSED
+  StdDecayType*[Tp] {.importcpp: r"std::decay<'0>::type", header: cxheader.} = object
+  
 type
   StdReferenceWrapper*[Tp] {.importcpp: r"std::reference_wrapper<'0>",
                             header: cxheader.} = object

@@ -34,13 +34,15 @@ let wrapConf = WrapConfig(
         ]
   ),
   fixTypeName: (
-    proc(ntype: var NType[PNode], conf: WrapConfig) =
+    proc(ntype: var NType[PNode], conf: WrapConfig, idx: int) =
       # Default implementation for type name fixes
-      fixTypeName(ntype, conf)
+      fixTypeName(ntype, conf, 0)
   ),
   ignoreCursor: (
     proc(cursor: CXCursor, conf: WrapConfig): bool =
-      if ($cursor).startsWith(@[ "__", "_" ]):
+      if not ($cursor).startsWith("__cxx11") and
+        ($cursor).startsWith(@[ "__", "_" ]):
+        # debug "Ignore ", $cursor
         return true
       if cursor.cxKind == ckNamespace and
          ($cursor in @["detail", "internal"]):

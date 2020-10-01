@@ -6,7 +6,7 @@ type
                            header: cxheader.} = object
   
 type
-  StdTuple*[] {.importcpp: r"std::tuple<'0>", header: cxheader.} = object
+  StdTuple*[T0] {.importcpp: r"std::tuple<'0>", header: cxheader.} = object
   
 type
   StdPair*[T1; T2] {.importcpp: r"std::pair<'0, '1>", header: cxheader.} = object

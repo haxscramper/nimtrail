@@ -5,6 +5,12 @@ import
   cxstd / stringfwd
 
 import
+  cxstd / initializer_list
+
+import
+  cxstd / stl_function
+
+import
   cxstd / stl_pair
 
 import
@@ -42,8 +48,8 @@ proc arrayIndex*[BasicJsonType](self: var NlohmannJsonPointer[BasicJsonType];
                                s: StdString[BasicJsonType]): cint {.
     importcpp: "#.array_index(@)", header: cxheader.}
 type
-  NlohmannAdlSerializer*[] {.importcpp: r"nlohmann::adl_serializer<'0, '1>",
-                            header: cxheader.} = object
+  NlohmannAdlSerializer*[T0; T0] {.importcpp: r"nlohmann::adl_serializer<'0, '1>",
+                                 header: cxheader.} = object
   
 type
   NlohmannBasicJson*[StringType; BooleanType; NumberIntegerType;
@@ -51,108 +57,171 @@ type
       importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>", header: cxheader.} = object
   
 type
-  NlohmannBasicJsonValueT[StringType, BooleanType, NumberIntegerType,
-                          NumberUnsignedType, NumberFloatType] = nlohmann::detail::value_t
+  NlohmannBasicJsonValueT*[StringType; BooleanType; NumberIntegerType;
+                           NumberUnsignedType; NumberFloatType] = nlohmann::detail::value_t
 type
-  NlohmannBasicJsonJsonPointer[StringType, BooleanType, NumberIntegerType,
-                               NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonJsonPointer*[StringType; BooleanType; NumberIntegerType;
+                                NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::json_pointer",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonJsonSerializer[StringType, BooleanType, NumberIntegerType,
-                                  NumberUnsignedType, NumberFloatType] = !!!
+  NlohmannBasicJsonJsonSerializer*[StringType; BooleanType; NumberIntegerType;
+                                   NumberUnsignedType; NumberFloatType] = !!!
 type
-  NlohmannBasicJsonInitializerListT[StringType, BooleanType, NumberIntegerType,
-                                    NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonInitializerListT*[StringType; BooleanType; NumberIntegerType;
+                                     NumberUnsignedType; NumberFloatType] {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::initializer_list_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonInputFormatT[StringType, BooleanType, NumberIntegerType,
-                                NumberUnsignedType, NumberFloatType] = nlohmann::detail::input_format_t
+  NlohmannBasicJsonInputFormatT*[StringType; BooleanType; NumberIntegerType;
+                                 NumberUnsignedType; NumberFloatType] = nlohmann::detail::input_format_t
 type
-  NlohmannBasicJsonJsonSaxT[StringType, BooleanType, NumberIntegerType,
-                            NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonJsonSaxT*[StringType; BooleanType; NumberIntegerType;
+                             NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::json_sax_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonException[StringType, BooleanType, NumberIntegerType,
-                             NumberUnsignedType, NumberFloatType] = nlohmann::detail::exception
+  NlohmannBasicJsonException*[StringType; BooleanType; NumberIntegerType;
+                              NumberUnsignedType; NumberFloatType] = nlohmann::detail::exception
 type
-  NlohmannBasicJsonParseError[StringType, BooleanType, NumberIntegerType,
-                              NumberUnsignedType, NumberFloatType] = nlohmann::detail::parse_error
+  NlohmannBasicJsonParseError*[StringType; BooleanType; NumberIntegerType;
+                               NumberUnsignedType; NumberFloatType] = nlohmann::detail::parse_error
 type
-  NlohmannBasicJsonInvalidIterator[StringType, BooleanType, NumberIntegerType,
-                                   NumberUnsignedType, NumberFloatType] = nlohmann::detail::invalid_iterator
+  NlohmannBasicJsonInvalidIterator*[StringType; BooleanType; NumberIntegerType;
+                                    NumberUnsignedType; NumberFloatType] = nlohmann::detail::invalid_iterator
 type
-  NlohmannBasicJsonTypeError[StringType, BooleanType, NumberIntegerType,
-                             NumberUnsignedType, NumberFloatType] = nlohmann::detail::type_error
+  NlohmannBasicJsonTypeError*[StringType; BooleanType; NumberIntegerType;
+                              NumberUnsignedType; NumberFloatType] = nlohmann::detail::type_error
 type
-  NlohmannBasicJsonOutOfRange[StringType, BooleanType, NumberIntegerType,
-                              NumberUnsignedType, NumberFloatType] = nlohmann::detail::out_of_range
+  NlohmannBasicJsonOutOfRange*[StringType; BooleanType; NumberIntegerType;
+                               NumberUnsignedType; NumberFloatType] = nlohmann::detail::out_of_range
 type
-  NlohmannBasicJsonOtherError[StringType, BooleanType, NumberIntegerType,
-                              NumberUnsignedType, NumberFloatType] = nlohmann::detail::other_error
+  NlohmannBasicJsonOtherError*[StringType; BooleanType; NumberIntegerType;
+                               NumberUnsignedType; NumberFloatType] = nlohmann::detail::other_error
 type
-  NlohmannBasicJsonValueType[StringType, BooleanType, NumberIntegerType,
-                             NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonValueType*[StringType; BooleanType; NumberIntegerType;
+                              NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::value_type",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonReference[StringType, BooleanType, NumberIntegerType,
-                             NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonReference*[StringType; BooleanType; NumberIntegerType;
+                              NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::reference",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonConstReference[StringType, BooleanType, NumberIntegerType,
-                                  NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonConstReference*[StringType; BooleanType; NumberIntegerType;
+                                   NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::const_reference",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonDifferenceType[StringType, BooleanType, NumberIntegerType,
-                                  NumberUnsignedType, NumberFloatType] = clong
+  NlohmannBasicJsonDifferenceType*[StringType; BooleanType; NumberIntegerType;
+                                   NumberUnsignedType; NumberFloatType] = clong
 type
-  NlohmannBasicJsonSizeType[StringType, BooleanType, NumberIntegerType,
-                            NumberUnsignedType, NumberFloatType] = culong
+  NlohmannBasicJsonSizeType*[StringType; BooleanType; NumberIntegerType;
+                             NumberUnsignedType; NumberFloatType] = culong
 type
-  NlohmannBasicJsonAllocatorType[StringType, BooleanType, NumberIntegerType,
-                                 NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonAllocatorType*[StringType; BooleanType; NumberIntegerType;
+                                  NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::allocator_type",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonPointer[StringType, BooleanType, NumberIntegerType,
-                           NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonPointer*[StringType; BooleanType; NumberIntegerType;
+                            NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::pointer",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonConstPointer[StringType, BooleanType, NumberIntegerType,
-                                NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonConstPointer*[StringType; BooleanType; NumberIntegerType;
+                                 NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::const_pointer",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonIterator[StringType, BooleanType, NumberIntegerType,
-                            NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonIterator*[StringType; BooleanType; NumberIntegerType;
+                             NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::iterator",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonConstIterator[StringType, BooleanType, NumberIntegerType,
-                                 NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonConstIterator*[StringType; BooleanType; NumberIntegerType;
+                                  NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::const_iterator",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonReverseIterator[StringType, BooleanType, NumberIntegerType,
-                                   NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonReverseIterator*[StringType; BooleanType; NumberIntegerType;
+                                    NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::reverse_iterator",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonConstReverseIterator[StringType, BooleanType,
-                                        NumberIntegerType, NumberUnsignedType,
-                                        NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonConstReverseIterator*[StringType; BooleanType;
+      NumberIntegerType; NumberUnsignedType; NumberFloatType] {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::const_reverse_iterator",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonObjectComparatorT[StringType, BooleanType, NumberIntegerType,
-                                     NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonObjectComparatorT*[StringType; BooleanType; NumberIntegerType;
+                                      NumberUnsignedType; NumberFloatType] {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::object_comparator_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonObjectT[StringType, BooleanType, NumberIntegerType,
-                           NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonObjectT*[StringType; BooleanType; NumberIntegerType;
+                            NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::object_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonArrayT[StringType, BooleanType, NumberIntegerType,
-                          NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonArrayT*[StringType; BooleanType; NumberIntegerType;
+                           NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::array_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonStringT[StringType, BooleanType, NumberIntegerType,
-                           NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonStringT*[StringType; BooleanType; NumberIntegerType;
+                            NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::string_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonBooleanT[StringType, BooleanType, NumberIntegerType,
-                            NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonBooleanT*[StringType; BooleanType; NumberIntegerType;
+                             NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::boolean_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonNumberIntegerT[StringType, BooleanType, NumberIntegerType,
-                                  NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonNumberIntegerT*[StringType; BooleanType; NumberIntegerType;
+                                   NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::number_integer_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonNumberUnsignedT[StringType, BooleanType, NumberIntegerType,
-                                   NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonNumberUnsignedT*[StringType; BooleanType; NumberIntegerType;
+                                    NumberUnsignedType; NumberFloatType] {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::number_unsigned_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonNumberFloatT[StringType, BooleanType, NumberIntegerType,
-                                NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonNumberFloatT*[StringType; BooleanType; NumberIntegerType;
+                                 NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::number_float_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonParseEventT[StringType, BooleanType, NumberIntegerType,
-                               NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonParseEventT*[StringType; BooleanType; NumberIntegerType;
+                                NumberUnsignedType; NumberFloatType] {.
+      importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::parse_event_t",
+      header: cxheader.} = object
+  
 type
-  NlohmannBasicJsonParserCallbackT[StringType, BooleanType, NumberIntegerType,
-                                   NumberUnsignedType, NumberFloatType] = UNEXPOSED
+  NlohmannBasicJsonParserCallbackT*[StringType; BooleanType; NumberIntegerType;
+                                    NumberUnsignedType; NumberFloatType] {.importcpp: r"nlohmann::basic_json<'0, '1, '2, '3, '4>::parser_callback_t",
+      header: cxheader.} = object
+  
 proc getAllocator*[StringType; BooleanType; NumberIntegerType; NumberUnsignedType;
                   NumberFloatType](self: var NlohmannBasicJson[StringType,
     BooleanType, NumberIntegerType, NumberUnsignedType, NumberFloatType]): NlohmannBasicJsonAllocatorType[
