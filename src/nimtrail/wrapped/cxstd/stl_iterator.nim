@@ -3,7 +3,7 @@ const
   cxheader = "/usr/include/c++/10.2.0/bits/stl_iterator.h"
 type
   StdReverseIterator*[Iterator] {.importcpp: r"std::reverse_iterator<'0>",
-                                 header: cxheader.} = object
+                                  header: cxheader.} = object
   
 type
   StdReverseIteratorIteratorType*[Iterator] {.
@@ -14,8 +14,8 @@ type
       importcpp: r"std::reverse_iterator<'0>::difference_type", header: cxheader.} = object
   
 type
-  StdReverseIteratorPointer*[Iterator] {.importcpp: r"std::reverse_iterator<'0>::pointer",
-                                        header: cxheader.} = object
+  StdReverseIteratorPointer*[Iterator] {.
+      importcpp: r"std::reverse_iterator<'0>::pointer", header: cxheader.} = object
   
 type
   StdReverseIteratorReference*[Iterator] {.
@@ -28,17 +28,17 @@ proc `[]`*[Iterator](self: StdReverseIterator[Iterator]): StdReverseIteratorRefe
 proc `->`*[Iterator](self: StdReverseIterator[Iterator]): StdReverseIteratorPointer[
     Iterator] {.importcpp: "#.operator->()", header: cxheader.}
 proc `+=`*[Iterator](self: var StdReverseIterator[Iterator];
-                    n: StdReverseIteratorDifferenceType[Iterator]): void {.
+                     n: StdReverseIteratorDifferenceType[Iterator]): void {.
     importcpp: "# += #", header: cxheader.}
 proc `-=`*[Iterator](self: var StdReverseIterator[Iterator];
-                    n: StdReverseIteratorDifferenceType[Iterator]): void {.
+                     n: StdReverseIteratorDifferenceType[Iterator]): void {.
     importcpp: "# -= #", header: cxheader.}
 proc `[]`*[Iterator](self: StdReverseIterator[Iterator];
-                    n: StdReverseIteratorDifferenceType[Iterator]): StdReverseIteratorReference[
+                     n: StdReverseIteratorDifferenceType[Iterator]): StdReverseIteratorReference[
     Iterator] {.importcpp: "#[#]", header: cxheader.}
 type
   StdBackInsertIterator*[Container] {.importcpp: r"std::back_insert_iterator<'0>",
-                                     header: cxheader.} = object
+                                      header: cxheader.} = object
   
 type
   StdBackInsertIteratorContainerType*[Container] {.
@@ -47,7 +47,7 @@ type
   
 type
   StdFrontInsertIterator*[Container] {.importcpp: r"std::front_insert_iterator<'0>",
-                                      header: cxheader.} = object
+                                       header: cxheader.} = object
   
 type
   StdFrontInsertIteratorContainerType*[Container] {.
@@ -56,7 +56,7 @@ type
   
 type
   StdInsertIterator*[Container] {.importcpp: r"std::insert_iterator<'0>",
-                                 header: cxheader.} = object
+                                  header: cxheader.} = object
   
 type
   StdInsertIteratorContainerType*[Container] {.
@@ -64,7 +64,7 @@ type
   
 type
   StdMoveIterator*[Iterator] {.importcpp: r"std::move_iterator<'0>",
-                              header: cxheader.} = object
+                               header: cxheader.} = object
   
 type
   StdMoveIteratorIteratorType*[Iterator] {.
@@ -76,7 +76,7 @@ type
   
 type
   StdMoveIteratorValueType*[Iterator] {.importcpp: r"std::move_iterator<'0>::value_type",
-                                       header: cxheader.} = object
+                                        header: cxheader.} = object
   
 type
   StdMoveIteratorDifferenceType*[Iterator] {.
@@ -84,11 +84,11 @@ type
   
 type
   StdMoveIteratorPointer*[Iterator] {.importcpp: r"std::move_iterator<'0>::pointer",
-                                     header: cxheader.} = object
+                                      header: cxheader.} = object
   
 type
   StdMoveIteratorReference*[Iterator] {.importcpp: r"std::move_iterator<'0>::reference",
-                                       header: cxheader.} = object
+                                        header: cxheader.} = object
   
 proc base*[Iterator](self: StdMoveIterator[Iterator]): StdMoveIteratorIteratorType[
     Iterator] {.importcpp: "#.base(@)", header: cxheader.}
@@ -97,11 +97,11 @@ proc `[]`*[Iterator](self: StdMoveIterator[Iterator]): StdMoveIteratorReference[
 proc `->`*[Iterator](self: StdMoveIterator[Iterator]): StdMoveIteratorPointer[
     Iterator] {.importcpp: "#.operator->()", header: cxheader.}
 proc `+=`*[Iterator](self: var StdMoveIterator[Iterator];
-                    n: StdMoveIteratorDifferenceType[Iterator]): void {.
+                     n: StdMoveIteratorDifferenceType[Iterator]): void {.
     importcpp: "# += #", header: cxheader.}
 proc `-=`*[Iterator](self: var StdMoveIterator[Iterator];
-                    n: StdMoveIteratorDifferenceType[Iterator]): void {.
+                     n: StdMoveIteratorDifferenceType[Iterator]): void {.
     importcpp: "# -= #", header: cxheader.}
 proc `[]`*[Iterator](self: StdMoveIterator[Iterator];
-                    n: StdMoveIteratorDifferenceType[Iterator]): StdMoveIteratorReference[
+                     n: StdMoveIteratorDifferenceType[Iterator]): StdMoveIteratorReference[
     Iterator] {.importcpp: "#[#]", header: cxheader.}

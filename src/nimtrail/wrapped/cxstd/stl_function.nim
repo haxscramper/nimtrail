@@ -3,11 +3,11 @@ const
   cxheader = "/usr/include/c++/10.2.0/bits/stl_function.h"
 type
   StdUnaryFunction*[Arg; Result] {.importcpp: r"std::unary_function<'0, '1>",
-                                 header: cxheader.} = object
+                                   header: cxheader.} = object
   
 type
-  StdBinaryFunction*[Arg1; Arg2; Result] {.importcpp: r"std::binary_function<'0, '1, '2>",
-                                        header: cxheader.} = object
+  StdBinaryFunction*[Arg1; Arg2; Result] {.
+      importcpp: r"std::binary_function<'0, '1, '2>", header: cxheader.} = object
   
 type
   StdPlus*[Tp] {.importcpp: r"std::plus<'0>", header: cxheader.} = object
@@ -68,11 +68,11 @@ type
   
 type
   StdUnaryNegate*[Predicate] {.importcpp: r"std::unary_negate<'0>",
-                              header: cxheader.} = object
+                               header: cxheader.} = object
   
 type
   StdBinaryNegate*[Predicate] {.importcpp: r"std::binary_negate<'0>",
-                               header: cxheader.} = object
+                                header: cxheader.} = object
   
 type
   StdPointerToUnaryFunction*[Arg; Result] {.
@@ -80,36 +80,37 @@ type
   
 type
   StdPointerToBinaryFunction*[Arg1; Arg2; Result] {.
-      importcpp: r"std::pointer_to_binary_function<'0, '1, '2>", header: cxheader.} = object
+      importcpp: r"std::pointer_to_binary_function<'0, '1, '2>",
+      header: cxheader.} = object
   
 type
   StdMemFunT*[Ret; Tp] {.importcpp: r"std::mem_fun_t<'0, '1>", header: cxheader.} = object
   
 type
   StdConstMemFunT*[Ret; Tp] {.importcpp: r"std::const_mem_fun_t<'0, '1>",
-                            header: cxheader.} = object
+                              header: cxheader.} = object
   
 type
   StdMemFunRefT*[Ret; Tp] {.importcpp: r"std::mem_fun_ref_t<'0, '1>",
-                          header: cxheader.} = object
-  
-type
-  StdConstMemFunRefT*[Ret; Tp] {.importcpp: r"std::const_mem_fun_ref_t<'0, '1>",
-                               header: cxheader.} = object
-  
-type
-  StdMemFun1T*[Ret; Tp; Arg] {.importcpp: r"std::mem_fun1_t<'0, '1, '2>",
                             header: cxheader.} = object
   
 type
-  StdConstMemFun1T*[Ret; Tp; Arg] {.importcpp: r"std::const_mem_fun1_t<'0, '1, '2>",
+  StdConstMemFunRefT*[Ret; Tp] {.importcpp: r"std::const_mem_fun_ref_t<'0, '1>",
                                  header: cxheader.} = object
   
 type
-  StdMemFun1RefT*[Ret; Tp; Arg] {.importcpp: r"std::mem_fun1_ref_t<'0, '1, '2>",
+  StdMemFun1T*[Ret; Tp; Arg] {.importcpp: r"std::mem_fun1_t<'0, '1, '2>",
                                header: cxheader.} = object
   
 type
-  StdConstMemFun1RefT*[Ret; Tp; Arg] {.importcpp: r"std::const_mem_fun1_ref_t<'0, '1, '2>",
+  StdConstMemFun1T*[Ret; Tp; Arg] {.importcpp: r"std::const_mem_fun1_t<'0, '1, '2>",
                                     header: cxheader.} = object
+  
+type
+  StdMemFun1RefT*[Ret; Tp; Arg] {.importcpp: r"std::mem_fun1_ref_t<'0, '1, '2>",
+                                  header: cxheader.} = object
+  
+type
+  StdConstMemFun1RefT*[Ret; Tp; Arg] {.importcpp: r"std::const_mem_fun1_ref_t<'0, '1, '2>",
+                                       header: cxheader.} = object
   

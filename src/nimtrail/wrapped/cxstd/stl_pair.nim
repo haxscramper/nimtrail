@@ -3,7 +3,7 @@ const
   cxheader = "/usr/include/c++/10.2.0/bits/stl_pair.h"
 type
   StdPiecewiseConstructT* {.importcpp: r"std::piecewise_construct_t",
-                           header: cxheader.} = object
+                            header: cxheader.} = object
   
 type
   StdTuple*[T0] {.importcpp: r"std::tuple<'0>", header: cxheader.} = object

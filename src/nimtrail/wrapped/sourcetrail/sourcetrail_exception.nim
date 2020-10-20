@@ -5,8 +5,8 @@ import
   cxstd / stringfwd
 
 type
-  SourcetrailSourcetrailException* {.importcpp: r"sourcetrail::SourcetrailException",
-                                    header: cxheader.} = object
+  SourcetrailException* {.importcpp: r"sourcetrail::SourcetrailException",
+                          header: cxheader.} = object
   
-proc getMessage*(self: SourcetrailSourcetrailException): StdString {.
+proc getMessage*(self: SourcetrailException): StdString {.
     importcpp: "#.getMessage(@)", header: cxheader.}

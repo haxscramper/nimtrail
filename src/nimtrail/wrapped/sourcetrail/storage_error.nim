@@ -6,7 +6,7 @@ import
 
 type
   SourcetrailStorageErrorData* {.importcpp: r"sourcetrail::StorageErrorData",
-                                header: cxheader.} = object
+                                 header: cxheader.} = object
     message*: StdString
     translationUnit*: StdString
     fatal*: bool
@@ -14,5 +14,5 @@ type
 
 type
   SourcetrailStorageError* {.importcpp: r"sourcetrail::StorageError",
-                            header: cxheader.} = object
+                             header: cxheader.} = object
     id*: cint

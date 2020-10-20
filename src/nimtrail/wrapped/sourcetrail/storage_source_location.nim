@@ -13,5 +13,5 @@ type
 
 type
   SourcetrailStorageSourceLocation* {.importcpp: r"sourcetrail::StorageSourceLocation",
-                                     header: cxheader.} = object
+                                      header: cxheader.} = object
     id*: cint

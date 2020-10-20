@@ -2,31 +2,29 @@
 const
   cxheader = "/usr/include/c++/10.2.0/bits/unique_ptr.h"
 import
-  cxstd / type_traits
-
-import
   cxstd / cppconfig
 
 type
   StdAutoPtr*[T0] {.importcpp: r"std::auto_ptr<'0>", header: cxheader.} = object
   
 type
-  StdDefaultDelete*[Tp] {.importcpp: r"std::default_delete<'0>", header: cxheader.} = object
+  StdDefaultDelete*[Tp] {.importcpp: r"std::default_delete<'0>",
+                          header: cxheader.} = object
   
 type
   StdUniquePtr*[Tp] {.importcpp: r"std::unique_ptr<'0>", header: cxheader.} = object
   
 type
   StdUniquePtrPointer*[Tp] {.importcpp: r"std::unique_ptr<'0>::pointer",
-                            header: cxheader.} = object
+                             header: cxheader.} = object
   
 type
   StdUniquePtrElementType*[Tp] {.importcpp: r"std::unique_ptr<'0>::element_type",
-                                header: cxheader.} = object
+                                 header: cxheader.} = object
   
 type
   StdUniquePtrDeleterType*[Tp] {.importcpp: r"std::unique_ptr<'0>::deleter_type",
-                                header: cxheader.} = object
+                                 header: cxheader.} = object
   
 proc setFrom*[Tp](self: var StdUniquePtr[Tp]; a1: StdNullptrT[Tp]): void {.
     importcpp: "# = #", header: cxheader.}

@@ -6,7 +6,7 @@ type
   
 type
   StdCxx11BasicString*[CharT] {.importcpp: r"std::__cxx11::basic_string<'0>",
-                               header: cxheader.} = object
+                                header: cxheader.} = object
   
 type
   StdString* = StdCxx11BasicString[cchar]

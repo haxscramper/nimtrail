@@ -9,13 +9,13 @@ import
 
 type
   SourcetrailNameElement* {.importcpp: r"sourcetrail::NameElement",
-                           header: cxheader.} = object
+                            header: cxheader.} = object
     prefix*: StdString
     name*: StdString
     postfix*: StdString
 
 type
   SourcetrailNameHierarchy* {.importcpp: r"sourcetrail::NameHierarchy",
-                             header: cxheader.} = object
+                              header: cxheader.} = object
     nameDelimiter*: StdString
     nameElements*: StdVector[SourcetrailNameElement]

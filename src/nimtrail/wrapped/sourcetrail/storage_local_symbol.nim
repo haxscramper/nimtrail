@@ -6,10 +6,10 @@ import
 
 type
   SourcetrailStorageLocalSymbolData* {.importcpp: r"sourcetrail::StorageLocalSymbolData",
-                                      header: cxheader.} = object
+                                       header: cxheader.} = object
     name*: StdString
 
 type
   SourcetrailStorageLocalSymbol* {.importcpp: r"sourcetrail::StorageLocalSymbol",
-                                  header: cxheader.} = object
+                                   header: cxheader.} = object
     id*: cint

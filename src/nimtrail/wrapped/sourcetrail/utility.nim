@@ -5,4 +5,4 @@ import
   cxstd / stringfwd
 
 import
-  sourcetrail / time__t
+  sourcetrail / time_t

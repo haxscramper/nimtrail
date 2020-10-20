@@ -6,11 +6,11 @@ import
 
 type
   SourcetrailStorageNodeData* {.importcpp: r"sourcetrail::StorageNodeData",
-                               header: cxheader.} = object
+                                header: cxheader.} = object
     nodeKind*: cint
     serializedName*: StdString
 
 type
   SourcetrailStorageNode* {.importcpp: r"sourcetrail::StorageNode",
-                           header: cxheader.} = object
+                            header: cxheader.} = object
     id*: cint

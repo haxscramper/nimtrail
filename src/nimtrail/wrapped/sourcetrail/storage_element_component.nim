@@ -13,5 +13,5 @@ type
 
 type
   SourcetrailStorageElementComponent* {.importcpp: r"sourcetrail::StorageElementComponent",
-                                       header: cxheader.} = object
+                                        header: cxheader.} = object
     id*: cint

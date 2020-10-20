@@ -6,7 +6,7 @@ import
 
 type
   SourcetrailStorageFile* {.importcpp: r"sourcetrail::StorageFile",
-                           header: cxheader.} = object
+                            header: cxheader.} = object
     id*: cint
     filePath*: StdString
     languageIdentifier*: StdString

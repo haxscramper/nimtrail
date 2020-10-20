@@ -38,6 +38,13 @@ let wrapConf = WrapConfig(
       fixTypeName(ntype, conf, 0)
   ),
   collapsibleNamespaces: @["sourcetrail"],
+  ignoreFile: (
+    proc(file: AbsFile): bool =
+      file.endsWith([
+        "cmath",
+        "basic_string.tcc",
+      ])
+  ),
   ignoreCursor: (
     proc(cursor: CXCursor, conf: WrapConfig): bool =
       if not ($cursor).startsWith("__cxx11") and
@@ -67,10 +74,12 @@ parseConf.globalFlags = getBuiltinHeaders().toIncludes() & @[
 # automatically.
 
 let
-  cxxstd = AbsDir "/usr/include/c++/10.2.0/bits"
-  bitsPrefix = "--include-with-prefix=/usr/include/c++/10.2.0/bits/"
+  cxxstd = AbsDir "/usr/include/c++/10.2.0"
+  cxxbits = cxxstd / "bits"
+  cxxPrefix = "--include-with-prefix=/usr/include/c++/10.2.0/"
+  bitsPrefix = cxxPrefix & "bits/"
 
-parseConf.fileFlags[cxxstd /. "stl_vector.h"] = @[
+parseConf.fileFlags[cxxbits /. "stl_vector.h"] = @[
   bitsPrefix,
   "--include=stl_algobase.h",
   "--include=allocator.h",
@@ -81,15 +90,43 @@ parseConf.fileFlags[cxxstd /. "stl_vector.h"] = @[
 let addConfig =
   "--include=/usr/include/c++/10.2.0/x86_64-pc-linux-gnu/bits/c++config.h"
 
-parseConf.fileFlags[cxxstd /. "stl_function.h"] = @[
+parseConf.fileFlags[cxxbits /. "stl_function.h"] = @[
   addConfig,
 ]
 
-parseConf.fileFlags[cxxstd /. "stl_iterator.h"] = @[
+parseConf.fileFlags[cxxbits /. "stl_iterator.h"] = @[
   bitsPrefix,
   "--include=stl_iterator_base_types.h",
   "--include=stl_iterator_base_funcs.h",
 ]
+
+parseConf.fileFlags[cxxbits /. "stl_iterator_base_funcs.h"] = @[
+  bitsPrefix,
+  # "--include=iterator_concepts.h",
+  "--include=stl_iterator_base_types.h",
+]
+
+parseConf.fileFlags[cxxbits /. "basic_string.h"] = @[
+  bitsPrefix,
+  "--include=stringfwd.h",
+  "--include=ostream_insert.h",
+  "--include=char_traits.h"
+]
+
+parseConf.fileFlags[cxxbits /. "stl_uninitialized.h"] = @[
+  bitsPrefix,
+  "--include=stl_algobase.h"
+]
+
+parseConf.fileFlags[cxxbits /. "stl_bvector.h"] = @[
+  bitsPrefix,
+  "--include=stl_iterator_base_types.h",
+  "--include=alloc_traits.h",
+  "--include=allocator.h",
+  "--include=stl_algobase.h",
+  "--include=stl_vector.h"
+]
+
 
 var files: seq[AbsFile]
 
@@ -103,16 +140,18 @@ for command in dbase.getAllCompileCommands():
 
 let wrapDir = RelDir("../wrapped")
 
-echo files.mapIt($it).joinl
+# echo files.mapIt($it).joinl
 
 try:
-  let wrapped = wrapAll(files, parseConf, wrapConf)
+  let (wrapped, index) = wrapAll(files, parseConf, wrapConf)
   for wrapres in wrapped:
     let file = wrapDir /. (wrapres.importName.join("/") & ".nim")
     mkDir file.parentDir()
     file.writeFile($wrapres.wrapped)
 
   info "Wrapper generation"
+  index.dotRepr().toPng("/tmp/image.png")
+  index.dotRepr(false).toXDot(AbsFile "/tmp/graph.dot")
 except:
   pprintErr()
   echo "error"
