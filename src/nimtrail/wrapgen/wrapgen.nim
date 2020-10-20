@@ -10,7 +10,6 @@ import sequtils
 import compiler/ast
 import hnimast
 import hmisc/other/[hshell, colorlogger, oswrap]
-import os
 import gram
 import tables
 
@@ -21,7 +20,7 @@ let wrapConf = WrapConfig(
   makeHeader: proc(conf: WrapConfig): PNode =
                 newPIdent("cxheader"),
   getImport: (
-    proc(dep: string, conf: WrapConfig): seq[string] =
+    proc(dep: AbsFile, conf: WrapConfig): seq[string] =
       if dep.startsWith("/usr/include/c++"):
         makeCXStdImport(dep)
       else:
@@ -38,6 +37,7 @@ let wrapConf = WrapConfig(
       # Default implementation for type name fixes
       fixTypeName(ntype, conf, 0)
   ),
+  collapsibleNamespaces: @["sourcetrail"],
   ignoreCursor: (
     proc(cursor: CXCursor, conf: WrapConfig): bool =
       if not ($cursor).startsWith("__cxx11") and
@@ -52,11 +52,10 @@ let wrapConf = WrapConfig(
   )
 )
 
-let dbase = createDatabase("../../../SourcetrailDB")
+let dbase = createDatabase(
+  "../../../SourcetrailDB/fucking_compile_commands_for_cmake_vomit")
 
-var
-  parseConf: ParseConfiguration
-  files: seq[string]
+var parseConf: ParseConfiguration
 
 parseConf.globalFlags = getBuiltinHeaders().toIncludes() & @[
     "-xc++", "-std=c++11",
@@ -68,10 +67,10 @@ parseConf.globalFlags = getBuiltinHeaders().toIncludes() & @[
 # automatically.
 
 let
-  cxxstd = "/usr/include/c++/10.2.0/bits"
+  cxxstd = AbsDir "/usr/include/c++/10.2.0/bits"
   bitsPrefix = "--include-with-prefix=/usr/include/c++/10.2.0/bits/"
 
-parseConf.fileFlags[cxxstd / "stl_vector.h"] = @[
+parseConf.fileFlags[cxxstd /. "stl_vector.h"] = @[
   bitsPrefix,
   "--include=stl_algobase.h",
   "--include=allocator.h",
@@ -82,30 +81,34 @@ parseConf.fileFlags[cxxstd / "stl_vector.h"] = @[
 let addConfig =
   "--include=/usr/include/c++/10.2.0/x86_64-pc-linux-gnu/bits/c++config.h"
 
-parseConf.fileFlags[cxxstd / "stl_function.h"] = @[
+parseConf.fileFlags[cxxstd /. "stl_function.h"] = @[
   addConfig,
 ]
 
-parseConf.fileFlags[cxxstd / "stl_iterator.h"] = @[
+parseConf.fileFlags[cxxstd /. "stl_iterator.h"] = @[
   bitsPrefix,
   "--include=stl_iterator_base_types.h",
   "--include=stl_iterator_base_funcs.h",
 ]
 
+var files: seq[AbsFile]
+
 for command in dbase.getAllCompileCommands():
-  let file = $command.getFilename
+  let file = command.absFile
   if ("catch" notin file) and
      ("test" notin file) and
-     (not file.endsWith(".cpp", ".c")):
+     (not file.endsWith([".cpp", ".c"])):
     parseConf.fileFlags[file] = command.getFlags()
     files.add file
 
-let wrapDir = "../wrapped"
+let wrapDir = RelDir("../wrapped")
+
+echo files.mapIt($it).joinl
 
 try:
   let wrapped = wrapAll(files, parseConf, wrapConf)
   for wrapres in wrapped:
-    let file = wrapDir / wrapres.importName.join("/") & ".nim"
+    let file = wrapDir /. (wrapres.importName.join("/") & ".nim")
     mkDir file.parentDir()
     file.writeFile($wrapres.wrapped)
 
@@ -116,9 +119,9 @@ except:
   quit 1
 
 try:
-  discard runShell(&"nim c -o:wrap_user ../wrap_user.nim")
+  discard runShell(ShellExpr &"nim c -o:wrap_user ../wrap_user.nim")
   info "Done compilation"
-  let (stdout, stderr, code) = runShell(&"./wrap_user")
+  let (stdout, stderr, code) = runShell(ShellExpr &"./wrap_user")
   echo stdout
   info "Done program execution"
 except ShellError:
