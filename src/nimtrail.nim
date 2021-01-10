@@ -1,6 +1,6 @@
 ## Wrapper generator for sourcetrail DB writer
 
-import hcparse/libclang
+import hcparse/[libclang, cxcommon, hc_impls, hc_types]
 import hnimast
 import strutils, strformat
 import hmisc/[helpers, hexceptions]
@@ -22,7 +22,7 @@ let
   basedir = RelDir("../SourcetrailDB/core/include")
   srcd = AbsDir(currentSourcePath()).splitDir().head
 
-let pconf = baseCppParseConfig.withIt do:
+let parseConf = baseCppParseConfig.withIt do:
   it.includepaths.add @[
     AbsDir("/usr/include/c++/10.2.0"),
     AbsDir("/usr/include/c++/10.2.0/x86_64-pc-linux-gnu"),
@@ -33,13 +33,21 @@ let pconf = baseCppParseConfig.withIt do:
 
   it.globalFlags = @["-xc++"]
 
-let wconf = baseWrapConfig.withIt do:
-  it.parseConf = pconf
+let wrapConf = baseWrapConf.withDeepIt do:
+  it.parseConf = parseConf
 
   it.makeHeader = (
     proc(cursor: CXCursor, conf: WrapConfig): NimHeaderSpec {.closure.} =
       let path = cursor.asGlobalInclude(conf)
       initHeaderSpec path # includeRemaps.getOrDefault(path, path)
+  )
+
+  it.getImport = (
+    proc(dep: AbsFile, conf: WrapConfig): seq[string] {.closure.} =
+      debug dep
+      for depConf in @[cxxstd.wrapConf, baseWrapConf]:
+        if depConf.isInLibrary(dep):
+          return depConf.getImport(dep, depConf)
   )
 
   it.depResolver = (
@@ -60,13 +68,13 @@ proc doWrap(infile, outfile: FsFile) =
     wrapSingleFile(
       infile,
       errorReparseVerbose = false,
-      wrapConf = wconf,
-      parseConf = pconf
+      wrapConf = wrapConf,
+      parseConf = parseConf
     ),
     outfile,
     some AbsDir("/tmp"),
     @[],
-    wconf
+    wrapConf
   )
 
 startColorLogger(showfile = true)
