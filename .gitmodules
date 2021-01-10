@@ -1,0 +1,3 @@
+[submodule "SourcetrailDB"]
+	path = SourcetrailDB
+	url = git@github.com:CoatiSoftware/SourcetrailDB.git
