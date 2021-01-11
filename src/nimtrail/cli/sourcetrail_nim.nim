@@ -2,6 +2,7 @@ import ../sourcetrail_d_b_writer
 import ../name_hierarchy
 import ../symbol_kind
 import ../definition_kind
+import ../reference_kind
 
 import hmisc/algo/htemplates
 import hmisc/other/oswrap
@@ -41,6 +42,15 @@ converter initSourcetrailNameHierarchy(
   for element in args.nameHierarchy:
     result.nameElements.pushBack element
 
+proc recordSymbol(
+  writer: var SourcetrailDBWriter,
+  symbol: SourcetrailNameHierarchy,
+  symbolKind: SourcetrailSymbolKind,
+  definitionKind: SourcetrailDefinitionKind = sdkExplicit): cint =
+
+  result = writer.recordSymbol(symbol)
+  discard writer.recordSymbolDefinitionKind(result, definitionKind)
+  discard writer.recordSymbolKind(result, symbolKind)
 
 proc main() =
   echo "hello"
@@ -49,12 +59,13 @@ proc main() =
 
   let file = "/tmp/test.srctrldb"
   rmFile AbsFile(file)
-  discard writer.open(initStdString(file))
+  discard writer.open(file)
 
-  let symbolId = writer.recordSymbol(("::", @[("void", "foo", "()")]))
-
-  discard writer.recordSymbolDefinitionKind(symbolId, sdkExplicit)
-  discard writer.recordSymbolKind(symbolId, sskFunction)
+  discard writer.recordReference(
+    writer.recordSymbol(("::", @[("void", "foo", "()")]), sskFunction),
+    writer.recordSymbol(("::", @[("void", "bar", "()")]), sskFunction),
+    srkCall
+  )
 
   discard writer.close()
 
