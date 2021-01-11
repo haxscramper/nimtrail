@@ -7,11 +7,12 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(914, 64)
+  # Declaration created in: hc_wrapgen.nim(919, 64)
 
   # Wrapper for `sourcetrail::NodeKind`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/NodeKind.h:25
-  SourcetrailNodeKind_Impl* {.importcpp: "sourcetrail::NodeKind".} = enum
+  SourcetrailNodeKindCxx* {.importcpp: "sourcetrail::NodeKind",
+                            header: r"<NodeKind.h>".} = enum
     sourcetrailNodeKind_UNKNOWN = 1, sourcetrailNodeKind_TYPE = 2,
     sourcetrailNodeKind_BUILTIN_TYPE = 4, sourcetrailNodeKind_MODULE = 8,
     sourcetrailNodeKind_NAMESPACE = 16, sourcetrailNodeKind_PACKAGE = 32,
@@ -27,15 +28,15 @@ type
 
 
 
-  # Declaration created in: hc_wrapgen.nim(994, 59)
+  # Declaration created in: hc_wrapgen.nim(1005, 59)
 
   # Wrapper for `sourcetrail::NodeKind`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/NodeKind.h:25
   SourcetrailNodeKind* = enum
-    nkUNKNOWN, nkTYPE, nkBUILTIN_TYPE, nkMODULE, nkNAMESPACE, nkPACKAGE, nkSTRUCT,
-    nkCLASS, nkINTERFACE, nkANNOTATION, nkGLOBAL_VARIABLE, nkFIELD, nkFUNCTION,
-    nkMETHOD, nkENUM, nkENUM_CONSTANT, nkTYPEDEF, nkTYPE_PARAMETER, nkFILE,
-    nkMACRO, nkUNION
+    snkUnknown, snkType, snkBuiltinType, snkModule, snkNamespace, snkPackage,
+    snkStruct, snkClass, snkInterface, snkAnnotation, snkGlobalVariable, snkField,
+    snkFunction, snkMethod, snkEnum, snkEnumConstant, snkTypedef,
+    snkTypeParameter, snkFile, snkMacro, snkUnion
 
 
 
@@ -48,7 +49,7 @@ import
 
 const
   arrSourcetrailNodeKindmapping: array[SourcetrailNodeKind, tuple[name: string,
-      cEnum: SourcetrailNodeKind_Impl, cName: string, value: int]] = [
+      cEnum: SourcetrailNodeKindCxx, cName: string, value: int]] = [
     (name: "UNKNOWN", cEnum: sourcetrailNodeKind_UNKNOWN,
      cName: "sourcetrail::NodeKind::UNKNOWN", value: 1),
     (name: "TYPE", cEnum: sourcetrailNodeKind_TYPE,
@@ -98,8 +99,54 @@ proc toInt*(en: set[SourcetrailNodeKind]): int {.inline.} =
   for val in en:
     result = bitor(result, arrSourcetrailNodeKindmapping[val].value)
 
-proc `$`*(en: SourcetrailNodeKind): string {.inline.} =
-  arrSourcetrailNodeKindmapping[en].cName
+proc `$`*(en: SourcetrailNodeKindCxx): string {.inline.} =
+  case en
+  of sourcetrailNodeKind_UNKNOWN:
+    result = "sourcetrail::NodeKind::UNKNOWN"
+  of sourcetrailNodeKind_TYPE:
+    result = "sourcetrail::NodeKind::TYPE"
+  of sourcetrailNodeKind_BUILTIN_TYPE:
+    result = "sourcetrail::NodeKind::BUILTIN_TYPE"
+  of sourcetrailNodeKind_MODULE:
+    result = "sourcetrail::NodeKind::MODULE"
+  of sourcetrailNodeKind_NAMESPACE:
+    result = "sourcetrail::NodeKind::NAMESPACE"
+  of sourcetrailNodeKind_PACKAGE:
+    result = "sourcetrail::NodeKind::PACKAGE"
+  of sourcetrailNodeKind_STRUCT:
+    result = "sourcetrail::NodeKind::STRUCT"
+  of sourcetrailNodeKind_CLASS:
+    result = "sourcetrail::NodeKind::CLASS"
+  of sourcetrailNodeKind_INTERFACE:
+    result = "sourcetrail::NodeKind::INTERFACE"
+  of sourcetrailNodeKind_ANNOTATION:
+    result = "sourcetrail::NodeKind::ANNOTATION"
+  of sourcetrailNodeKind_GLOBAL_VARIABLE:
+    result = "sourcetrail::NodeKind::GLOBAL_VARIABLE"
+  of sourcetrailNodeKind_FIELD:
+    result = "sourcetrail::NodeKind::FIELD"
+  of sourcetrailNodeKind_FUNCTION:
+    result = "sourcetrail::NodeKind::FUNCTION"
+  of sourcetrailNodeKind_METHOD:
+    result = "sourcetrail::NodeKind::METHOD"
+  of sourcetrailNodeKind_ENUM:
+    result = "sourcetrail::NodeKind::ENUM"
+  of sourcetrailNodeKind_ENUM_CONSTANT:
+    result = "sourcetrail::NodeKind::ENUM_CONSTANT"
+  of sourcetrailNodeKind_TYPEDEF:
+    result = "sourcetrail::NodeKind::TYPEDEF"
+  of sourcetrailNodeKind_TYPE_PARAMETER:
+    result = "sourcetrail::NodeKind::TYPE_PARAMETER"
+  of sourcetrailNodeKind_FILE:
+    result = "sourcetrail::NodeKind::FILE"
+  of sourcetrailNodeKind_MACRO:
+    result = "sourcetrail::NodeKind::MACRO"
+  of sourcetrailNodeKind_UNION:
+    result = "sourcetrail::NodeKind::UNION"
+  
+converter toSourcetrailNodeKindCxx*(en: SourcetrailNodeKind): SourcetrailNodeKindCxx {.
+    inline.} =
+  arrSourcetrailNodeKindmapping[en].cEnum
 
 
 
@@ -109,7 +156,7 @@ proc `$`*(en: SourcetrailNodeKind): string {.inline.} =
 
 # Wrapper for `sourcetrail::nodeKindToInt`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/NodeKind.h:50
-proc nodeKindToInt*(kind: SourcetrailNodeKind): cint {.
+proc nodeKindToInt*(kind: SourcetrailNodeKindCxx): cint {.
     importcpp: "(sourcetrail::nodeKindToInt(@))", header: r"<NodeKind.h>".}
 
 

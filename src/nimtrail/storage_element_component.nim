@@ -11,7 +11,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageElementComponentData
 # 
@@ -20,7 +20,7 @@ proc elementId*(self: SourcetrailStorageElementComponent): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageElementComponentData
 # 
@@ -29,7 +29,7 @@ proc `elementId =`*(self: var SourcetrailStorageElementComponent; val: cint) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageElementComponentData
 # 
@@ -38,7 +38,7 @@ proc componentKind*(self: SourcetrailStorageElementComponent): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageElementComponentData
 # 
@@ -47,7 +47,7 @@ proc `componentKind =`*(self: var SourcetrailStorageElementComponent; val: cint)
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageElementComponentData
 # 
@@ -56,7 +56,7 @@ proc data*(self: SourcetrailStorageElementComponent): StdString {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageElementComponentData
 # 
@@ -66,7 +66,7 @@ proc `data =`*(self: var SourcetrailStorageElementComponent; val: StdString) {.
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageElementComponentData`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:24
@@ -80,7 +80,7 @@ type
 
 
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageElementComponent`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:43
@@ -104,7 +104,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageElementComponentData::StorageElementComponentData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:26
@@ -114,7 +114,7 @@ proc newStorageElementComponentData*(): ptr SourcetrailStorageElementComponentDa
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageElementComponentData::StorageElementComponentData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:26
@@ -124,7 +124,7 @@ proc initStorageElementComponentData*(): SourcetrailStorageElementComponentData 
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageElementComponentData::StorageElementComponentData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:32
@@ -135,7 +135,7 @@ proc newStorageElementComponentData*(elementId: cint; componentKind: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageElementComponentData::StorageElementComponentData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:32
@@ -146,7 +146,7 @@ proc initStorageElementComponentData*(elementId: cint; componentKind: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageElementComponent::StorageElementComponent`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:45
@@ -156,7 +156,7 @@ proc newStorageElementComponent*(): ptr SourcetrailStorageElementComponent {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageElementComponent::StorageElementComponent`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:45
@@ -166,7 +166,7 @@ proc initStorageElementComponent*(): SourcetrailStorageElementComponent {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageElementComponent::StorageElementComponent`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:50
@@ -177,7 +177,7 @@ proc newStorageElementComponent*(id: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageElementComponent::StorageElementComponent`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:50
@@ -188,7 +188,7 @@ proc initStorageElementComponent*(id: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageElementComponent::StorageElementComponent`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:55
@@ -199,7 +199,7 @@ proc newStorageElementComponent*(id: cint; elementId: cint; componentKind: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageElementComponent::StorageElementComponent`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageElementComponent.h:55
@@ -210,7 +210,7 @@ proc initStorageElementComponent*(id: cint; elementId: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageElementComponentData
 # 
@@ -219,7 +219,7 @@ proc elementId*(self: SourcetrailStorageElementComponent): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageElementComponentData
 # 
@@ -228,7 +228,7 @@ proc `elementId =`*(self: var SourcetrailStorageElementComponent; val: cint) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageElementComponentData
 # 
@@ -237,7 +237,7 @@ proc componentKind*(self: SourcetrailStorageElementComponent): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageElementComponentData
 # 
@@ -246,7 +246,7 @@ proc `componentKind =`*(self: var SourcetrailStorageElementComponent; val: cint)
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageElementComponentData
 # 
@@ -255,7 +255,7 @@ proc data*(self: SourcetrailStorageElementComponent): StdString {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageElementComponentData
 # 

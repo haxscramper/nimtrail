@@ -37,7 +37,7 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::DatabaseStorage`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:34
@@ -47,12 +47,12 @@ type
 
 
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::SourcetrailDBWriter`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:49
-  SourcetrailSourcetrailDBWriter* {.importcpp: r"sourcetrail::SourcetrailDBWriter",
-                                    header: r"<SourcetrailDBWriter.h>".} = object
+  SourcetrailDBWriter* {.importcpp: r"sourcetrail::SourcetrailDBWriter",
+                         header: r"<SourcetrailDBWriter.h>".} = object
     
 
 
@@ -95,21 +95,21 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::SourcetrailDBWriter`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:52
-proc newSourcetrailDBWriter*(): ptr SourcetrailSourcetrailDBWriter {.
+proc newSourcetrailDBWriter*(): ptr SourcetrailDBWriter {.
     importcpp: "new sourcetrail::SourcetrailDBWriter(@)",
     header: r"<SourcetrailDBWriter.h>".}
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::SourcetrailDBWriter`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:52
-proc initSourcetrailDBWriter*(): SourcetrailSourcetrailDBWriter {.
+proc initSourcetrailDBWriter*(): SourcetrailDBWriter {.
     importcpp: "sourcetrail::SourcetrailDBWriter(@)",
     header: r"<SourcetrailDBWriter.h>".}
 
@@ -128,7 +128,7 @@ proc destroySourcetrailDBWriter*(): void {.importcpp: "~SourcetrailDBWriter()",
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::getVersionString`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:68
-proc getVersionString*(self: SourcetrailSourcetrailDBWriter): StdString {.
+proc getVersionString*(self: SourcetrailDBWriter): StdString {.
     importcpp: "(#.getVersionString(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -137,7 +137,7 @@ proc getVersionString*(self: SourcetrailSourcetrailDBWriter): StdString {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::getSupportedDatabaseVersion`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:77
-proc getSupportedDatabaseVersion*(self: SourcetrailSourcetrailDBWriter): cint {.
+proc getSupportedDatabaseVersion*(self: SourcetrailDBWriter): cint {.
     importcpp: "(#.getSupportedDatabaseVersion(@))",
     header: r"<SourcetrailDBWriter.h>".}
 
@@ -147,7 +147,7 @@ proc getSupportedDatabaseVersion*(self: SourcetrailSourcetrailDBWriter): cint {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::getLastError`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:89
-proc getLastError*(self: SourcetrailSourcetrailDBWriter): StdString {.
+proc getLastError*(self: SourcetrailDBWriter): StdString {.
     importcpp: "(#.getLastError(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -156,7 +156,7 @@ proc getLastError*(self: SourcetrailSourcetrailDBWriter): StdString {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::setLastError`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:98
-proc setLastError*(self: SourcetrailSourcetrailDBWriter; error: StdString): void {.
+proc setLastError*(self: SourcetrailDBWriter; error: StdString): void {.
     importcpp: "(#.setLastError(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -165,7 +165,7 @@ proc setLastError*(self: SourcetrailSourcetrailDBWriter; error: StdString): void
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::clearLastError`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:105
-proc clearLastError*(self: var SourcetrailSourcetrailDBWriter): void {.
+proc clearLastError*(self: var SourcetrailDBWriter): void {.
     importcpp: "(#.clearLastError(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -174,7 +174,7 @@ proc clearLastError*(self: var SourcetrailSourcetrailDBWriter): void {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::open`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:118
-proc open*(self: var SourcetrailSourcetrailDBWriter; databaseFilePath: StdString): bool {.
+proc open*(self: var SourcetrailDBWriter; databaseFilePath: StdString): bool {.
     importcpp: "(#.open(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -183,8 +183,8 @@ proc open*(self: var SourcetrailSourcetrailDBWriter; databaseFilePath: StdString
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::close`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:128
-proc close*(self: var SourcetrailSourcetrailDBWriter): bool {.
-    importcpp: "(#.close(@))", header: r"<SourcetrailDBWriter.h>".}
+proc close*(self: var SourcetrailDBWriter): bool {.importcpp: "(#.close(@))",
+    header: r"<SourcetrailDBWriter.h>".}
 
 
 
@@ -192,8 +192,8 @@ proc close*(self: var SourcetrailSourcetrailDBWriter): bool {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::clear`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:137
-proc clear*(self: var SourcetrailSourcetrailDBWriter): bool {.
-    importcpp: "(#.clear(@))", header: r"<SourcetrailDBWriter.h>".}
+proc clear*(self: var SourcetrailDBWriter): bool {.importcpp: "(#.clear(@))",
+    header: r"<SourcetrailDBWriter.h>".}
 
 
 
@@ -201,8 +201,8 @@ proc clear*(self: var SourcetrailSourcetrailDBWriter): bool {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::isEmpty`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:144
-proc isEmpty*(self: SourcetrailSourcetrailDBWriter): bool {.
-    importcpp: "(#.isEmpty(@))", header: r"<SourcetrailDBWriter.h>".}
+proc isEmpty*(self: SourcetrailDBWriter): bool {.importcpp: "(#.isEmpty(@))",
+    header: r"<SourcetrailDBWriter.h>".}
 
 
 
@@ -210,7 +210,7 @@ proc isEmpty*(self: SourcetrailSourcetrailDBWriter): bool {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::isCompatible`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:155
-proc isCompatible*(self: SourcetrailSourcetrailDBWriter): bool {.
+proc isCompatible*(self: SourcetrailDBWriter): bool {.
     importcpp: "(#.isCompatible(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -219,7 +219,7 @@ proc isCompatible*(self: SourcetrailSourcetrailDBWriter): bool {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::getLoadedDatabaseVersion`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:162
-proc getLoadedDatabaseVersion*(self: SourcetrailSourcetrailDBWriter): cint {.
+proc getLoadedDatabaseVersion*(self: SourcetrailDBWriter): cint {.
     importcpp: "(#.getLoadedDatabaseVersion(@))",
     header: r"<SourcetrailDBWriter.h>".}
 
@@ -229,7 +229,7 @@ proc getLoadedDatabaseVersion*(self: SourcetrailSourcetrailDBWriter): cint {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::beginTransaction`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:176
-proc beginTransaction*(self: var SourcetrailSourcetrailDBWriter): bool {.
+proc beginTransaction*(self: var SourcetrailDBWriter): bool {.
     importcpp: "(#.beginTransaction(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -238,7 +238,7 @@ proc beginTransaction*(self: var SourcetrailSourcetrailDBWriter): bool {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::commitTransaction`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:183
-proc commitTransaction*(self: var SourcetrailSourcetrailDBWriter): bool {.
+proc commitTransaction*(self: var SourcetrailDBWriter): bool {.
     importcpp: "(#.commitTransaction(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -247,7 +247,7 @@ proc commitTransaction*(self: var SourcetrailSourcetrailDBWriter): bool {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::rollbackTransaction`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:190
-proc rollbackTransaction*(self: var SourcetrailSourcetrailDBWriter): bool {.
+proc rollbackTransaction*(self: var SourcetrailDBWriter): bool {.
     importcpp: "(#.rollbackTransaction(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -256,7 +256,7 @@ proc rollbackTransaction*(self: var SourcetrailSourcetrailDBWriter): bool {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::optimizeDatabaseMemory`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:197
-proc optimizeDatabaseMemory*(self: var SourcetrailSourcetrailDBWriter): bool {.
+proc optimizeDatabaseMemory*(self: var SourcetrailDBWriter): bool {.
     importcpp: "(#.optimizeDatabaseMemory(@))",
     header: r"<SourcetrailDBWriter.h>".}
 
@@ -266,7 +266,7 @@ proc optimizeDatabaseMemory*(self: var SourcetrailSourcetrailDBWriter): bool {.
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:212
-proc recordSymbol*(self: var SourcetrailSourcetrailDBWriter;
+proc recordSymbol*(self: var SourcetrailDBWriter;
                    nameHierarchy: SourcetrailNameHierarchy): cint {.
     importcpp: "(#.recordSymbol(@))", header: r"<SourcetrailDBWriter.h>".}
 
@@ -276,9 +276,8 @@ proc recordSymbol*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordSymbolDefinitionKind`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:231
-proc recordSymbolDefinitionKind*(self: var SourcetrailSourcetrailDBWriter;
-                                 symbolId: cint;
-                                 definitionKind: SourcetrailDefinitionKind): bool {.
+proc recordSymbolDefinitionKind*(self: var SourcetrailDBWriter; symbolId: cint;
+                                 definitionKind: SourcetrailDefinitionKindCxx): bool {.
     importcpp: "(#.recordSymbolDefinitionKind(@))",
     header: r"<SourcetrailDBWriter.h>".}
 
@@ -288,8 +287,8 @@ proc recordSymbolDefinitionKind*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordSymbolKind`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:248
-proc recordSymbolKind*(self: var SourcetrailSourcetrailDBWriter; symbolId: cint;
-                       symbolKind: SourcetrailSymbolKind): bool {.
+proc recordSymbolKind*(self: var SourcetrailDBWriter; symbolId: cint;
+                       symbolKind: SourcetrailSymbolKindCxx): bool {.
     importcpp: "(#.recordSymbolKind(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -298,8 +297,8 @@ proc recordSymbolKind*(self: var SourcetrailSourcetrailDBWriter; symbolId: cint;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordSymbolLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:266
-proc recordSymbolLocation*(self: var SourcetrailSourcetrailDBWriter;
-                           symbolId: cint; location: SourcetrailSourceRange): bool {.
+proc recordSymbolLocation*(self: var SourcetrailDBWriter; symbolId: cint;
+                           location: SourcetrailSourceRange): bool {.
     importcpp: "(#.recordSymbolLocation(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -308,8 +307,8 @@ proc recordSymbolLocation*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordSymbolScopeLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:285
-proc recordSymbolScopeLocation*(self: var SourcetrailSourcetrailDBWriter;
-                                symbolId: cint; location: SourcetrailSourceRange): bool {.
+proc recordSymbolScopeLocation*(self: var SourcetrailDBWriter; symbolId: cint;
+                                location: SourcetrailSourceRange): bool {.
     importcpp: "(#.recordSymbolScopeLocation(@))",
     header: r"<SourcetrailDBWriter.h>".}
 
@@ -319,7 +318,7 @@ proc recordSymbolScopeLocation*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordSymbolSignatureLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:308
-proc recordSymbolSignatureLocation*(self: var SourcetrailSourcetrailDBWriter;
+proc recordSymbolSignatureLocation*(self: var SourcetrailDBWriter;
                                     symbolId: cint;
                                     location: SourcetrailSourceRange): bool {.
     importcpp: "(#.recordSymbolSignatureLocation(@))",
@@ -331,9 +330,9 @@ proc recordSymbolSignatureLocation*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordReference`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:331
-proc recordReference*(self: var SourcetrailSourcetrailDBWriter;
-                      contextSymbolId: cint; referencedSymbolId: cint;
-                      referenceKind: SourcetrailReferenceKind): cint {.
+proc recordReference*(self: var SourcetrailDBWriter; contextSymbolId: cint;
+                      referencedSymbolId: cint;
+                      referenceKind: SourcetrailReferenceKindCxx): cint {.
     importcpp: "(#.recordReference(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -342,8 +341,7 @@ proc recordReference*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordReferenceLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:351
-proc recordReferenceLocation*(self: var SourcetrailSourcetrailDBWriter;
-                              referenceId: cint;
+proc recordReferenceLocation*(self: var SourcetrailDBWriter; referenceId: cint;
                               location: SourcetrailSourceRange): bool {.
     importcpp: "(#.recordReferenceLocation(@))",
     header: r"<SourcetrailDBWriter.h>".}
@@ -354,7 +352,7 @@ proc recordReferenceLocation*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordReferenceIsAmbiguous`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:365
-proc recordReferenceIsAmbiguous*(self: var SourcetrailSourcetrailDBWriter;
+proc recordReferenceIsAmbiguous*(self: var SourcetrailDBWriter;
                                  referenceId: cint): bool {.
     importcpp: "(#.recordReferenceIsAmbiguous(@))",
     header: r"<SourcetrailDBWriter.h>".}
@@ -365,9 +363,8 @@ proc recordReferenceIsAmbiguous*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordReferenceToUnsolvedSymhol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:387
-proc recordReferenceToUnsolvedSymhol*(self: var SourcetrailSourcetrailDBWriter;
-                                      contextSymbolId: cint;
-                                      referenceKind: SourcetrailReferenceKind;
+proc recordReferenceToUnsolvedSymhol*(self: var SourcetrailDBWriter;
+                                      contextSymbolId: cint; referenceKind: SourcetrailReferenceKindCxx;
                                       location: SourcetrailSourceRange): cint {.
     importcpp: "(#.recordReferenceToUnsolvedSymhol(@))",
     header: r"<SourcetrailDBWriter.h>".}
@@ -378,7 +375,7 @@ proc recordReferenceToUnsolvedSymhol*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordQualifierLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:407
-proc recordQualifierLocation*(self: var SourcetrailSourcetrailDBWriter;
+proc recordQualifierLocation*(self: var SourcetrailDBWriter;
                               referencedSymbolId: cint;
                               location: SourcetrailSourceRange): bool {.
     importcpp: "(#.recordQualifierLocation(@))",
@@ -390,7 +387,7 @@ proc recordQualifierLocation*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordFile`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:420
-proc recordFile*(self: var SourcetrailSourcetrailDBWriter; filePath: StdString): cint {.
+proc recordFile*(self: var SourcetrailDBWriter; filePath: StdString): cint {.
     importcpp: "(#.recordFile(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -399,7 +396,7 @@ proc recordFile*(self: var SourcetrailSourcetrailDBWriter; filePath: StdString):
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordFileLanguage`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:435
-proc recordFileLanguage*(self: var SourcetrailSourcetrailDBWriter; fileId: cint;
+proc recordFileLanguage*(self: var SourcetrailDBWriter; fileId: cint;
                          languageIdentifier: StdString): bool {.
     importcpp: "(#.recordFileLanguage(@))", header: r"<SourcetrailDBWriter.h>".}
 
@@ -409,8 +406,7 @@ proc recordFileLanguage*(self: var SourcetrailSourcetrailDBWriter; fileId: cint;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordLocalSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:449
-proc recordLocalSymbol*(self: var SourcetrailSourcetrailDBWriter;
-                        name: StdString): cint {.
+proc recordLocalSymbol*(self: var SourcetrailDBWriter; name: StdString): cint {.
     importcpp: "(#.recordLocalSymbol(@))", header: r"<SourcetrailDBWriter.h>".}
 
 
@@ -419,7 +415,7 @@ proc recordLocalSymbol*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordLocalSymbolLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:468
-proc recordLocalSymbolLocation*(self: var SourcetrailSourcetrailDBWriter;
+proc recordLocalSymbolLocation*(self: var SourcetrailDBWriter;
                                 localSymbolId: cint;
                                 location: SourcetrailSourceRange): bool {.
     importcpp: "(#.recordLocalSymbolLocation(@))",
@@ -431,7 +427,7 @@ proc recordLocalSymbolLocation*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordAtomicSourceRange`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:485
-proc recordAtomicSourceRange*(self: var SourcetrailSourcetrailDBWriter;
+proc recordAtomicSourceRange*(self: var SourcetrailDBWriter;
                               sourceRange: SourcetrailSourceRange): bool {.
     importcpp: "(#.recordAtomicSourceRange(@))",
     header: r"<SourcetrailDBWriter.h>".}
@@ -442,7 +438,7 @@ proc recordAtomicSourceRange*(self: var SourcetrailSourcetrailDBWriter;
 
 # Wrapper for `sourcetrail::SourcetrailDBWriter::recordError`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailDBWriter.h:502
-proc recordError*(self: var SourcetrailSourcetrailDBWriter; message: StdString;
+proc recordError*(self: var SourcetrailDBWriter; message: StdString;
                   fatal: bool; location: SourcetrailSourceRange): bool {.
     importcpp: "(#.recordError(@))", header: r"<SourcetrailDBWriter.h>".}
 

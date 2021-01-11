@@ -6,7 +6,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageEdgeData
 # 
@@ -15,7 +15,7 @@ proc sourceNodeId*(self: SourcetrailStorageEdge): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageEdgeData
 # 
@@ -24,7 +24,7 @@ proc `sourceNodeId =`*(self: var SourcetrailStorageEdge; val: cint) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageEdgeData
 # 
@@ -33,7 +33,7 @@ proc targetNodeId*(self: SourcetrailStorageEdge): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageEdgeData
 # 
@@ -42,7 +42,7 @@ proc `targetNodeId =`*(self: var SourcetrailStorageEdge; val: cint) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageEdgeData
 # 
@@ -50,7 +50,7 @@ proc edgeKind*(self: SourcetrailStorageEdge): cint {.importcpp: r"(#.edgeKind)".
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageEdgeData
 # 
@@ -60,7 +60,7 @@ proc `edgeKind =`*(self: var SourcetrailStorageEdge; val: cint) {.
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageEdgeData`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:22
@@ -73,7 +73,7 @@ type
 
 
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageEdge`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:41
@@ -92,7 +92,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageEdgeData::StorageEdgeData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:24
@@ -101,7 +101,7 @@ proc newStorageEdgeData*(): ptr SourcetrailStorageEdgeData {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageEdgeData::StorageEdgeData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:24
@@ -110,7 +110,7 @@ proc initStorageEdgeData*(): SourcetrailStorageEdgeData {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageEdgeData::StorageEdgeData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:30
@@ -119,7 +119,7 @@ proc newStorageEdgeData*(sourceNodeId: cint; targetNodeId: cint; edgeKind: cint)
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageEdgeData::StorageEdgeData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:30
@@ -128,7 +128,7 @@ proc initStorageEdgeData*(sourceNodeId: cint; targetNodeId: cint; edgeKind: cint
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageEdge::StorageEdge`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:43
@@ -137,7 +137,7 @@ proc newStorageEdge*(): ptr SourcetrailStorageEdge {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageEdge::StorageEdge`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:43
@@ -146,7 +146,7 @@ proc initStorageEdge*(): SourcetrailStorageEdge {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageEdge::StorageEdge`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:48
@@ -155,7 +155,7 @@ proc newStorageEdge*(id: cint; data: SourcetrailStorageEdgeData): ptr Sourcetrai
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageEdge::StorageEdge`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:48
@@ -164,7 +164,7 @@ proc initStorageEdge*(id: cint; data: SourcetrailStorageEdgeData): SourcetrailSt
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageEdge::StorageEdge`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:53
@@ -174,7 +174,7 @@ proc newStorageEdge*(id: cint; sourceNodeId: cint; targetNodeId: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageEdge::StorageEdge`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageEdge.h:53
@@ -184,7 +184,7 @@ proc initStorageEdge*(id: cint; sourceNodeId: cint; targetNodeId: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageEdgeData
 # 
@@ -193,7 +193,7 @@ proc sourceNodeId*(self: SourcetrailStorageEdge): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageEdgeData
 # 
@@ -202,7 +202,7 @@ proc `sourceNodeId =`*(self: var SourcetrailStorageEdge; val: cint) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageEdgeData
 # 
@@ -211,7 +211,7 @@ proc targetNodeId*(self: SourcetrailStorageEdge): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageEdgeData
 # 
@@ -220,7 +220,7 @@ proc `targetNodeId =`*(self: var SourcetrailStorageEdge; val: cint) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageEdgeData
 # 
@@ -228,7 +228,7 @@ proc edgeKind*(self: SourcetrailStorageEdge): cint {.importcpp: r"(#.edgeKind)".
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageEdgeData
 # 

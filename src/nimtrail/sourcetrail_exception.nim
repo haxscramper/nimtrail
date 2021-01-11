@@ -12,12 +12,12 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::SourcetrailException`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailException.h:27
-  SourcetrailSourcetrailException* {.importcpp: r"sourcetrail::SourcetrailException",
-                                     header: r"<SourcetrailException.h>".} = object
+  SourcetrailException* {.importcpp: r"sourcetrail::SourcetrailException",
+                          header: r"<SourcetrailException.h>".} = object
     
 
 
@@ -35,21 +35,21 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::SourcetrailException::SourcetrailException`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailException.h:30
-proc newSourcetrailException*(message: StdString): ptr SourcetrailSourcetrailException {.
+proc newSourcetrailException*(message: StdString): ptr SourcetrailException {.
     importcpp: "new sourcetrail::SourcetrailException(@)",
     header: r"<SourcetrailException.h>".}
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::SourcetrailException::SourcetrailException`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailException.h:30
-proc initSourcetrailException*(message: StdString): SourcetrailSourcetrailException {.
+proc initSourcetrailException*(message: StdString): SourcetrailException {.
     importcpp: "sourcetrail::SourcetrailException(@)",
     header: r"<SourcetrailException.h>".}
 
@@ -68,6 +68,6 @@ proc destroySourcetrailException*(): void {.
 
 # Wrapper for `sourcetrail::SourcetrailException::getMessage`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourcetrailException.h:32
-proc getMessage*(self: SourcetrailSourcetrailException): StdString {.
+proc getMessage*(self: SourcetrailException): StdString {.
     importcpp: "(#.getMessage(@))", header: r"<SourcetrailException.h>".}
 

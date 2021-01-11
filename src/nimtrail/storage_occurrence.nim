@@ -7,7 +7,7 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageOccurrence`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageOccurrence.h:22
@@ -27,7 +27,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageOccurrence::StorageOccurrence`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageOccurrence.h:24
@@ -37,7 +37,7 @@ proc newStorageOccurrence*(): ptr SourcetrailStorageOccurrence {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageOccurrence::StorageOccurrence`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageOccurrence.h:24
@@ -47,7 +47,7 @@ proc initStorageOccurrence*(): SourcetrailStorageOccurrence {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageOccurrence::StorageOccurrence`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageOccurrence.h:29
@@ -57,7 +57,7 @@ proc newStorageOccurrence*(elementId: cint; sourceLocationId: cint): ptr Sourcet
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageOccurrence::StorageOccurrence`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageOccurrence.h:29

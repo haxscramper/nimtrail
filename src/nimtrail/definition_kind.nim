@@ -7,20 +7,21 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(994, 59)
+  # Declaration created in: hc_wrapgen.nim(1005, 59)
 
   # Wrapper for `sourcetrail::DefinitionKind`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/DefinitionKind.h:31
   SourcetrailDefinitionKind* = enum
-    dkIMPLICIT, dkEXPLICIT
+    sdkImplicit, sdkExplicit
 
 
 
-  # Declaration created in: hc_wrapgen.nim(914, 64)
+  # Declaration created in: hc_wrapgen.nim(919, 64)
 
   # Wrapper for `sourcetrail::DefinitionKind`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/DefinitionKind.h:31
-  SourcetrailDefinitionKind_Impl* {.importcpp: "sourcetrail::DefinitionKind".} = enum
+  SourcetrailDefinitionKindCxx* {.importcpp: "sourcetrail::DefinitionKind",
+                                  header: r"<DefinitionKind.h>".} = enum
     sourcetrailDefinitionKind_IMPLICIT = 1, sourcetrailDefinitionKind_EXPLICIT = 2
 
 
@@ -34,7 +35,7 @@ import
 
 const
   arrSourcetrailDefinitionKindmapping: array[SourcetrailDefinitionKind, tuple[
-      name: string, cEnum: SourcetrailDefinitionKind_Impl, cName: string,
+      name: string, cEnum: SourcetrailDefinitionKindCxx, cName: string,
       value: int]] = [
     (name: "IMPLICIT", cEnum: sourcetrailDefinitionKind_IMPLICIT,
      cName: "sourcetrail::DefinitionKind::IMPLICIT", value: 1),
@@ -47,8 +48,16 @@ proc toInt*(en: set[SourcetrailDefinitionKind]): int {.inline.} =
   for val in en:
     result = bitor(result, arrSourcetrailDefinitionKindmapping[val].value)
 
-proc `$`*(en: SourcetrailDefinitionKind): string {.inline.} =
-  arrSourcetrailDefinitionKindmapping[en].cName
+proc `$`*(en: SourcetrailDefinitionKindCxx): string {.inline.} =
+  case en
+  of sourcetrailDefinitionKind_IMPLICIT:
+    result = "sourcetrail::DefinitionKind::IMPLICIT"
+  of sourcetrailDefinitionKind_EXPLICIT:
+    result = "sourcetrail::DefinitionKind::EXPLICIT"
+  
+converter toSourcetrailDefinitionKindCxx*(en: SourcetrailDefinitionKind): SourcetrailDefinitionKindCxx {.
+    inline.} =
+  arrSourcetrailDefinitionKindmapping[en].cEnum
 
 
 
@@ -58,7 +67,7 @@ proc `$`*(en: SourcetrailDefinitionKind): string {.inline.} =
 
 # Wrapper for `sourcetrail::definitionKindToInt`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/DefinitionKind.h:37
-proc definitionKindToInt*(kind: SourcetrailDefinitionKind): cint {.
+proc definitionKindToInt*(kind: SourcetrailDefinitionKindCxx): cint {.
     importcpp: "(sourcetrail::definitionKindToInt(@))",
     header: r"<DefinitionKind.h>".}
 

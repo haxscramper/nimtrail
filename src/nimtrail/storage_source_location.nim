@@ -6,7 +6,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -15,7 +15,7 @@ proc fileNodeId*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -24,7 +24,7 @@ proc `fileNodeId =`*(self: var SourcetrailStorageSourceLocation; val: cint) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -33,7 +33,7 @@ proc startLineNumber*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -42,7 +42,7 @@ proc `startLineNumber =`*(self: var SourcetrailStorageSourceLocation; val: cint)
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -51,7 +51,7 @@ proc startColumnNumber*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -60,7 +60,7 @@ proc `startColumnNumber =`*(self: var SourcetrailStorageSourceLocation;
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -69,7 +69,7 @@ proc endLineNumber*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -78,7 +78,7 @@ proc `endLineNumber =`*(self: var SourcetrailStorageSourceLocation; val: cint) {
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -87,7 +87,7 @@ proc endColumnNumber*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -96,7 +96,7 @@ proc `endColumnNumber =`*(self: var SourcetrailStorageSourceLocation; val: cint)
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -105,7 +105,7 @@ proc locationKind*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -115,7 +115,7 @@ proc `locationKind =`*(self: var SourcetrailStorageSourceLocation; val: cint) {.
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageSourceLocationData`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:22
@@ -131,7 +131,7 @@ type
 
 
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageSourceLocation`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:50
@@ -150,7 +150,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSourceLocationData::StorageSourceLocationData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:24
@@ -160,7 +160,7 @@ proc newStorageSourceLocationData*(): ptr SourcetrailStorageSourceLocationData {
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSourceLocationData::StorageSourceLocationData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:24
@@ -170,7 +170,7 @@ proc initStorageSourceLocationData*(): SourcetrailStorageSourceLocationData {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSourceLocationData::StorageSourceLocationData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:33
@@ -182,7 +182,7 @@ proc newStorageSourceLocationData*(fileNodeId: cint; startLineNumber: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSourceLocationData::StorageSourceLocationData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:33
@@ -195,7 +195,7 @@ proc initStorageSourceLocationData*(fileNodeId: cint; startLineNumber: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSourceLocation::StorageSourceLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:52
@@ -205,7 +205,7 @@ proc newStorageSourceLocation*(): ptr SourcetrailStorageSourceLocation {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSourceLocation::StorageSourceLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:52
@@ -215,7 +215,7 @@ proc initStorageSourceLocation*(): SourcetrailStorageSourceLocation {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSourceLocation::StorageSourceLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:57
@@ -226,7 +226,7 @@ proc newStorageSourceLocation*(id: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSourceLocation::StorageSourceLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:57
@@ -237,7 +237,7 @@ proc initStorageSourceLocation*(id: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSourceLocation::StorageSourceLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:62
@@ -250,7 +250,7 @@ proc newStorageSourceLocation*(id: cint; fileNodeId: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSourceLocation::StorageSourceLocation`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSourceLocation.h:62
@@ -263,7 +263,7 @@ proc initStorageSourceLocation*(id: cint; fileNodeId: cint;
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -272,7 +272,7 @@ proc fileNodeId*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -281,7 +281,7 @@ proc `fileNodeId =`*(self: var SourcetrailStorageSourceLocation; val: cint) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -290,7 +290,7 @@ proc startLineNumber*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -299,7 +299,7 @@ proc `startLineNumber =`*(self: var SourcetrailStorageSourceLocation; val: cint)
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -308,7 +308,7 @@ proc startColumnNumber*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -317,7 +317,7 @@ proc `startColumnNumber =`*(self: var SourcetrailStorageSourceLocation;
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -326,7 +326,7 @@ proc endLineNumber*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -335,7 +335,7 @@ proc `endLineNumber =`*(self: var SourcetrailStorageSourceLocation; val: cint) {
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -344,7 +344,7 @@ proc endColumnNumber*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 
@@ -353,7 +353,7 @@ proc `endColumnNumber =`*(self: var SourcetrailStorageSourceLocation; val: cint)
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageSourceLocationData
 # 
@@ -362,7 +362,7 @@ proc locationKind*(self: SourcetrailStorageSourceLocation): cint {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageSourceLocationData
 # 

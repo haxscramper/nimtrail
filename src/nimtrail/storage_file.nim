@@ -12,7 +12,7 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageFile`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageFile.h:24
@@ -41,7 +41,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageFile::StorageFile`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageFile.h:26
@@ -50,7 +50,7 @@ proc newStorageFile*(): ptr SourcetrailStorageFile {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageFile::StorageFile`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageFile.h:26
@@ -59,7 +59,7 @@ proc initStorageFile*(): SourcetrailStorageFile {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageFile::StorageFile`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageFile.h:35
@@ -70,7 +70,7 @@ proc newStorageFile*(id: cint; filePath: StdString;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageFile::StorageFile`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageFile.h:35

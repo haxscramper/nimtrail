@@ -7,11 +7,12 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(914, 64)
+  # Declaration created in: hc_wrapgen.nim(919, 64)
 
   # Wrapper for `sourcetrail::LocationKind`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/LocationKind.h:25
-  SourcetrailLocationKind_Impl* {.importcpp: "sourcetrail::LocationKind".} = enum
+  SourcetrailLocationKindCxx* {.importcpp: "sourcetrail::LocationKind",
+                                header: r"<LocationKind.h>".} = enum
     sourcetrailLocationKind_TOKEN = 0, sourcetrailLocationKind_SCOPE = 1,
     sourcetrailLocationKind_QUALIFIER = 2,
     sourcetrailLocationKind_LOCAL_SYMBOL = 3,
@@ -24,13 +25,14 @@ type
 
 
 
-  # Declaration created in: hc_wrapgen.nim(994, 59)
+  # Declaration created in: hc_wrapgen.nim(1005, 59)
 
   # Wrapper for `sourcetrail::LocationKind`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/LocationKind.h:25
   SourcetrailLocationKind* = enum
-    lkTOKEN, lkSCOPE, lkQUALIFIER, lkLOCAL_SYMBOL, lkSIGNATURE, lkATOMIC_RANGE,
-    lkINDEXER_ERROR, lkFULLTEXT_SEARCH, lkSCREEN_SEARCH, lkUNSOLVED
+    slkToken, slkScope, slkQualifier, slkLocalSymbol, slkSignature,
+    slkAtomicRange, slkIndexerError, slkFulltextSearch, slkScreenSearch,
+    slkUnsolved
 
 
 
@@ -43,8 +45,7 @@ import
 
 const
   arrSourcetrailLocationKindmapping: array[SourcetrailLocationKind, tuple[
-      name: string, cEnum: SourcetrailLocationKind_Impl, cName: string,
-      value: int]] = [
+      name: string, cEnum: SourcetrailLocationKindCxx, cName: string, value: int]] = [
     (name: "TOKEN", cEnum: sourcetrailLocationKind_TOKEN,
      cName: "sourcetrail::LocationKind::TOKEN", value: 0),
     (name: "SCOPE", cEnum: sourcetrailLocationKind_SCOPE,
@@ -72,8 +73,32 @@ proc toInt*(en: set[SourcetrailLocationKind]): int {.inline.} =
   for val in en:
     result = bitor(result, arrSourcetrailLocationKindmapping[val].value)
 
-proc `$`*(en: SourcetrailLocationKind): string {.inline.} =
-  arrSourcetrailLocationKindmapping[en].cName
+proc `$`*(en: SourcetrailLocationKindCxx): string {.inline.} =
+  case en
+  of sourcetrailLocationKind_TOKEN:
+    result = "sourcetrail::LocationKind::TOKEN"
+  of sourcetrailLocationKind_SCOPE:
+    result = "sourcetrail::LocationKind::SCOPE"
+  of sourcetrailLocationKind_QUALIFIER:
+    result = "sourcetrail::LocationKind::QUALIFIER"
+  of sourcetrailLocationKind_LOCAL_SYMBOL:
+    result = "sourcetrail::LocationKind::LOCAL_SYMBOL"
+  of sourcetrailLocationKind_SIGNATURE:
+    result = "sourcetrail::LocationKind::SIGNATURE"
+  of sourcetrailLocationKind_ATOMIC_RANGE:
+    result = "sourcetrail::LocationKind::ATOMIC_RANGE"
+  of sourcetrailLocationKind_INDEXER_ERROR:
+    result = "sourcetrail::LocationKind::INDEXER_ERROR"
+  of sourcetrailLocationKind_FULLTEXT_SEARCH:
+    result = "sourcetrail::LocationKind::FULLTEXT_SEARCH"
+  of sourcetrailLocationKind_SCREEN_SEARCH:
+    result = "sourcetrail::LocationKind::SCREEN_SEARCH"
+  of sourcetrailLocationKind_UNSOLVED:
+    result = "sourcetrail::LocationKind::UNSOLVED"
+  
+converter toSourcetrailLocationKindCxx*(en: SourcetrailLocationKind): SourcetrailLocationKindCxx {.
+    inline.} =
+  arrSourcetrailLocationKindmapping[en].cEnum
 
 
 
@@ -83,7 +108,7 @@ proc `$`*(en: SourcetrailLocationKind): string {.inline.} =
 
 # Wrapper for `sourcetrail::locationKindToInt`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/LocationKind.h:39
-proc locationKindToInt*(kind: SourcetrailLocationKind): cint {.
+proc locationKindToInt*(kind: SourcetrailLocationKindCxx): cint {.
     importcpp: "(sourcetrail::locationKindToInt(@))",
     header: r"<LocationKind.h>".}
 

@@ -7,20 +7,21 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(994, 59)
+  # Declaration created in: hc_wrapgen.nim(1005, 59)
 
   # Wrapper for `sourcetrail::ElementComponentKind`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/ElementComponentKind.h:25
   SourcetrailElementComponentKind* = enum
-    eck
+    seck
 
 
 
-  # Declaration created in: hc_wrapgen.nim(914, 64)
+  # Declaration created in: hc_wrapgen.nim(919, 64)
 
   # Wrapper for `sourcetrail::ElementComponentKind`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/ElementComponentKind.h:25
-  SourcetrailElementComponentKind_Impl* {.importcpp: "sourcetrail::ElementComponentKind".} = enum
+  SourcetrailElementComponentKindCxx* {.importcpp: "sourcetrail::ElementComponentKind",
+                                        header: r"<ElementComponentKind.h>".} = enum
     sourcetrailElementComponentKind_IS_AMBIGUOUS = 1
 
 
@@ -35,7 +36,7 @@ import
 const
   arrSourcetrailElementComponentKindmapping: array[
       SourcetrailElementComponentKind, tuple[name: string,
-      cEnum: SourcetrailElementComponentKind_Impl, cName: string, value: int]] = [
+      cEnum: SourcetrailElementComponentKindCxx, cName: string, value: int]] = [
     (name: "IS_AMBIGUOUS", cEnum: sourcetrailElementComponentKind_IS_AMBIGUOUS,
      cName: "sourcetrail::ElementComponentKind::IS_AMBIGUOUS", value: 1)]
 proc toInt*(en: SourcetrailElementComponentKind): int {.inline.} =
@@ -45,8 +46,15 @@ proc toInt*(en: set[SourcetrailElementComponentKind]): int {.inline.} =
   for val in en:
     result = bitor(result, arrSourcetrailElementComponentKindmapping[val].value)
 
-proc `$`*(en: SourcetrailElementComponentKind): string {.inline.} =
-  arrSourcetrailElementComponentKindmapping[en].cName
+proc `$`*(en: SourcetrailElementComponentKindCxx): string {.inline.} =
+  case en
+  of sourcetrailElementComponentKind_IS_AMBIGUOUS:
+    result = "sourcetrail::ElementComponentKind::IS_AMBIGUOUS"
+  
+converter toSourcetrailElementComponentKindCxx*(
+    en: SourcetrailElementComponentKind): SourcetrailElementComponentKindCxx {.
+    inline.} =
+  arrSourcetrailElementComponentKindmapping[en].cEnum
 
 
 
@@ -56,7 +64,7 @@ proc `$`*(en: SourcetrailElementComponentKind): string {.inline.} =
 
 # Wrapper for `sourcetrail::elementComponentKindToInt`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/ElementComponentKind.h:30
-proc elementComponentKindToInt*(kind: SourcetrailElementComponentKind): cint {.
+proc elementComponentKindToInt*(kind: SourcetrailElementComponentKindCxx): cint {.
     importcpp: "(sourcetrail::elementComponentKindToInt(@))",
     header: r"<ElementComponentKind.h>".}
 

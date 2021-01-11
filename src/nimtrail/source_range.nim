@@ -7,7 +7,7 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::SourceRange`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/SourceRange.h:28
@@ -30,7 +30,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(728, 41)
+# Declaration created in: hc_wrapgen.nim(731, 41)
 
 # Wrapper for ``
 # 

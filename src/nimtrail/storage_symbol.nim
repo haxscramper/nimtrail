@@ -7,7 +7,7 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageSymbol`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSymbol.h:24
@@ -27,7 +27,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSymbol::StorageSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSymbol.h:26
@@ -36,7 +36,7 @@ proc newStorageSymbol*(): ptr SourcetrailStorageSymbol {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSymbol::StorageSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSymbol.h:26
@@ -45,7 +45,7 @@ proc initStorageSymbol*(): SourcetrailStorageSymbol {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSymbol::StorageSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSymbol.h:31
@@ -54,7 +54,7 @@ proc newStorageSymbol*(id: cint; definitionKind: cint): ptr SourcetrailStorageSy
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageSymbol::StorageSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageSymbol.h:31

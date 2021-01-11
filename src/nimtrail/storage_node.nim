@@ -11,7 +11,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageNodeData
 # 
@@ -19,7 +19,7 @@ proc nodeKind*(self: SourcetrailStorageNode): cint {.importcpp: r"(#.nodeKind)".
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageNodeData
 # 
@@ -28,7 +28,7 @@ proc `nodeKind =`*(self: var SourcetrailStorageNode; val: cint) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageNodeData
 # 
@@ -37,7 +37,7 @@ proc serializedName*(self: SourcetrailStorageNode): StdString {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageNodeData
 # 
@@ -47,7 +47,7 @@ proc `serializedName =`*(self: var SourcetrailStorageNode; val: StdString) {.
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageNode`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:40
@@ -58,7 +58,7 @@ type
 
 
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageNodeData`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:24
@@ -83,7 +83,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageNodeData::StorageNodeData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:26
@@ -92,7 +92,7 @@ proc newStorageNodeData*(): ptr SourcetrailStorageNodeData {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageNodeData::StorageNodeData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:26
@@ -101,7 +101,7 @@ proc initStorageNodeData*(): SourcetrailStorageNodeData {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageNodeData::StorageNodeData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:31
@@ -110,7 +110,7 @@ proc newStorageNodeData*(nodeKind: cint; serializedName: StdString): ptr Sourcet
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageNodeData::StorageNodeData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:31
@@ -119,7 +119,7 @@ proc initStorageNodeData*(nodeKind: cint; serializedName: StdString): Sourcetrai
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageNode::StorageNode`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:42
@@ -128,7 +128,7 @@ proc newStorageNode*(): ptr SourcetrailStorageNode {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageNode::StorageNode`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:42
@@ -137,7 +137,7 @@ proc initStorageNode*(): SourcetrailStorageNode {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageNode::StorageNode`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:47
@@ -146,7 +146,7 @@ proc newStorageNode*(id: cint; nodeKind: cint; serializedName: StdString): ptr S
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageNode::StorageNode`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:47
@@ -155,7 +155,7 @@ proc initStorageNode*(id: cint; nodeKind: cint; serializedName: StdString): Sour
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageNode::StorageNode`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:52
@@ -164,7 +164,7 @@ proc newStorageNode*(id: cint; data: SourcetrailStorageNodeData): ptr Sourcetrai
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageNode::StorageNode`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageNode.h:52
@@ -173,7 +173,7 @@ proc initStorageNode*(id: cint; data: SourcetrailStorageNodeData): SourcetrailSt
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageNodeData
 # 
@@ -181,7 +181,7 @@ proc nodeKind*(self: SourcetrailStorageNode): cint {.importcpp: r"(#.nodeKind)".
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageNodeData
 # 
@@ -190,7 +190,7 @@ proc `nodeKind =`*(self: var SourcetrailStorageNode; val: cint) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageNodeData
 # 
@@ -199,7 +199,7 @@ proc serializedName*(self: SourcetrailStorageNode): StdString {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageNodeData
 # 

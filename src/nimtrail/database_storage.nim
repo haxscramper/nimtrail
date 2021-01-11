@@ -67,7 +67,7 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::DatabaseStorage`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/DatabaseStorage.h:45

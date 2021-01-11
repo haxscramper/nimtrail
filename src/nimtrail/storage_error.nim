@@ -11,7 +11,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageErrorData
 # 
@@ -20,7 +20,7 @@ proc message*(self: SourcetrailStorageError): StdString {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageErrorData
 # 
@@ -29,7 +29,7 @@ proc `message =`*(self: var SourcetrailStorageError; val: StdString) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageErrorData
 # 
@@ -38,7 +38,7 @@ proc translationUnit*(self: SourcetrailStorageError): StdString {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageErrorData
 # 
@@ -47,7 +47,7 @@ proc `translationUnit =`*(self: var SourcetrailStorageError; val: StdString) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageErrorData
 # 
@@ -55,7 +55,7 @@ proc fatal*(self: SourcetrailStorageError): bool {.importcpp: r"(#.fatal)".}
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageErrorData
 # 
@@ -64,7 +64,7 @@ proc `fatal =`*(self: var SourcetrailStorageError; val: bool) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageErrorData
 # 
@@ -72,7 +72,7 @@ proc indexed*(self: SourcetrailStorageError): bool {.importcpp: r"(#.indexed)".}
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageErrorData
 # 
@@ -82,7 +82,7 @@ proc `indexed =`*(self: var SourcetrailStorageError; val: bool) {.
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageError`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:52
@@ -93,7 +93,7 @@ type
 
 
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageErrorData`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:24
@@ -120,7 +120,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageErrorData::StorageErrorData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:26
@@ -130,7 +130,7 @@ proc newStorageErrorData*(): ptr SourcetrailStorageErrorData {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageErrorData::StorageErrorData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:26
@@ -139,7 +139,7 @@ proc initStorageErrorData*(): SourcetrailStorageErrorData {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageErrorData::StorageErrorData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:34
@@ -150,7 +150,7 @@ proc newStorageErrorData*(message: StdString; translationUnit: StdString;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageErrorData::StorageErrorData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:34
@@ -160,7 +160,7 @@ proc initStorageErrorData*(message: StdString; translationUnit: StdString;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageError::StorageError`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:54
@@ -169,7 +169,7 @@ proc newStorageError*(): ptr SourcetrailStorageError {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageError::StorageError`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:54
@@ -178,7 +178,7 @@ proc initStorageError*(): SourcetrailStorageError {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageError::StorageError`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:59
@@ -187,7 +187,7 @@ proc newStorageError*(id: cint; data: SourcetrailStorageErrorData): ptr Sourcetr
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageError::StorageError`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:59
@@ -196,7 +196,7 @@ proc initStorageError*(id: cint; data: SourcetrailStorageErrorData): Sourcetrail
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageError::StorageError`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:64
@@ -206,7 +206,7 @@ proc newStorageError*(id: cint; message: StdString; translationUnit: StdString;
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageError::StorageError`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageError.h:64
@@ -216,7 +216,7 @@ proc initStorageError*(id: cint; message: StdString; translationUnit: StdString;
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageErrorData
 # 
@@ -225,7 +225,7 @@ proc message*(self: SourcetrailStorageError): StdString {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageErrorData
 # 
@@ -234,7 +234,7 @@ proc `message =`*(self: var SourcetrailStorageError; val: StdString) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageErrorData
 # 
@@ -243,7 +243,7 @@ proc translationUnit*(self: SourcetrailStorageError): StdString {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageErrorData
 # 
@@ -252,7 +252,7 @@ proc `translationUnit =`*(self: var SourcetrailStorageError; val: StdString) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageErrorData
 # 
@@ -260,7 +260,7 @@ proc fatal*(self: SourcetrailStorageError): bool {.importcpp: r"(#.fatal)".}
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageErrorData
 # 
@@ -269,7 +269,7 @@ proc `fatal =`*(self: var SourcetrailStorageError; val: bool) {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageErrorData
 # 
@@ -277,7 +277,7 @@ proc indexed*(self: SourcetrailStorageError): bool {.importcpp: r"(#.indexed)".}
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageErrorData
 # 

@@ -1,15 +1,17 @@
 import ../sourcetrail_d_b_writer
 import ../name_hierarchy
+import ../symbol_kind
+import ../definition_kind
 
 import hmisc/algo/htemplates
 import hmisc/other/oswrap
 import cxxstd/[cxx_string, cxx_vector]
 
 
-proc initStdString(str: string): StdString =
+proc initStdString(str: string): StdString {.inline.} =
   initStdString(str.cstring, str.len.cint)
 
-converter toStdString(str: string): StdString =
+converter toStdString(str: string): StdString {.inline.} =
   initStdString(str)
 
 const
@@ -21,21 +23,38 @@ const
 {.passl: "-lpthread".}
 {.passl: "-lsourcetraildb".}
 
+converter toSourcetrailNameElement(
+  structure: tuple[prefix, name, postfix: string]): SourcetrailNameElement =
+
+  result.prefix = structure.prefix
+  result.name = structure.name
+  result.postfix = structure.postfix
+
+converter initSourcetrailNameHierarchy(
+    args: tuple[
+      delimiter: string,
+      nameHierarchy: seq[tuple[prefix, name, postfix: string]]
+    ]
+  ): SourcetrailNameHierarchy =
+
+  result.nameDelimiter = args.delimiter
+  for element in args.nameHierarchy:
+    result.nameElements.pushBack element
+
+
 proc main() =
   echo "hello"
   // "Sourcetrail DB writer"
-  var writer: SourcetrailSourcetrailDBWriter
+  var writer: SourcetrailDBWriter
 
-  discard writer.open(initStdString("/tmp/test.srctrldb"))
+  let file = "/tmp/test.srctrldb"
+  rmFile AbsFile(file)
+  discard writer.open(initStdString(file))
 
-  var hierarchy: SourcetrailNameHierarchy
-  hierarchy.nameDelimiter = "::"
-  var element: SourcetrailNameElement
-  element.prefix = "void"
-  element.name = "foo"
-  element.postfix = "()"
-  hierarchy.nameElements.pushBack element
-  discard writer.recordSymbol(hierarchy)
+  let symbolId = writer.recordSymbol(("::", @[("void", "foo", "()")]))
+
+  discard writer.recordSymbolDefinitionKind(symbolId, sdkExplicit)
+  discard writer.recordSymbolKind(symbolId, sskFunction)
 
   discard writer.close()
 

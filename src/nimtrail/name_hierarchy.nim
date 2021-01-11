@@ -17,7 +17,7 @@ import
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::NameHierarchy`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/NameHierarchy.h:45
@@ -29,7 +29,7 @@ type
 
 
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::NameElement`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/NameHierarchy.h:32
@@ -60,7 +60,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(728, 41)
+# Declaration created in: hc_wrapgen.nim(731, 41)
 
 # Wrapper for ``
 # 

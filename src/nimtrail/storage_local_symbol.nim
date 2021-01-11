@@ -11,7 +11,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageLocalSymbolData
 # 
@@ -20,7 +20,7 @@ proc name*(self: SourcetrailStorageLocalSymbol): StdString {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageLocalSymbolData
 # 
@@ -30,7 +30,7 @@ proc `name =`*(self: var SourcetrailStorageLocalSymbol; val: StdString) {.
 
 type
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageLocalSymbolData`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:24
@@ -41,7 +41,7 @@ type
 
 
 
-  # Declaration created in: hc_wrapgen.nim(720, 69)
+  # Declaration created in: hc_wrapgen.nim(723, 69)
 
   # Wrapper for `sourcetrail::StorageLocalSymbol`
   # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:37
@@ -65,7 +65,7 @@ import
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageLocalSymbolData::StorageLocalSymbolData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:26
@@ -75,7 +75,7 @@ proc newStorageLocalSymbolData*(): ptr SourcetrailStorageLocalSymbolData {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageLocalSymbolData::StorageLocalSymbolData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:26
@@ -85,7 +85,7 @@ proc initStorageLocalSymbolData*(): SourcetrailStorageLocalSymbolData {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageLocalSymbolData::StorageLocalSymbolData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:30
@@ -95,7 +95,7 @@ proc newStorageLocalSymbolData*(name: StdString): ptr SourcetrailStorageLocalSym
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageLocalSymbolData::StorageLocalSymbolData`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:30
@@ -105,7 +105,7 @@ proc initStorageLocalSymbolData*(name: StdString): SourcetrailStorageLocalSymbol
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageLocalSymbol::StorageLocalSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:39
@@ -115,7 +115,7 @@ proc newStorageLocalSymbol*(): ptr SourcetrailStorageLocalSymbol {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageLocalSymbol::StorageLocalSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:39
@@ -125,7 +125,7 @@ proc initStorageLocalSymbol*(): SourcetrailStorageLocalSymbol {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageLocalSymbol::StorageLocalSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:44
@@ -135,7 +135,7 @@ proc newStorageLocalSymbol*(id: cint; data: SourcetrailStorageLocalSymbolData): 
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageLocalSymbol::StorageLocalSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:44
@@ -145,7 +145,7 @@ proc initStorageLocalSymbol*(id: cint; data: SourcetrailStorageLocalSymbolData):
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageLocalSymbol::StorageLocalSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:49
@@ -155,7 +155,7 @@ proc newStorageLocalSymbol*(id: cint; name: StdString): ptr SourcetrailStorageLo
 
 
 
-# Declaration created in: hc_wrapgen.nim(328, 26)
+# Declaration created in: hc_wrapgen.nim(331, 26)
 
 # Wrapper for `sourcetrail::StorageLocalSymbol::StorageLocalSymbol`
 # Declared in /mnt/workspace/github/nimtrail/SourcetrailDB/core/include/StorageLocalSymbol.h:49
@@ -165,7 +165,7 @@ proc initStorageLocalSymbol*(id: cint; name: StdString): SourcetrailStorageLocal
 
 
 
-# Declaration created in: hc_wrapgen.nim(566, 27)
+# Declaration created in: hc_wrapgen.nim(569, 27)
 
 # Parent field getter passtrough from StorageLocalSymbolData
 # 
@@ -174,7 +174,7 @@ proc name*(self: SourcetrailStorageLocalSymbol): StdString {.
 
 
 
-# Declaration created in: hc_wrapgen.nim(580, 29)
+# Declaration created in: hc_wrapgen.nim(583, 29)
 
 # Parent field assignment passtrough from StorageLocalSymbolData
 # 

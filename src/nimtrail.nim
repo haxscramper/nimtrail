@@ -35,6 +35,7 @@ let parseConf = baseCppParseConfig.withIt do:
 
 let wrapConf = baseWrapConf.withDeepIt do:
   it.parseConf = parseConf
+  it.collapsibleNamespaces = @["sourcetrail"]
 
   it.makeHeader = (
     proc(cursor: CXCursor, conf: WrapConfig): NimHeaderSpec {.closure.} =
@@ -44,7 +45,7 @@ let wrapConf = baseWrapConf.withDeepIt do:
 
   it.getImport = (
     proc(dep: AbsFile, conf: WrapConfig): seq[string] {.closure.} =
-      debug dep
+      # debug dep
       for depConf in @[cxxstd.wrapConf, baseWrapConf]:
         if depConf.isInLibrary(dep):
           return depConf.getImport(dep, depConf)
