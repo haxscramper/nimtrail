@@ -2,3 +2,5 @@ Nim wrappers for sourcetrail database writer. Note: highly experimental,
 currenly uses dummy implementation of standard library [[https://github.com/haxscramper/cxxstd][wrappers]].
 
 https://github.com/CoatiSoftware/SourcetrailDB
+
+To use this library do ~import nimtrail/nimtrail_common~

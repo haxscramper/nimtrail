@@ -6,14 +6,7 @@ import ../reference_kind
 
 import hmisc/algo/htemplates
 import hmisc/other/oswrap
-import cxxstd/[cxx_string, cxx_vector]
-
-
-proc initStdString(str: string): StdString {.inline.} =
-  initStdString(str.cstring, str.len.cint)
-
-converter toStdString(str: string): StdString {.inline.} =
-  initStdString(str)
+import cxxstd/[cxx_string, cxx_vector, cxx_common]
 
 const
   srcd = AbsDir(currentSourcePath()).splitDir().head
@@ -24,35 +17,8 @@ const
 {.passl: "-lpthread".}
 {.passl: "-lsourcetraildb".}
 
-converter toSourcetrailNameElement(
-  structure: tuple[prefix, name, postfix: string]): SourcetrailNameElement =
 
-  result.prefix = structure.prefix
-  result.name = structure.name
-  result.postfix = structure.postfix
-
-converter initSourcetrailNameHierarchy(
-    args: tuple[
-      delimiter: string,
-      nameHierarchy: seq[tuple[prefix, name, postfix: string]]
-    ]
-  ): SourcetrailNameHierarchy =
-
-  result.nameDelimiter = args.delimiter
-  for element in args.nameHierarchy:
-    result.nameElements.pushBack element
-
-proc recordSymbol(
-  writer: var SourcetrailDBWriter,
-  symbol: SourcetrailNameHierarchy,
-  symbolKind: SourcetrailSymbolKind,
-  definitionKind: SourcetrailDefinitionKind = sdkExplicit): cint =
-
-  result = writer.recordSymbol(symbol)
-  discard writer.recordSymbolDefinitionKind(result, definitionKind)
-  discard writer.recordSymbolKind(result, symbolKind)
-
-proc main() =
+when isMainModule:
   echo "hello"
   // "Sourcetrail DB writer"
   var writer: SourcetrailDBWriter
@@ -68,5 +34,3 @@ proc main() =
   )
 
   discard writer.close()
-
-main()

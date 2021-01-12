@@ -110,7 +110,7 @@ proc `$`*(en: SourcetrailReferenceKindCxx): string {.inline.} =
     result = "sourcetrail::ReferenceKind::MACRO_USAGE"
   of sourcetrailReferenceKind_ANNOTATION_USAGE:
     result = "sourcetrail::ReferenceKind::ANNOTATION_USAGE"
-  
+
 converter toSourcetrailReferenceKindCxx*(en: SourcetrailReferenceKind): SourcetrailReferenceKindCxx {.
     inline.} =
   arrSourcetrailReferenceKindmapping[en].cEnum
