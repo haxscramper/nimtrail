@@ -1,12 +1,18 @@
 ## Helper procs for interfacing nim and sourcetrail API
 
 import cxxstd/[cxx_common, cxx_string, cxx_vector]
-import os
+import std/[os, sequtils]
 
 
-const
-  srcd = currentSourcePath().splitPath().head
-  strailDir = srcd / "../../SourcetrailDB"
+const srcd = currentSourcePath().splitPath().head
+
+# Hack around different relative paths for 
+when existsDir(srcd / "src"):
+  const strailDir = srcd / "../../SourcetrailDB"
+
+else:
+  const strailDir = srcd / "../SourcetrailDB"
+
 
 {.passc: "-I" & (strailDir / "core/include").}
 {.passl: "-L" & (strailDir / "build/core").}
@@ -50,3 +56,14 @@ proc recordSymbol*(
   result = writer.recordSymbol(symbol)
   discard writer.recordSymbolDefinitionKind(result, definitionKind)
   discard writer.recordSymbolKind(result, symbolKind)
+
+proc recordSymbol*(
+    writer: var SourcetrailDBWriter,
+    symbolKind: SourcetrailSymbolKind,
+    hierarchy: varargs[tuple[prefix, name, postfix: string]]
+  ): cint =
+
+  result = writer.recordSymbol(
+    ("::", toSeq(hierarchy)),
+    symbolKind
+  )

@@ -18,3 +18,5 @@ nimcache/
 /scripts/.latex
 callgrind.out.*
 nimdoc.cfg
+src/cxxstd
+**/cache
