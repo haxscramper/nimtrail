@@ -9,6 +9,8 @@ if exists(start / "src"):
 else:
   cd(start / "../SourcetrailDB")
 
+
+rmDir(RelDir("build"))
 mkDir(RelDir("build"))
 cd(RelDir("build"))
 

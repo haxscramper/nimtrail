@@ -8,14 +8,15 @@ packageName   = "nimtrail"
 backend       = "cpp"
 
 
-requires "nim >= 1.2.6"
+requires "nim >= 1.4.6"
 requires "hcparse"
 requires "hmisc >= 0.9.16", "hpprint"
 requires "hnimast"
-requires "https://github.com/haxscramper/haxorg.git#head"
-requires "https://github.com/haxscramper/cxxstd.git"
+requires "haxorg"
+requires "cxxstd"
 
 after install:
+  rmDir("nimtrail")
   mvDir("src/nimtrail", "nimtrail")
   mvFile("src/nimtrail.nim", "nimtrail.nim")
   rmDir("src")
