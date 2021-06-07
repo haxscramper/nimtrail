@@ -12,6 +12,9 @@ requires "nim >= 1.4.6"
 requires "hmisc >= 0.9.16"
 requires "cxxstd"
 
+before install:
+  exec("nimble -y install 'https://github.com/haxscramper/cxxstd.git'")
+
 after install:
   # rmDir("nimtrail")
   # mvDir("src/nimtrail", "nimtrail")
