@@ -1,8 +1,7 @@
 import hmisc/other/[hshell, oswrap]
 import hmisc/helpers
 
-let start = currentSourceDir()
-
+cd currentSourceDir()
 cd(RelDir "SourcetrailDB")
 rmDir(RelDir("build"))
 mkDir(RelDir("build"))
