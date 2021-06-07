@@ -10,7 +10,6 @@ backend       = "cpp"
 
 requires "nim >= 1.4.6"
 requires "hmisc >= 0.9.16"
-requires "haxorg"
 requires "cxxstd"
 
 after install:
