@@ -3,13 +3,7 @@ import hmisc/helpers
 
 let start = currentSourceDir()
 
-if exists(start / "src"):
-  cd(start / "../../SourcetrailDB")
-
-else:
-  cd(start / "../SourcetrailDB")
-
-
+cd(RelDir "SourcetrailDB")
 rmDir(RelDir("build"))
 mkDir(RelDir("build"))
 cd(RelDir("build"))

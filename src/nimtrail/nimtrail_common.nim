@@ -6,13 +6,7 @@ import std/[os, sequtils]
 
 const srcd = currentSourcePath().splitPath().head
 
-# Hack around different relative paths for 
-when existsDir(srcd / "src"):
-  const strailDir = srcd / "../../SourcetrailDB"
-
-else:
-  const strailDir = srcd / "../SourcetrailDB"
-
+const strailDir = srcd / "SourcetrailDB"
 
 {.passc: "-I" & (strailDir / "core/include").}
 {.passl: "-L" & (strailDir / "build/core").}
